@@ -1,5 +1,27 @@
 ---
-title: "About"
+title: ""
 ---
 
-About this site
+
+
+
+
+<div dir = "rtl", style = "color: black; font-size: 25px; font-family: Yas;">
+<b>
+
+
+
+<img src="./images/profile_1.jpg" align = "right" alt="my pix" width="200" height="150">
+
+<b>
+سلام. من حبیب عزت‌آبادی هستم، دانشجوی کارشناسی ارشد دانشگاه علوم پزشکی شیراز. 
+این صفحه به منظور معرفی فعالیت‌های من درون گیت‌هاب طراحی شده هست. 
+<br>
+این وبسایت با استفاده از <bdi> Quarto</bdi>&nbsp;  کمی <bdi> CSS </bdi>&nbsp;  و  <bdi> HTML </bdi>&nbsp;   و البته سخاوت گیت‌هاب برای ایجاد امکاناتی جهت ایجاد یک وبسایت شخصی بر‌روی این پلتفرم شکل گرفته هست. 
+
+ </b> <br><br>
+
+
+</div>
+
+

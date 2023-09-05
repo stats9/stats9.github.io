@@ -1,22 +1,43 @@
 project:
   type: website
   output-dir: docs
-  
 
 website:
-  title: "Stats9"
-  navbar:
+  title: ""
+  page-navigation: true
+  back-to-top-navigation: true
+  page-footer:
+    border: true
+    background: "#303c54"
+    center: "Copyright 2023, Habib Ezatabadi"
     left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
-      - Projects.qmd
+      - icon: github
+        href: https://github.com/stats9
+      - icon: linkedin
+        href: https://www.linkedin.com/in/habib-ezzat-abadi-pour-23300abb/
+      - icon: envelope-at
+        href: mailto:habibezati88@gmail.com
+  navbar:
+    tools:
+      - icon: github
+        href: https://github.com/stats9
+      - icon: linkedin
+        href: https://www.linkedin.com/in/habib-ezzat-abadi-pour-23300abb/
+      - icon: envelope-at
+        href: mailto:habibezati88@gmail.com
+    logo: "./images/logo_image.jpg"
+    left:
+      - text: Home
+        file: index.qmd
+      - text: About
+        file: about.qmd
+      - text: BlueSky
+        file: BlueSky.qmd
 
 format:
   html:
-    theme: cosmo
+    theme: flatly
+    mainfont: Yas
+    linkcolor: red
     css: styles.css
     toc: true
-
-
-

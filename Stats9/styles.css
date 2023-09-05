@@ -1,1 +1,8 @@
-/* css styles */
+.navbar-brand > img {
+  width: 0px;
+  height: 0px;
+  padding: 40px 80px;
+  background: url("./images/logo_image.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}

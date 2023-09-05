@@ -1,7 +1,19 @@
 ---
-title: "Stats9"
+title: ""
 ---
 
-This is a Quarto website.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+
+<img src="./images/logo_image.jpg" align = "right" alt="my pix" width="400" height="300">
+
+<br><br>
+
+
+<div dir = "rtl", style = "color: black; font-size: 25px; font-family: Yas;">
+
+تلاش من در این‌جا صرفا برای معرفی کارهایی هست که درون  مخازن گیت‌هابم انجام می‌دهم، و همچنین ارائه آموزش‌هایی که شاید برای دیگران هم جالب باشد. ولی اصلی‌ترین چیزی که باعث شکل‌گیری انگیزه درونی جهت ایجاد این صفحه شد. معرفی یک ابزار مبتنی بر‌ برنامه نویسی R بود به نام BlueSky که در این <a href="BlueSky.qmd"> صفحه </a> به آن خواهیم پرداخت. با توجه به زمان محدودی که در اختیار دارم، تکمیل این صفحات زمان خواهد برد. ولی قسمت مربوط به  BlueSky را می‌توانید به صورت کامل مشاهده کنید. 
+
+
+</div>
+
+
