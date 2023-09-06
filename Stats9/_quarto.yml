@@ -4,6 +4,24 @@ project:
 
 website:
   title: ""
+  sidebar: 
+    style: "docked"
+    border: true
+    alignment: "left"
+    contents: 
+      - text: about
+        file: about.qmd
+      - text: BlueSky
+        file: BlueSky.qmd
+      - text: P~value~
+        file: Pvalue.qmd
+    tools:
+      - icon: envelope-at
+        menu: 
+          - text: report a problem
+            url: mailto:habibezati88@gmail.com
+          - text: Suggestion
+            url: mailto:habibezati88@gmail.com
   page-navigation: true
   back-to-top-navigation: true
   page-footer:
@@ -33,6 +51,8 @@ website:
         file: about.qmd
       - text: BlueSky
         file: BlueSky.qmd
+      - text: P~value~
+        file: Pvalue.qmd
 
 format:
   html:

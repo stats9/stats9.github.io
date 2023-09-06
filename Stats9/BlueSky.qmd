@@ -17,10 +17,12 @@ title: ""
 
 
 <div dir = "rtl", style = "color: black; font-size: 25px; font-family: Yas;">
+<br>
 
-<h1> 
+<h1>
 یک پروژه برای گسترش جامعه کاربری R
 </h1>
+
 <br><br>
 من در این پروژه‌ قصد دارم  به صورت ارائه چند فایل ویدئویی، نرم‌افزار BlueSky را به تمام دوستانی که قصد استفاده از یک نرم‌افزار ساده و منویی جهت انجام تحلیل‌های آماری هستند، آموزش دهم. دلیل اصلی این موضوع بر‌میگردد به این‌که اصولا این نرم‌افزار بر‌روی بستر زبان‌برنامه نویسی R پیاده‌سازی شده هست و همچنین رایگان می‌باشد. پس می‌توانیم به واسطه این نرم‌افزار از قدرت R در تحلیل داده‌ها و البته به شکل خیلی راحت‌تری استفاده کنیم. با توجه به این‌که اکثر جامعه‌ی علمی کشور در تحلیل داده‌ها به سوی SPSS گرایش دارند، که ذکر دلایل آن خارج از این نوشتار هست، باید توجه داشت که نرم‌افزار SPSS یک نرم‌افزار رایگان نیست، و آخرین ورژن قفل شکسته آن که به راحتی قابل نصب باشد ورژن ۲۶ می‌باشد. در حال حاضر ورژن ۲۹ این نرم‌افزار منتشر شده هست. با توجه به‌اینکه ویژگی‌های خیلی زیادی به ورژن‌های جدید نرم‌افزار SPSS افزوده شده هست که متأسفانه در دسترس ما نیست. چرا که نصب ورژن‌های اورجینال این نرم‌افزار مبالغ زیادی را می‌طلبد. 
 
@@ -36,14 +38,13 @@ title: ""
 لینک‌های ویدئو‌ها
 </h1>
 
-
 <br><br>
 
 </div>
 
 <div dir = "rtl", style = "color: black; font-size: 25px; font-family: B Nazanin;">
 
-<ol>
+<ul>
 <li><a href = "https://drive.google.com/file/d/1-N0lJh5aL_tgaQ0bcfzw4qbfalLZYwJL/view?usp=sharing"> لینک اول: نحوه نصب نرم‌افزار </a></li>
 <li><a href = "https://drive.google.com/file/d/1ZxRMQA7u8DnB8rS-6tOgqP9zdQRbr3hU/view?usp=sharing"> لینک دوم: یک مقدمه بر نرم‌افزار </a></li>
 <li><a href = "https://drive.google.com/file/d/1MvJgPnWM5YaI87k54TBDHYmKvdZiGA5p/view?usp=sharing">لینک سوم: نحوه ورود داده‌ها به نرم‌افزار. </a></li>
@@ -78,7 +79,11 @@ title: ""
 <li><a href = "https://drive.google.com/file/d/1k8atKfJQ9GltOwlBe6wcmPklqkmrWY3-/view?usp=sharing">لینک سی‌ و یکم: فیلتر کردن داده‌ها در BlueSky Statistics </a></li>
 
 <li><a href = "https://drive.google.com/file/d/1WRd7gtQyh6l6tundoCOMRy_KJgRHqJLt/view?usp=sharing">لینک سی و دوم: تحلیل بقا در BlueSky Statistics، منحنی کاپلان-میر و رگرسیون کاکس </a></li>
-</ol>
+</ul>
+
+
+<br><br>
+<hr/><hr>
 
 
 

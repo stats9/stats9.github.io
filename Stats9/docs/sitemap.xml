@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://stats9.github.io/index.html</loc>
-    <lastmod>2023-09-05T16:17:56.141Z</lastmod>
-  </url>
-  <url>
-    <loc>https://stats9.github.io/about.html</loc>
-    <lastmod>2023-09-05T16:17:55.252Z</lastmod>
+    <loc>https://stats9.github.io/Pvalue.html</loc>
+    <lastmod>2023-09-06T18:20:21.727Z</lastmod>
   </url>
   <url>
     <loc>https://stats9.github.io/BlueSky.html</loc>
-    <lastmod>2023-09-05T16:17:55.689Z</lastmod>
+    <lastmod>2023-09-06T18:20:19.951Z</lastmod>
+  </url>
+  <url>
+    <loc>https://stats9.github.io/about.html</loc>
+    <lastmod>2023-09-06T18:20:19.494Z</lastmod>
+  </url>
+  <url>
+    <loc>https://stats9.github.io/index.html</loc>
+    <lastmod>2023-09-06T18:20:20.442Z</lastmod>
   </url>
 </urlset>
