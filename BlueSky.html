@@ -62,15 +62,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="">
-<meta property="og:description" content="">
-<meta property="og:image" content="https://stats9.github.io/images/blue_1.png">
-<meta property="og:image:height" content="720">
-<meta property="og:image:width" content="1280">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -104,7 +97,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./Pvalue.html" rel="" target="">
- <span class="menu-text">Pvalue</span></a>
+ <span class="menu-text">P<sub>value</sub></span></a>
   </li>  
 </ul>
             <div class="quarto-navbar-tools ms-auto tools-wide">
@@ -130,12 +123,29 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+        <div class="sidebar-tools-main">
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label=""><i class="bi bi-envelope-at"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="mailto:habibezati88@gmail.com">
+            report a problem
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="mailto:habibezati88@gmail.com">
+            Suggestion
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./about.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">About</span></a>
+ <span class="menu-text">about</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -147,7 +157,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Pvalue.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Pvalue</span></a>
+ <span class="menu-text">P<sub>value</sub></span></a>
   </div>
 </li>
     </ul>
@@ -235,72 +245,6 @@ ul.task-list li input[type="checkbox"] {
 <hr><hr>
 
 
-<h1>
-محاسبه <bdi>p<sub>value</sub></bdi>&nbsp; برای مقایسه‌های چند گانه در آنالیز واریانس یک‌طرفه
-</h1>
-<br><br> 
-
-داده‌های موجود و البته مخصوصا داده‌های زیستی امروزه در مقیاس وسیعی مورد استفاده قرار میگیرد. این امر جدا از آن‌که منجر به انبوهی از داده‌های خام شده هست، بلکه باعث شکل‌گیری آزمون‌های فرضیه مختلفی نیز شده هست. برای آزمایش این فرضیه‌ها، روش‌هایی از آمار استنباطی بر‌روی مجموعه‌ داده‌ها اِعمال می‌شود که منجر به بینش‌های زیستی بیشتر (برای داده‌های زیستی) و اصولا بینش عمیق‌تر در مورد داده‌ها می‌شود. اساسا، آزمون فرضیه یک روش آماری هست که احتمال موافق بودن داده‌ها را که بر‌اساس یک نمونه‌گیری تصادفی جمع‌آوری شده‌اند را با فرضیه صفر (یا مخالف فرضیه صفر) محاسبه می‌کنند و که نتایج این محاسبات در یک عدد خاص به نمام <bdi>p<sub>value</sub></bdi>&nbsp; خلاصه می‌شود. من در قسمت دوست دارم قبل از آن‌که در مورد تصحیح <bdi>p<sub>value</sub></bdi>&nbsp;  برای مقایسه‌های چند‌گانه صحبت کنم، در مورد خود آن صحبت کنم. 
-<br>
-<h3 class="anchored"> 
-<bdi> p<sub>value</sub></bdi>&nbsp;  چیست؟
-</h3>
-<br><br>
-هنگامی که می‌خواهید به صورت آماری استنباط کنید که آیا نتیجه آزمون آماری قابل توجه هست یا خیر، با توجه به فرضیه صفر، احتمال شکل‌گیری نتیجه را با وضعیتی که در آن همه چیز کاملا تصادفی باشد البته با فرض درستی فرض صفر، مقایسه می‌کنید. یک مقدار یا برشی که به عنوان مرز تصمیم گیری که البته هم بر‌اساس روابط تکنیکی ریاضی و هم تاریخی بر‌روی آن اتفاق نظر وجود دارد (البته با توجه زمینه تحقیق) مقدار خطای نوع یا <bdi>α</bdi>&nbsp; که برابر با <bdi>0.5</bdi>&nbsp;  در نظر گرفته می‌شود. بر این اساس، (با فرض آزمون مقایسه میانگین چند گروه (سطح) هست) اگر احتمال فرضیه صفر برابری میانگین سطوح باشد یعنی <bdi> μ<sub>1</sub> == μ<sub>2</sub> == … μ<sub>k</sub></bdi>&nbsp;   اگر مقدار <bdi>p<sub>value</sub></bdi>&nbsp; به‌دست آمده کمتر از نقطه برش انتخاب شده یا همان <bdi>α</bdi>&nbsp; باشد فرض صفر رد می‌شود و در غیر این صورت فرض صفر تأیید می‌شود. البته باید اضافه شود که در آزمون‌های آماری صرف بیان کردن مقدار <bdi>p<sub>value</sub></bdi>&nbsp; کفایت نمی‌کند. و باید علاوه بر این مقدار کمیت‌هایی مانند فواصل اطمینان، توان آزمون و یا اندازه اثر نیز گزارش شود. 
-<br><br>
-<h2 class="anchored">
-مشکلات <bdi>p<sub>value</sub></bdi>&nbsp; 
-</h2>
-<br>
-حقیقت این هست که بحث جدل زیادی پیرامون موقعیت و اهمیت <bdi>p<sub>value</sub></bdi>&nbsp; در محافل علمی وجود دارد. و این موضوع با ظهور کلان‌داده‌ها که عمدتا حول سوء تفاهم و همچنین استفاده نادرست از <bdi>p<sub>value</sub></bdi>&nbsp; می‌شود افزونی یافته هست. اولین ایرادی که وارد می‌کنند این هست که نقاط برش انتخاب شده یعنی <bdi> α = 0.1, 0.05, 0.001, ...</bdi>&nbsp; کاملا دلخواه هستند و صرفا بر‌اساس یک قرار‌داد شکل گرفته‌اند. و این واقعیت مولد آن هست که این مقدار لزوما برای هر زمینه‌ مطالعاتی مناسب نیست و به عنوان مثال برای بعضی از کارآزمایی‌های بالینی حتی مقدار <bdi>α = 0.001</bdi>&nbsp; پیشنهاد می‌شود. علاوه بر‌این، دو تَوَرّش (سوگیری) رایج که به یک‌پارچگی یافته‌های تحقیق اثر می‌گذارد، یکی گزارش‌های انتخابی یا با عنوان انگلیسی <bdi>Selective Reporting</bdi>&nbsp; و دیگری با اصطلاح <bdi>P-Hacking</bdi>&nbsp; شناخته می‌شود، می‌باشد. به‌طور خلاصه گزارش‌ دهی انتخابی به گرایش به سمت گزارش کردن صرفا مقادیر معنادار یعنی زمانی که <bdi>p<sub>value</sub></bdi>&nbsp; از مقدار نقطه برش کمتر هست توجه دارد، که در یک بررسی مشخص شد این اریبی به سمت نتایج معنادار گزارش شده می‌باشد. که در متا‌آنالیز با عنوان اریبی انتشار از آن یاد می‌شود. در مقابل، اصطلاح <bdi>P-Hacking</bdi>&nbsp;  اشاره به نمونه‌‌گیری‌های غیر تصادفی و یا دستکاری عمدی داده‌ها دارد. 
-<br>
-<h2 class="anchored">
-مسئله مقایسه‌های چند‌گانه
-</h2>
-
-با فرض این‌که تمام ایرادات مطرح شده برطرف شده یا نادیده گرفته شوند، آخرین و اما مهم‌ترین مسئله‌ای که در کمی سازی مقدار <bdi>p<sub>value</sub></bdi>&nbsp; باقی می‌ماند، زمانی هست که یک آزمون چند‌گانه روی می‌دهد، اما آزمون چند‌گانه چه مفهومی می‌تواند داشته باشد؟ وضعیتی را تصور کنید که می‌خواهیم تأثیر چند نوع کود را بر‌روی میزان محصولات برداشت با هم مقایسه کنیم، که البته تعداد انواع کود بیشتر از ۲ هست و همچنین با فرض یکسان بودن سایر شرایط، مانند نوع خاک، وسعت زمین، نوع آبیاری و …<br>
-و بخواهیم این مقایسه‌ها را به صورت دو‌به‌دو انجام دهیم، یعنی ابتدا کود نوع ۱ را با نوع ۲ و سپس با نوع ۳والی آخر  یعنی به شکل زیر:‌
-</div>
-<p><span class="math display">\[
-\begin{aligned}
-&amp; \text{Test}_1: ~ \begin{cases}H_0: &amp; \mu_A = \mu_B\\ H_1: &amp; \mu_A\ne \mu_B \end{cases}\\
-&amp; \text{Test}_2: ~ \begin{cases}H_0: &amp; \mu_A = \mu_C\\ H_1: &amp; \mu_A\ne \mu_B \end{cases}\\
-&amp; \text{Test}_3: ~ \begin{cases}H_0: &amp; \mu_A = \mu_D\\ H_1: &amp; \mu_A\ne \mu_B \end{cases}\\
-&amp; \text{Test}_4: ~ \begin{cases}H_0: &amp; \mu_B = \mu_C\\ H_1: &amp; \mu_A\ne \mu_B \end{cases}\\
-&amp; \text{Test}_5: ~ \begin{cases}H_0: &amp; \mu_B = \mu_D\\ H_1: &amp; \mu_A\ne \mu_B \end{cases}\\
-&amp; \text{Test}_6: ~ \begin{cases}H_0: &amp; \mu_C = \mu_D\\ H_1: &amp; \mu_A\ne \mu_B \end{cases}\\
-\end{aligned}
-\]</span> <br></p>
-<div dir="rtl" ,="" style="color: black; font-size: 25px; font-family: B Nazanin;">
-واضح هست که حروف <bdi>A, B, C, D</bdi>&nbsp; اشاره به نوع کودها دارد، همان‌طور که می بینیم وقتی انواع کود دارای ۴ سطح هست، ما ۶ مقایسه دو به دو خواهیم داشت که ترکیب ۲ از ۴ هست که جواب همان ۶ هست. <br>
-حالا اگر خطای نوع اول یا همان <bdi> α = 0.05</bdi>&nbsp; در نظر بگیریم و برای هر ۶ مقایسه همزمان خطای نوع اول را پنج صدم در نظر بگیریم با وضعیت زیر مواجه خواهیم شد: 
-</div>
-<p><br></p>
-<p><span class="math display">\[
-\alpha_{Test_1} = \alpha_{Test_2} = \cdots = \alpha_{Test_6} = 0.05\implies
-\]</span></p>
-<div dir="rtl" ,="" style="color: black; font-size: 25px; font-family: B Nazanin;">
-
-خطای نوع اول یعنی امکان مشاهده وضعیتی که فرض <bdi>H<sub>0</sub></bdi>&nbsp; را رد کنیم در صورتی که این فرض درست باشد،‌ پس احتمال این‌که فرض <bdi>H<sub>0</sub></bdi>&nbsp; را رد نکنیم در صورتی که این فرض درست باشد می‌شود <bdi> 1 - α </bdi>&nbsp; ولی این مقادیر برای یک آزمون صدق می‌کند، ولی اگه بخواهیم احتمال این‌ را بسنجیم در صورتی برابری تمام میانگین سطوح‌ها ما فرض <bdi>H<sub>0</sub></bdi>&nbsp; را برای هیچ‌کدام از آزمون‌ها  رد نکنیم باید به این شکل آن را محاسبه کنیم
-
-</div>
-<p><span class="math display">\[
-\begin{aligned}
-&amp; \alpha_{Single} = 0.05 \implies P_{single} = 1 - \alpha_{single} = 1 - 0.05 = 0.95\\
-&amp; \implies P_{multiple} = P_{single} ^ 6 = 0.7350919 \implies \\
-&amp; \alpha_{multiple} = 1 - P_{multiple} = 0.2649081
-\end{aligned}
-\]</span></p>
-<div dir="rtl" ,="" style="color: black; font-size: 25px; font-family: B Nazanin;">
-
-همان‌طور که مشاهده می‌کنیم، خطا نوع اول برای مقایسه‌های همزمان به شدت تورم پیدا کرده هست و اگر تعداد مقایسه‌ها افزایش پیدا کند یعنی اگر ما فرضا ۵۰ تا مقایسه همزمان داشته باشیم و خطای نوع اول را را برای همه ۵۰ تا مقایسه پنج‌صدم در نظر بگیریم، آن‌گاه خطای نوع اول آزمون‌های چند‌گانه با توجه به روابطی که بالا آوردیم می‌شود:‌
-
-</div>
-<p><span class="math display">\[
-\alpha_{multiple} = 1 - P_{multiple} = 1 - (1 - 0.05)^{50} =  0.923055
-\]</span></p>
-<div dir="rtl" ,="" style="color: black; font-size: 25px; font-family: B Nazanin;">
-واضح هست که در صورت افزایش مقایسه‌های چند‌گانه خطای نوع اول چند‌گانه به یک هم خواهد رسید. 
 
 </div>
 
@@ -540,17 +484,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<script src="https://giscus.app/client.js" data-repo="stats9/BlueSkyProject" data-repo-id="R_kgDOKCmf6Q" data-category="General" data-category-id="DIC_kwDOKCmf6c4CZIHa" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="light_high_contrast" data-lang="فارسی" crossorigin="anonymous" data-loading="lazy" async="">
-</script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./about.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">About</span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">about</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./Pvalue.html" class="pagination-link">
-        <span class="nav-page-text">Pvalue</span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text">P<sub>value</sub></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
