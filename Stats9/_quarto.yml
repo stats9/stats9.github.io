@@ -4,17 +4,22 @@ project:
 
 website:
   title: ""
+  favicon: "./images/favicon.ico"
+  twitter-card: true
+  site-url: https://stats9.github.io/
   sidebar: 
     style: "docked"
     border: true
     alignment: "left"
     contents: 
-      - text: about
+      - text: About
         file: about.qmd
       - text: BlueSky
         file: BlueSky.qmd
       - text: P~value~
         file: Pvalue.qmd
+      - text: Anvoa-SS
+        file: Anova-SS.qmd
     tools:
       - icon: envelope-at
         menu: 
@@ -53,11 +58,13 @@ website:
         file: BlueSky.qmd
       - text: P~value~
         file: Pvalue.qmd
+      - text: Anova-SS
+        file: Anova-SS.qmd
 
 format:
   html:
     theme: flatly
-    mainfont: Yas
+    mainfont: Nexa
     linkcolor: red
     css: styles.css
     toc: true
