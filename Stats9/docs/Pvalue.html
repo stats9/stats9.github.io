@@ -101,9 +101,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://stats9.github.io/images/pval.jpg">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site-name" content="stats9">
 <meta name="twitter:title" content="">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://stats9.github.io/images/pval.jpg">
+<meta name="twitter:image" content="https://stats9.github.io/images/logo_image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -208,7 +213,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Anova-SS.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Anvoa-SS</span></a>
+ <span class="menu-text">Anova-SS</span></a>
   </div>
 </li>
     </ul>
@@ -245,21 +250,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="./images/pval.jpg" align="center" alt="my pix" width="800" height="400"> <br><br></p>
 <section id="calculating-pvalue-for-multiple-comparisons-in-one-way-anova" class="level2">
 <h2 class="anchored" data-anchor-id="calculating-pvalue-for-multiple-comparisons-in-one-way-anova">Calculating p<sub>value</sub> for multiple comparisons in one-way ANOVA</h2>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 
 <h4 style="color: blue;" class="anchored">
 محاسبه <bdi>p<sub>value</sub></bdi>&nbsp; برای مقایسه‌های چند گانه در آنالیز واریانس یک‌طرفه
 </h4>
 <br><br> 
 
-داده‌های موجود و البته مخصوصا داده‌های زیستی امروزه در مقیاس وسیعی تولید می شود. این امر جدا از آن‌که منجر به ذخیره انبوهی از داده‌های خام شده هست، بلکه باعث شکل‌گیری آزمون‌های فرض مختلفی نیز بوده هست. برای آزمایش این فرضیه‌ها، روش‌هایی از آمار استنباطی بر‌روی مجموعه‌ داده‌ها اِعمال می‌شود که منجر به بینش‌های زیستی بیشتر(برای داده‌های زیستی) و اصولا بینش عمیق‌تر در مورد داده‌ها می‌شود. اساسا، آزمون فرض یک روش آماری هست که احتمال موافق بودن داده‌ها را که بر‌اساس یک نمونه‌گیری تصادفی جمع‌آوری شده‌اند، با فرض صفر (یا مخالف فرض صفر) محاسبه می‌کند و نتایج این محاسبات در یک عدد خاص با نماد <bdi>p<sub>value</sub></bdi>&nbsp; خلاصه می‌شود. من پیرو قولی که در زمان ضبط ویدئوهای مربوط به <bdi>BlueSky</bdi>&nbsp; داده‌ام می‌خواهیم درباره‌ تصحیح مقادیر <bdi>p<sub>value</sub></bdi>&nbsp; یک گزارش نسبتا مفصل ارائه بدم، ولی قبل از آن‌که در مورد تصحیح <bdi>p<sub>value</sub></bdi>&nbsp;  برای مقایسه‌های چند‌گانه صحبت کنم، در مورد خود آن توضیح کوتاهی ارائه خواهم داد. 
+داده‌های موجود و البته مخصوصا داده‌های زیستی امروزه در مقیاس وسیعی تولید می شود. این امر جدا از آن‌که منجر به ذخیره انبوهی از داده‌های خام شده هست، بلکه باعث شکل‌گیری آزمون‌های فرض مختلفی نیز بوده هست. برای آزمایش این فرضیه‌ها، روش‌هایی از آمار استنباطی بر‌روی مجموعه‌ داده‌ها اِعمال می‌شود که منجر به بینش‌های زیستی بیشتر(برای داده‌های زیستی) و اصولا بینش عمیق‌تر در مورد داده‌ها می‌شود. اساسا، آزمون فرض یک روش آماری هست که احتمال موافق بودن داده‌ها را که بر‌اساس یک نمونه‌گیری تصادفی جمع‌آوری شده‌اند، با فرض صفر (یا مخالف فرض صفر) محاسبه می‌کند و نتایج این محاسبات در یک عدد خاص با نماد <bdi>p<sub>value</sub></bdi>&nbsp; خلاصه می‌شود. من پیرو قولی که در زمان ضبط ویدئوهای مربوط به <bdi>BlueSky</bdi>&nbsp; داده‌ام می‌خواهم درباره‌ تصحیح مقادیر <bdi>p<sub>value</sub></bdi>&nbsp; یک گزارش نسبتا مفصل ارائه بدم، ولی قبل از آن‌که در مورد تصحیح <bdi>p<sub>value</sub></bdi>&nbsp;  برای مقایسه‌های چند‌گانه صحبت کنم، در مورد خود آن توضیح کوتاهی ارائه خواهم داد. 
 
 
 </div>
 </section>
 <section id="what-is-pvalue" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-pvalue">What is p<sub>value</sub></h2>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 
 <h4 style="color:blue;" class="anchored"> 
 <bdi> p<sub>value</sub></bdi>&nbsp;  چیست؟
@@ -271,7 +276,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 \begin{cases}H_0:&amp; \mu_1 = \mu_2 = \cdots = \mu_k\\
 H_1: &amp; \exists ~~ i, j ~~s.t~~ \mu_i \ne \mu_j, ~~ i, j = 1, 2, ..., k, \quad i \ne j\end{cases}
 \]</span></p>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 اگر مقدار <bdi>p<sub>value</sub></bdi>&nbsp; به‌دست آمده کمتر از نقطه برش انتخاب شده یا همان <bdi>α</bdi>&nbsp; باشد فرض صفر رد می‌شود و در غیر این صورت فرض صفر تأیید می‌شود. البته باید ذکر شود که در آزمون‌های آماری صرف بیان کردن مقدار <bdi>p<sub>value</sub></bdi>&nbsp; کفایت نمی‌کند. و باید علاوه بر این مقدار کمیت‌هایی مانند فواصل اطمینان، توان آزمون و یا اندازه اثر و ... می‌تواند در کنار مقدار <bdi>p<sub>value</sub></bdi>&nbsp; گزارش شود.
 <br>
 
@@ -279,7 +284,7 @@ H_1: &amp; \exists ~~ i, j ~~s.t~~ \mu_i \ne \mu_j, ~~ i, j = 1, 2, ..., k, \qua
 </section>
 <section id="pvalue-problems" class="level2">
 <h2 class="anchored" data-anchor-id="pvalue-problems">p<sub>value</sub> Problems</h2>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 
 <h4 style="color: blue;" class="anchored">
 مشکلات <bdi>p<sub>value</sub></bdi>&nbsp; 
@@ -291,7 +296,7 @@ H_1: &amp; \exists ~~ i, j ~~s.t~~ \mu_i \ne \mu_j, ~~ i, j = 1, 2, ..., k, \qua
 </section>
 <section id="the-problem-of-multiple-comparisons" class="level2">
 <h2 class="anchored" data-anchor-id="the-problem-of-multiple-comparisons">The problem of multiple comparisons</h2>
-<div dir="rtl" ,="" style="font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="font-size: 18px; font-family: Yas;">
 
 <h4 style="color:blue;" class="anchored">
 مسئله مقایسه‌های چند‌گانه
@@ -310,7 +315,7 @@ H_1: &amp; \exists ~~ i, j ~~s.t~~ \mu_i \ne \mu_j, ~~ i, j = 1, 2, ..., k, \qua
 &amp; \text{Test}_6: ~ \begin{cases}H_0: &amp; \mu_C = \mu_D\\ H_1: &amp; \mu_A\ne \mu_B \end{cases}\\
 \end{aligned}
 \]</span> <br></p>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 واضح هست که حروف <bdi>A, B, C, D</bdi>&nbsp; اشاره به نوع کودها دارد، همان‌طور که می بینیم وقتی انواع کود دارای ۴ سطح هست، ما ۶ مقایسه دو به دو خواهیم داشت که ترکیب ۲ از ۴ هست که جواب همان ۶ هست. <br>
 حالا اگر خطای نوع اول یا همان <bdi> α = 0.05</bdi>&nbsp; در نظر بگیریم و برای هر ۶ مقایسه همزمان خطای نوع اول را پنج صدم در نظر بگیریم با وضعیت زیر مواجه خواهیم شد: 
 </div>
@@ -318,7 +323,7 @@ H_1: &amp; \exists ~~ i, j ~~s.t~~ \mu_i \ne \mu_j, ~~ i, j = 1, 2, ..., k, \qua
 <p><span class="math display">\[
 \alpha_{Test_1} = \alpha_{Test_2} = \cdots = \alpha_{Test_6} = 0.05\implies
 \]</span></p>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 
 خطای نوع اول یعنی امکان مشاهده وضعیتی که فرض <bdi>H<sub>0</sub></bdi>&nbsp; را رد کنیم در صورتی که این فرض درست باشد،‌ پس احتمال این‌که فرض <bdi>H<sub>0</sub></bdi>&nbsp; را رد نکنیم در صورتی که این فرض درست باشد می‌شود <bdi> 1 - α </bdi>&nbsp; ولی این مقادیر برای یک آزمون صدق می‌کند، ولی اگه بخواهیم احتمال این‌ را بسنجیم در صورتی برابری تمام میانگین سطوح‌ها ما فرض <bdi>H<sub>0</sub></bdi>&nbsp; را برای هیچ‌کدام از آزمون‌ها  رد نکنیم باید به این شکل آن را محاسبه کنیم
 
@@ -330,7 +335,7 @@ H_1: &amp; \exists ~~ i, j ~~s.t~~ \mu_i \ne \mu_j, ~~ i, j = 1, 2, ..., k, \qua
 &amp; \alpha_{multiple} = 1 - P_{multiple} = 0.2649081
 \end{aligned}
 \]</span></p>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 
 همان‌طور که مشاهده می‌کنیم، خطا نوع اول برای مقایسه‌های همزمان به شدت تورم پیدا کرده هست و اگر تعداد مقایسه‌ها افزایش پیدا کند یعنی اگر ما فرضا ۵۰ تا مقایسه همزمان داشته باشیم و خطای نوع اول را را برای همه ۵۰ تا مقایسه پنج‌صدم در نظر بگیریم، آن‌گاه خطای نوع اول آزمون‌های چند‌گانه با توجه به روابطی که بالا آوردیم می‌شود:‌
 
@@ -338,7 +343,7 @@ H_1: &amp; \exists ~~ i, j ~~s.t~~ \mu_i \ne \mu_j, ~~ i, j = 1, 2, ..., k, \qua
 <p><span class="math display">\[
 \alpha_{multiple} = 1 - P_{multiple} = 1 - (1 - 0.05)^{50} =  0.923055
 \]</span></p>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 واضح هست که در صورت افزایش مقایسه‌های چند‌گانه خطای نوع اول چند‌گانه به یک هم خواهد رسید. <br>
 سؤالی که این‌جا شکل می‌گیرد این هست که چگونه باید جلوی رشد نرخ خطای نوع اول برای مقایسه‌های چند‌گانه گرفته شود؟
 <br> 
@@ -361,7 +366,7 @@ H_1: &amp; \exists ~~ i, j ~~s.t~~ \mu_i \ne \mu_j, ~~ i, j = 1, 2, ..., k, \qua
 </section>
 <section id="bonferronis-method-for-correcting-type-1-error-in-multiple-tests" class="level2">
 <h2 class="anchored" data-anchor-id="bonferronis-method-for-correcting-type-1-error-in-multiple-tests">Bonferroni’s method for correcting type 1 error in multiple tests</h2>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 
 <h4 style="color: blue;" class="anchored">
 روش بونفرونی برای تصحیح خطای  نوع اول در آزمون‌های چند‌گانه
@@ -374,7 +379,7 @@ H_1: &amp; \exists ~~ i, j ~~s.t~~ \mu_i \ne \mu_j, ~~ i, j = 1, 2, ..., k, \qua
 <pre><code>0.0001 0.001 0.01 0.1 0.08 0.09 0.15 0.21 0.35 0.55 0.3 0.64 0.77 0.9 0.03 0.02 0.09 0.19 0.21 0.41</code></pre>
 </div>
 </div>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 روش بونفرونی رویکرد خیلی ساده‌ای دارد، این روش به ما می گوید که اگر فرضا تعداد مقایسه‌ها (آزمون‌ها) فرضا <bdi>m</bdi>تا آزمون هست، آن‌گاه بر‌اساس خطای نوع اولی که در شروع تعیین می‌کنید، برای مقایسه‌های چند‌گانه این خطا را بر تعداد آزمون‌ها که در این‌جا فرض کردیم <bdi>m</bdi>تا می‌باشد تقسیم کنید و مقادیر <bdi>p<sub>value</sub></bdi>&nbsp;محاسبه شده را با این خطا مقایسه کنید و آن‌گاه اگر مقدار <bdi>p<sub>value</sub></bdi>&nbsp; کمتر از مقدار خطا نوع اول برآورد شده بود فرض <bdi>H<sub>0</sub></bdi>&nbsp; را رد کنید. یعنی؛
 </div>
 <p><span class="math display">\[
@@ -383,7 +388,7 @@ H_1: &amp; \exists ~~ i, j ~~s.t~~ \mu_i \ne \mu_j, ~~ i, j = 1, 2, ..., k, \qua
 &amp; \text{if number of test}~ = m \implies \text{final}~ \alpha = \alpha_{multiple} = \frac{\alpha_0}{m}
 \end{aligned}
 \]</span></p>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 حالا اگر بخواهیم برای مثالی که در بالا مقادیر <bdi>p<sub>value</sub></bdi>&nbsp; آن را آورده‌ایم، این روش را پیاده‌سازی کنیم، به جواب زیر خواهیم رسید. 
 <br>
 البته قبل از آن‌که جواب را ببینیم، ذکر یک نکته در این‌جا می تواند اهمیت داشته باشد، و آن این هست که، در <bdi>R</bdi> و در بسته <bdi>stats</bdi>&nbsp; که همراه <bdi>R</bdi> 
@@ -418,7 +423,7 @@ H_1: &amp; \exists ~~ i, j ~~s.t~~ \mu_i \ne \mu_j, ~~ i, j = 1, 2, ..., k, \qua
 [13] 1.000 1.000 0.600 0.400 1.000 1.000 1.000 1.000</code></pre>
 </div>
 </div>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 همان‌طور که مشاهده می‌کنیم خروجی پایتون دارای جزئیات بیشتری هست، خروجی این‌نرم‌افزار علاوه بر مقادیر اصلاح شده <bdi>p<sub>value</sub></bdi>&nbsp; که اگر بخواهیم به شکل مشخص‌تری نشان دهیم؛‌
 <br>
 </div>
@@ -426,7 +431,7 @@ H_1: &amp; \exists ~~ i, j ~~s.t~~ \mu_i \ne \mu_j, ~~ i, j = 1, 2, ..., k, \qua
 <p><b> <span style="color: red;"> (array([ True, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False])</span>, <span style="color: green;">array([0.002, 0.02 , 0.2 , 1. , 1. , 1. , 1. , 1. , 1. , 1. , 1. , 1. , 1. , 1. , 0.6 , 0.4 , 1. , 1. , 1. , 1. ])</span>, <span style="color: darkblue;">0.0025613787765302876, 0.0025) </span></b></p><b>
 </b><p><b></b></p>
 </div>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 
 خروجی پایتون یک <a href="https://www.geeksforgeeks.org/python-tuples/">تاپل</a> می ‌باشد که شامل ۴ عضو هست، عضو اول و دوم <bdi>array</bdi>&nbsp; می‌باشند و عضو‌های سوم و چهارم مقادیر عددی، آرایه اول در حقیقت نتایج آزمون‌ها را نشان می‌دهد که مقدار <bdi>True</bdi>&nbsp; به معنای رد فرض اولیه هست و مقدار <bdi>False</bdi>&nbsp; به معنای پذیرش فرض اولیه یا همان <bdi>H<sub>0</sub></bdi>. که در این‌جا این آرایه با رنگ قرمز مشخص شده هست. آرایه دوم که با رنگ سبز مشخص شده هست اشاره دارد به مقادیر <bdi>p<sub>value</sub></bdi>&nbsp;اصلاح شده توسط روش به‌کار برده شده که در این‌جا بونفرونی می‌باشد. و مقادیر عددی که عضو‌های سوم و چهارم این تاپل می‌باشند و با رنگ آبی پر‌رنگ مشخص شده‌اند، عضو سوم اشاره به خطای نوع اول اصلاح شده با روش <bdi>Sidak</bdi>&nbsp; دارد. که برای این‌که بدانیم خطای نوع اول اصلاح شده <bdi>Sidak</bdi>&nbsp; چگونه محاسبه می‌شود، با توجه به مثال آورده شده در بالا، به معادله زیر توجه کنید: 
 
@@ -439,7 +444,7 @@ H_1: &amp; \exists ~~ i, j ~~s.t~~ \mu_i \ne \mu_j, ~~ i, j = 1, 2, ..., k, \qua
 \end{aligned}
 \]</span></p>
 <p><br></p>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 
 که البته در این‌جا کمی این مقدار گرد شده هست. و همچنین 
 عضو چهارم همان خطای نوع اول اصلاح شده به روش بونفرونی می‌باشد. 
@@ -450,7 +455,7 @@ H_1: &amp; \exists ~~ i, j ~~s.t~~ \mu_i \ne \mu_j, ~~ i, j = 1, 2, ..., k, \qua
 </section>
 <section id="holms-method-for-correcting-type-1-error-in-multiple-tests" class="level2">
 <h2 class="anchored" data-anchor-id="holms-method-for-correcting-type-1-error-in-multiple-tests">Holm’s method for correcting type 1 error in multiple tests</h2>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 
 <h4 style="color: blue;" class="anchored">
 روش هولم برای تصحیح خطای  نوع اول در آزمون‌های چند‌گانه
@@ -458,7 +463,7 @@ H_1: &amp; \exists ~~ i, j ~~s.t~~ \mu_i \ne \mu_j, ~~ i, j = 1, 2, ..., k, \qua
 این روش در حقیقت یک اصلاح هست بر‌روی روش بونفرونی که از مراحل زیر تشکیل شده هست. 
 </div>
 <p><br></p>
-<div dir="rtl" ,="" style="font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="font-size: 18px; font-family: Yas;">
 <ul>
 
 <li>فرض کنید که <bdi>m</bdi> آزمون همزمان دارید و مقادیر برآورد شده برای <bdi>p<sub>value</sub></bdi>&nbsp; این آزمون‌ها را از کوچک به بزرگ به شکل زیر مرتب کرده‌اید: <bdi>P<sub>1</sub>, &nbsp; P<sub>2</sub>, &nbsp;, ..., &nbsp; P<sub>m</sub></bdi>&nbsp; و این مقادیر متناظر با فرض‌های اولیه <bdi>H<sub>1</sub>, &nbsp; H<sub>2</sub>, &nbsp;, ..., &nbsp; H<sub>m</sub></bdi>&nbsp;می‌باشد برای به دست آوردن نتیجه هر آزمون البته با تصحیح خطای  نوع اول به شکل زیر عمل می‌کنیم</li>
@@ -506,7 +511,7 @@ H_1: &amp; \exists ~~ i, j ~~s.t~~ \mu_i \ne \mu_j, ~~ i, j = 1, 2, ..., k, \qua
 </section>
 <section id="hochbergs-method-for-correcting-type-1-error-in-multiple-tests" class="level2">
 <h2 class="anchored" data-anchor-id="hochbergs-method-for-correcting-type-1-error-in-multiple-tests">Hochberg’s method for correcting type 1 error in multiple tests</h2>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 
 <h4 style="color: blue;" class="anchored">
 روش هاچبرگ برای تصحیح خطای  نوع اول در آزمون‌های چند‌گانه
@@ -551,7 +556,7 @@ H_1: &amp; \exists ~~ i, j ~~s.t~~ \mu_i \ne \mu_j, ~~ i, j = 1, 2, ..., k, \qua
 </section>
 <section id="hommels-method-for-correcting-type-1-error-in-multiple-tests" class="level2">
 <h2 class="anchored" data-anchor-id="hommels-method-for-correcting-type-1-error-in-multiple-tests">Hommel’s method for correcting type 1 error in multiple tests</h2>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 
 <h4 style="color: blue;" class="anchored">
 روش هومِل برای تصحیح خطای  نوع اول در آزمون‌های چند‌گانه
@@ -562,7 +567,7 @@ H_1: &amp; \exists ~~ i, j ~~s.t~~ \mu_i \ne \mu_j, ~~ i, j = 1, 2, ..., k, \qua
 <p><span class="math display">\[
 \text{H} = \left\{H_{(1)}, H_{(2)}, ..., H_{(m)}\right\},
 \]</span></p>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 فرض‌های صفر متناظر با آزمون‌های چند‌گانه با مقادیر <bdi>p<sub>value</sub></bdi>&nbsp; برآورد شده به شرح زیر باشد؛ 
 <br>
 
@@ -575,7 +580,7 @@ H_1: &amp; \exists ~~ i, j ~~s.t~~ \mu_i \ne \mu_j, ~~ i, j = 1, 2, ..., k, \qua
 <p><span class="math display">\[
 p_{(1)}, p_{(2)}, ..., p_{(m)}
 \]</span></p>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 که در این‌جا <bdi>m</bdi> تعداد مقایسه‌های چند‌گانه هست. آن‌گاه برای بررسی معناداری آزمون <bdi>H<sub>i</sub></bdi>&nbsp; به روش زیر عمل می‌کنیم. 
 <br>
 ابتدا مقدار <bdi>j</bdi> که به فرم زیر هست را محاسبه می‌کنیم
@@ -583,13 +588,13 @@ p_{(1)}, p_{(2)}, ..., p_{(m)}
 <p><span class="math display">\[
 j = \max\left\{i \in \left\{1, ..., m\right\}:\quad p_{(m -i+k)} &gt; \frac{k\alpha}{i},\quad\text{for}~~k = 1, ..., i\right\}
 \]</span></p>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 واضح هست که اگر به ازای یک مقدار دلخواه <bdi>i</bdi> هیچ مقداری برای <bdi>j</bdi> حاصل نشود آن‌گاه تمام فرض‌های صفری که در بالا آورده شد رد می‌شود. حالا فرض کنیم که ما برای یک مقدار <bdi>i</bdi> یک مقدار <bdi>j</bdi> به‌دست آورده‌ایم آن‌گاه برای این‌که معناداری <bdi>H<sub>i</sub></bdi>&nbsp; را بررسی کنیم باید این مقایسه را شکل دهیم؛ 
 </div>
 <p><span class="math display">\[
 p_i \geq \frac{\alpha}{j}
 \]</span></p>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 اگر گزاره شرطی بالا برقرار باشد، آن‌گاه فرض صفر <bdi>H<sub>i</sub></bdi>&nbsp; را می‌پذیریم. 
 <br><br>
 مثال:
@@ -625,7 +630,7 @@ p_i \geq \frac{\alpha}{j}
 </section>
 <section id="benjamini-hochberg-method-bh-for-correcting-type-1-error-in-multiple-tests" class="level2">
 <h2 class="anchored" data-anchor-id="benjamini-hochberg-method-bh-for-correcting-type-1-error-in-multiple-tests">Benjamini-Hochberg Method (BH) for correcting type 1 error in multiple tests</h2>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 
 <h4 style="color: blue;" class="anchored">
 روش بنجامینی-هاچبرگ برای تصحیح خطای  نوع اول در آزمون‌های چند‌گانه
@@ -639,13 +644,13 @@ p_i \geq \frac{\alpha}{j}
 <p><span class="math display">\[
 \left\{p_{(1)}, p_{(2)}, ..., p_{(m)}\right\}
 \]</span></p>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 که مقدار <bdi>m</bdi> اشاره به تعداد کل آزمون‌های چند‌گانه دارد. آن‌گاه مقدار <bdi>p<sub>value</sub></bdi>&nbsp; حاصل شده برای عضو <bdi>i<sup>th</sup></bdi>&nbsp; این مجموعه با معادله زیر به دست می‌آید
 </div>
 <p><span class="math display">\[
 p_{(i)}^{(BH)} = \min\left\{\underset{j \geq i}{\min}\left\{\frac{m \times p_{(j)}}{j}\right\}, ~1\right\}
 \]</span></p>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 <br><br>
 مثال:
 </div>
@@ -683,7 +688,7 @@ p_{(i)}^{(BH)} = \min\left\{\underset{j \geq i}{\min}\left\{\frac{m \times p_{(j
 </section>
 <section id="benjumaini-and-yekutieli-method-by-for-correcting-type-1-error-in-multiple-tests" class="level2">
 <h2 class="anchored" data-anchor-id="benjumaini-and-yekutieli-method-by-for-correcting-type-1-error-in-multiple-tests">Benjumaini and Yekutieli Method (BY) for correcting type 1 error in multiple tests</h2>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 
 <h4 style="color: blue;" class="anchored">
 روش بنجامینی-یِکوتیلی برای تصحیح خطای  نوع اول در آزمون‌های چند‌گانه
@@ -694,7 +699,7 @@ p_{(i)}^{(BH)} = \min\left\{\underset{j \geq i}{\min}\left\{\frac{m \times p_{(j
 <p><span class="math display">\[
 \text{H} = \left\{H_{(1)}, H_{(2)}, ..., H_{(m)}\right\},
 \]</span></p>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 فرض‌های صفر متناظر با آزمون‌های چند‌گانه با مقادیر <bdi>p<sub>value</sub></bdi>&nbsp; برآورد شده به شرح زیر باشد؛
 <br>
 
@@ -707,19 +712,19 @@ p_{(i)}^{(BH)} = \min\left\{\underset{j \geq i}{\min}\left\{\frac{m \times p_{(j
 <p><span class="math display">\[
 p_{(1)}, p_{(2)}, ..., p_{(m)}
 \]</span></p>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 آن‌گاه
 </div>
 <p><span class="math display">\[
 k = \max\left\{i:\quad p_{(i)} \leq \frac{i}{m}\tilde{\alpha}\right\}, \quad \tilde{\alpha} = \frac{\alpha_{(Initial)}}{\sum_{i = 1}^m \frac{1}{i}}
 \]</span></p>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
  منظور از <bdi>α<sub>Initial</sub></bdi>&nbsp; همان خطای نوع اولی هست که در ابتدا آزمون به آن اشاره می‌شود. و در معادله بالا اگر مقداری برای <bdi>k</bdi> به دست نیاید تمام فرض‌های اولیه پذیرفته می‌شوند. و اگر مقدار برای k به دست بیاید، فرض های 
 </div>
 <p><span class="math display">\[
 \left\{H_1, \dots, H_k\right\}
 \]</span></p>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
  رد می شود، همان‌طور که مشاهده می کنیم این روش به نسبت دارای محاسبات کمتری و همچنین محافظه‌کارانه‌تر از روش قبلی می‌باشد. 
 </div>
 <div class="cell">
@@ -756,7 +761,7 @@ k = \max\left\{i:\quad p_{(i)} \leq \frac{i}{m}\tilde{\alpha}\right\}, \quad \ti
 </section>
 <section id="false-discovery-rate-fdr-method-for-correcting-type-1-error-in-multiple-tests" class="level2">
 <h2 class="anchored" data-anchor-id="false-discovery-rate-fdr-method-for-correcting-type-1-error-in-multiple-tests">False Discovery Rate (FDR) Method for correcting type 1 error in multiple tests</h2>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 
 <h4 style="color: blue;" class="anchored">
 روش <bdi>FDR</bdi>&nbsp; برای تصحیح خطای  نوع اول در آزمون‌های چند‌گانه
@@ -767,20 +772,20 @@ k = \max\left\{i:\quad p_{(i)} \leq \frac{i}{m}\tilde{\alpha}\right\}, \quad \ti
 <p><span class="math display">\[
 P_{value}: ~~\left\{p_{(1)}, p_{(2)}, \dots, p_{(m)}\right\}
 \]</span></p>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 اگر مانند قبل فرض‌‌های صفر متناظر با مقادیر <bdi>p<sub>value</sub></bdi>&nbsp; ذکر شده در بالا، عبارت باشد از
 </div>
 <p><span class="math display">\[
 \text{H} = \left\{H_{(1)}, H_{(2)}, ..., H_{(m)}\right\},
 \]</span></p>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 برای برآورد <bdi>p<sub>value</sub></bdi>&nbsp; اصلاح شده به شکل زیر عمل می‌کنیم؛
 
 </div>
 <p><span class="math display">\[
 p_{(i)}^{(FDR)} = \frac{m}{i} \times p_{(i)} \implies \text{if}~~~ p_{(i)}^{(FDR)} \leq \alpha_{Initial} ~~ \text{Reject}~H_i
 \]</span></p>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 که در این‌جا مقدار <bdi>m</bdi> اشاره به تعداد مقایسه‌های چند‌گانه‌ای هست که می‌خواهیم انجام دهیم. 
 
 <br><br>
@@ -817,7 +822,7 @@ p_{(i)}^{(FDR)} = \frac{m}{i} \times p_{(i)} \implies \text{if}~~~ p_{(i)}^{(FDR
 </div>
 </div>
 <p><br></p>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 تابع <bdi><b><span style="font-family: courier new;">statsmodels.stats.multitest.fdrcorrection</span></b></bdi>&nbsp;  در حقیقت یک ابزار دیگر پایتون برای پیاده‌سازی همان  دو روش قبلی <br> <bdi>(BH, BY)</bdi>&nbsp; هست؛ این تابع 
 برای آرگومان <bdi>method</bdi> پنج‌تا مقدار می تواند بگیرد که نتایج به دست آمده بر‌اساس هر کدام از مقادیر ذکر شده در راهنمای این تابع، یا نتایج روش <bdi>BH</bdi>&nbsp; را دارد یا نتایج روش <bdi>BY</bdi>&nbsp;.<br>
 همان‌طور که می‌بینیم خروجی روش <bdi>fdr</bdi>&nbsp; در <bdi>R</bdi>  نتیجه پیاده‌سازی روش <bdi>BH</bdi>&nbsp; را دارد، در حقیقت وجود <bdi>fdr</bdi>&nbsp; به عنوان یک آرگومان ضرورتی ندارد. البته برای روش‌های مستقر شده بر‌روی مفهوم <bdi>FDR</bdi>&nbsp; تیب‌شیرانی نیز روش‌هایی مبتنی بر <bdi>BH, BY</bdi>&nbsp; ارائه داده هست که از طریق بسته <bdi>statsmodels</bdi>&nbsp; قابل دسترس هستند. برای جزئیات آرگومان‌های تابع ذکر شده در <bdi>statsmodels</bdi>&nbsp; می‌توانید به این <a href="https://www.statsmodels.org/dev/generated/statsmodels.stats.multitest.multipletests.html">لینک</a> مراجعه کنید. 
@@ -827,7 +832,7 @@ p_{(i)}^{(FDR)} = \frac{m}{i} \times p_{(i)} \implies \text{if}~~~ p_{(i)}^{(FDR
 </section>
 <section id="posthoc-tests-with-adjusted-pvalue" class="level2">
 <h2 class="anchored" data-anchor-id="posthoc-tests-with-adjusted-pvalue">PostHoc Tests With Adjusted P<sub>value</sub></h2>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 
 <h4 style="color: blue;" class="anchored">
 پیاده‌سازی آزمون‌های تعقیبی با مقادیر اصلاح شده <bdi>p<sub>value</sub></bdi>&nbsp;
@@ -935,7 +940,7 @@ versicolor      0         NA
 virginica       0     0.0084</code></pre>
 </div>
 </div>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 واضح هست که نتایج گزارش شده در هر دو پلتفرم <bdi>(<b><mark><span style="font-family: courier new;">R, python</span></mark>)</b></bdi>&nbsp;  یکسان هست. 
 </div>
 <hr>
@@ -944,7 +949,7 @@ virginica       0     0.0084</code></pre>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
-<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Vazir;">
+<div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 
 <h4 style="color: blue;" class="anchored">
 منابع
@@ -1200,6 +1205,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<script src="https://giscus.app/client.js" data-repo="stats9/BlueSkyProject" data-repo-id="R_kgDOKCmf6Q" data-category="General" data-category-id="DIC_kwDOKCmf6c4CZIHa" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="light" data-lang="فارسی" crossorigin="anonymous" data-loading="lazy" async="">
+</script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./BlueSky.html" class="pagination-link">
@@ -1208,7 +1215,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./Anova-SS.html" class="pagination-link">
-        <span class="nav-page-text">Anvoa-SS</span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text">Anova-SS</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

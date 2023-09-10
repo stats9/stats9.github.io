@@ -4,9 +4,21 @@ project:
 
 website:
   title: ""
+  image: "./images/logo_image.jpg"
+  open-graph: 
+    locale: es_ES
+    site-name: stats9
   favicon: "./images/favicon.ico"
-  twitter-card: true
+  twitter-card: 
+    image: "./images/logo_image.jpg"
   site-url: https://stats9.github.io/
+  comments: 
+    giscus: 
+      repo: stats9/BlueSkyProject
+      reactions-enabled: true
+      input-position: bottom
+      language: فارسی
+      loading: lazy
   sidebar: 
     style: "docked"
     border: true
@@ -18,7 +30,7 @@ website:
         file: BlueSky.qmd
       - text: P~value~
         file: Pvalue.qmd
-      - text: Anvoa-SS
+      - text: Anova-SS
         file: Anova-SS.qmd
     tools:
       - icon: envelope-at
@@ -68,3 +80,4 @@ format:
     linkcolor: red
     css: styles.css
     toc: true
+

@@ -18,7 +18,7 @@ title: ""
 # A project to expand the R user community
 
 
-<div dir = "rtl", style = "font-size: 18px; font-family: B Mitra;">
+<div dir = "rtl", style = "font-size: 18px; font-family: Yas;">
 <br>
 
 
