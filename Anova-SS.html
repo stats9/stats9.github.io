@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -62,13 +96,18 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
 
 <link rel="stylesheet" href="styles.css">
 <meta property="og:title" content="">
+<meta property="og:description" content="">
 <meta property="og:image" content="https://stats9.github.io/images/anova.jpg">
 <meta property="og:locale" content="es_ES">
 <meta property="og:site-name" content="stats9">
 <meta name="twitter:title" content="">
+<meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://stats9.github.io/images/logo_image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -183,7 +222,17 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#about-anova" id="toc-about-anova" class="nav-link active" data-scroll-target="#about-anova">About Anova</a></li>
+  <li><a href="#types-of-ss-calculation-methods-in-anova" id="toc-types-of-ss-calculation-methods-in-anova" class="nav-link" data-scroll-target="#types-of-ss-calculation-methods-in-anova">Types of SS Calculation methods in Anova</a></li>
+  <li><a href="#type-i" id="toc-type-i" class="nav-link" data-scroll-target="#type-i">Type I</a></li>
+  <li><a href="#type-ii" id="toc-type-ii" class="nav-link" data-scroll-target="#type-ii">Type II</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -213,8 +262,3949 @@ ul.task-list li input[type="checkbox"] {
 </b>
 </figcaption>
 </figure>
+<p><br><br><br></p>
+<section id="about-anova" class="level2">
+<h2 class="anchored" data-anchor-id="about-anova">About Anova</h2>
+<div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
+<h4 style="color: blue;" class="anchored">
+درباره آنالیز واریانس
+</h4>
+
+آنالیز واریانس یا در اصطلاح آن <bdi>Anova</bdi>&nbsp; یک فرآیند آماری برای تجزیه و تحلیل مقدار واریانس است که برای بررسی اثرات عامل‌های مختلف بر‌روی یک ویژگی خاص (متغیرپاسخ هدف ما) که باید یک کمیت پیوسته و دارای شرایط خاصی باشد به کار می رود. این روش 
+در ابتدا توسط <a href="https://en.wikipedia.org/wiki/Ronald_Fisher">رونالد فیشر</a> در سال ۱۹۲۵ برای یک مدل   <a href="https://www.statisticshowto.com/balanced-and-unbalanced-designs/">طرح آزمایش متعادل</a> ابداع شد. <br>
+<bdi>Anova</bdi>&nbsp; از آن‌جهت می‌تواند در تحقیقات اهمیت داشته باشد که ابزار لازم برای مقایسه بیش از دو گروه را به طور همزمان برای تعیین این‌که اصولا تفاوت معناداری بین گروه‌ها وجود دارد یا خیر، فراهم می‌کند. برای جزئیات بیشتر در مورد این روش آماری می‌توانید از این <a href="https://blog.faradars.org/anova/">لینک</a> بازدید کنید. 
+</div>
+</section>
+<section id="types-of-ss-calculation-methods-in-anova" class="level2">
+<h2 class="anchored" data-anchor-id="types-of-ss-calculation-methods-in-anova">Types of SS Calculation methods in Anova</h2>
+<div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
+<h4 style="color: blue;" class="anchored">
+<b>
+انواع روش‌های محاسبه مربعات تیماری
+</b>
+</h4>
+هنگامی که داده‌ها نامعادل هستند یعنی توزیع مشاهدات در سطوح عوامل با هم یکسان نیست، ۴ رویکرد متفاوت برای به‌دست آوردن مجموع مربعات وجود دارد. که ۳ تای آن‌ها پر‌کابرد‌تر می‌باشند. که با نماد 
+<ul>
+<li>
+<bdi>Type I</bdi>
+</li>
+<li>
+<bdi>Type II</bdi>
+</li>
+<li>
+Type III
+</li>
+<li>
+<bdi>Type IV</bdi>
+</li>
+</ul>
+مشخص می‌شوند. آن طور که مشخص هست، این نمادها از نرم‌افزار <bdi>SAS</bdi>&nbsp; وارد ادبیات آماری شده‌اند، که البته در حال‌حاضر خیلی پر‌استفاده شده‌اند. نکته‌ای که وجود دارد، این‌هست که چه زمانی باید از هر کدام از این روش‌ها استفاده کرد که خود محل بحث‌های زیادی در ادبیات آماری بوده هست. ولی در حالت کلی بر‌میگردد به این‌که ما چه فرضیات ابتدایی در مورد داده‌ها داریم و هدف ما بررسی چه چیزهایی هست. <br>
+مدلی را در نظر بگیرید که شامل دو عامل <bdi>A</bdi> و <bdi>B</bdi> باشد. بنابراین دو اثر اصلی و یک اثر توأم <bdi>AB</bdi>&nbsp; در مدل تحلیل شما می‌تواند وجود داشته باشد.  مدل کامل را با این نماد نشان می‌دهیم <bdi>SS(A, B, AB)</bdi>&nbsp;. <br> 
+مدل‌های دیگری که برای این مثال فرضی ما می‌توانند وجود داشته باشند عبارتند از؛ <bdi>SS(A, B)</bdi>&nbsp; مدلی که اثر توأم را در خود قرار نداده هست و یا مدلی که اثر اصلی عامل <bdi>A</bdi> را در نظر نمی‌گیرد، که با نماد <bdi>SS(B, AB)</bdi>&nbsp; نشان داده می‌شود و ...<br>
+ یک روش برای این‌که بتوان تأثیر و یا معنادار بودن تأثیر، اثرات اصلی یا توأم را بررسی کرد، مقایسه مدل‌های حامل این اثرات و مدل‌هایی که این اثرات را در بر ندارند می‌باشد. مثلا در مثال ما اگر بخواهیم اثر <bdi>AB</bdi>&nbsp; را بررسی کنیم می‌توانیم مدل‌های <bdi>SS(A, B), SS(A, B, AB)</bdi>&nbsp; را با هم مقایسه کنیم.
+ <br>
+ اگر بخواهیم تأثیر عامل‌های در حضور بقیه عوامل بسنجیم و یا افزایش مربعات را با اضافه کردن یک اثر در حضور بقیه اثرات بسنجیم می‌توانیم به شکل زیر آن را بیان کنیم؛
+</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">SS</span>(AB<span class="sc">|</span> A, B) <span class="ot">=</span> <span class="fu">SS</span>(A, B, AB) <span class="sc">-</span> <span class="fu">SS</span>(A, B)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">SS</span>(A <span class="sc">|</span> B, AB) <span class="ot">=</span> <span class="fu">SS</span>(A, B, AB) – <span class="fu">SS</span>(B, AB)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">SS</span>(B <span class="sc">|</span> A, AB) <span class="ot">=</span> <span class="fu">SS</span>(A, B, AB) – <span class="fu">SS</span>(A, AB)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">SS</span>(A <span class="sc">|</span> B) <span class="ot">=</span> <span class="fu">SS</span>(A, B) – <span class="fu">SS</span>(B)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">SS</span>(B <span class="sc">|</span> A) <span class="ot">=</span> <span class="fu">SS</span>(A, B) – <span class="fu">SS</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
+در نمادهای بالا، منظور از فرضا <bdi>SS(AB|A, B)</bdi>&nbsp; اشاره دارد به افزایشی که در مجموع مربعات تیماری حادث می‌شود وقتی در حضور اثرات اصلی <bdi>A</bdi> و B اثر توأم این دو را نیز اضافه کنیم و یا مثلا منظور از <bdi>SS(B|A)</bdi>&nbsp; اشاره دارد به‌این‌که میزان افزایش در مربعات تیماری وقتی اثر اصلی <bdi>A</bdi> حضور دارد و ما اثر <bdi>B</bdi> را اضافه کنیم. <br>
+در این‌جاست که اصولا انواع مختلف محاسبه مجموع مربعات شکل می‌گیرد. یا به شکل شفاف‌تر نحوه تعریف اثرات هست که که باعث شکل‌گیری این تفاوت‌ها می‌شود. 
+</div>
+<hr>
+<p><br><br></p>
+</section>
+<section id="type-i" class="level2">
+<h2 class="anchored" data-anchor-id="type-i">Type I</h2>
+<div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
+<h4 style="color: blue;" class="anchored"><b>
+مجموع مربعات نوع ۱
+</b>
+</h4>
+
+در این شیوه، تعریف اثرات برای مثال فرضی که گفتیم به این شکل هست؛ 
+<ul>
+<li>
+<bdi>SS(A):</bdi>&nbsp; برای عامل <bdi>A</bdi>
+</li>
+<li>
+<bdi>SS(B | A):</bdi>&nbsp; برای عامل <bdi>B</bdi>
+</li>
+<li>
+<bdi>SS(AB | B, A):</bdi>&nbsp; برای اثر توأم <bdi>AB</bdi>
+</li>
+</ul>
+عبارات بالا، این مفهوم را دارد که ابتدا اثر اصلی عامل <bdi>A</bdi> سپس اثر اصلی عامل  <bdi>B</bdi> و در انتها اثر متقابل AB مورد بررسی قرار می‌گیرند. <br>
+به دلیل ماهیت سلسله مراتبی و این واقعیت که دو عامل اصلی به ترتیب خاصی مورد آزمایش قرار می‌گیرند. این نوع مجموع مربعات وابسته به این‌که کدام اثر اصلی ابتدا در نظر گرفته شود. نتایج متفاوتی برای داده‌های نامتعادل به همراه خواهد داشت. 
+<br>
+برای داده‌ها نامتعادل  این رویکرد تفاوت در میانگین وزن‌‌های اثرات حاشیه‌ای  را مورد آزمایش قرار می‌دهد. از نظر عملی، این بدان‌معناست که نتایج به اندازه نمونه‌های محقق شده بستگی پیدا می کند، به‌عبارت دیگر اولین عامل را بدون کنترل عامل دیگر آزمایش می‌کند. برای جزئیات بیشتر می‌توانید به <a href="#f1"><bdi>[1]</bdi></a> مراجعه کنید. <br>
+<span style="color: red;"><b>
+این شیوه اصولا برای طرح‌های نامتعادل پیشنهاد نمی شود. 
+</b></span>
+<br><br>
+
+مثال: <br>
+من برای مثال‌های که در این صفحه می‌خواهم بیاورم. از دو مجموعه داده استفاده کرده‌ام، یکی برای طرح متعادل هست و یکی برای به‌اصطلاح طرح نامتعادل. داده‌ها به صورت شبیه‌سازی شده هست. که کد وخروجی داده‌ها در ادامه خواهید دید. 
+<br> 
+البته با ذکر این‌نکته که خروجی به منظور نمایش داده‌ها و همچنین نشان دادن متعادل بودن یا نامتعادل بودن داده‌های طرح می‌باشد. 
+</div>
+<div class="cell">
+<details>
+<summary>show the code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">## loading require package</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(AlgDesign)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(splitstackshape)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="do">## To create a design with 3 factors and a specified number of levels</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>Design_factorial <span class="ot">&lt;-</span> <span class="fu">gen.factorial</span>(<span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">5</span>), <span class="at">nVars =</span> <span class="dv">3</span>, </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="at">varNames =</span> <span class="fu">c</span>(<span class="st">"Fac1"</span>, <span class="st">"Fac2"</span>, <span class="st">"Fac3"</span>), <span class="at">center =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>Anova_data <span class="ot">&lt;-</span> purrr <span class="sc">::</span> <span class="fu">map_dfr</span>(<span class="fu">seq_len</span>(<span class="dv">4</span>), <span class="sc">~</span>Design_factorial)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> Anova_data <span class="sc">%&gt;%</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="fu">apply</span>(., <span class="at">MARGIN =</span> <span class="dv">1</span>, <span class="cf">function</span>(x) <span class="fu">prod</span>(x)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        unlist <span class="sc">%&gt;%</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">240</span>, <span class="at">mean =</span> ., <span class="at">sd =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="do">## To simulate data for a balanced design</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>anova_data_Balanced <span class="ot">&lt;-</span> Anova_data <span class="sc">%&gt;%</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">"Fac"</span>), <span class="sc">~</span> <span class="fu">as.factor</span>(.x))) <span class="sc">%&gt;%</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Fac1 =</span> <span class="fu">fct_recode</span>(Fac1, </span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>            <span class="at">A =</span> <span class="st">"1"</span>, <span class="at">B =</span> <span class="st">"2"</span>, <span class="at">C =</span> <span class="st">"3"</span>, <span class="at">D =</span> <span class="st">"4"</span>), </span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fac2 =</span> <span class="fu">fct_recode</span>(Fac2, <span class="at">Level_1 =</span> <span class="st">"1"</span>, </span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>            <span class="at">Level_2 =</span> <span class="st">"2"</span>, <span class="at">Level_3 =</span> <span class="st">"3"</span>), </span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fac3 =</span> <span class="fu">fct_recode</span>(Fac3, <span class="at">Timar_1 =</span> <span class="st">"1"</span>, <span class="at">Timar_2 =</span> <span class="st">"2"</span>, </span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>            <span class="at">Timar_3 =</span> <span class="st">"3"</span>, <span class="at">Timar_4 =</span> <span class="st">"4"</span>, <span class="at">Timar_5 =</span> <span class="st">"5"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mutate</span>(<span class="at">y =</span> y) <span class="sc">%&gt;%</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>            <span class="fu">relocate</span>(y, <span class="at">.before =</span> Fac1)</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="do">## To simulate data for a Unbalanced design</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>Count <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>), <span class="at">size =</span> <span class="dv">60</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">as.data.table</span>(Design_factorial)</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>Anova_data_unbalanced <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span> <span class="fu">expandRows</span>(<span class="at">count =</span> <span class="fu">get</span>(<span class="st">"Count"</span>), <span class="at">count.is.col =</span> <span class="cn">FALSE</span>, <span class="at">drop =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>y_unbalanced <span class="ot">&lt;-</span> Anova_data_unbalanced <span class="sc">%&gt;%</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>        <span class="fu">apply</span>(., <span class="at">MARGIN =</span> <span class="dv">1</span>, <span class="cf">function</span>(x) <span class="fu">prod</span>(x)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>        unlist <span class="sc">%&gt;%</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">269</span>, <span class="at">mean =</span> ., <span class="at">sd =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>        <span class="fu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>Anova_data_unbalanced <span class="ot">&lt;-</span> Anova_data_unbalanced <span class="sc">%&gt;%</span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">"Fac"</span>), <span class="sc">~</span> <span class="fu">as.factor</span>(.x))) <span class="sc">%&gt;%</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Fac1 =</span> <span class="fu">fct_recode</span>(Fac1, </span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>            <span class="at">A =</span> <span class="st">"1"</span>, <span class="at">B =</span> <span class="st">"2"</span>, <span class="at">C =</span> <span class="st">"3"</span>, <span class="at">D =</span> <span class="st">"4"</span>), </span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fac2 =</span> <span class="fu">fct_recode</span>(Fac2, <span class="at">Level_1 =</span> <span class="st">"1"</span>, </span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>            <span class="at">Level_2 =</span> <span class="st">"2"</span>, <span class="at">Level_3 =</span> <span class="st">"3"</span>), </span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fac3 =</span> <span class="fu">fct_recode</span>(Fac3, <span class="at">Timar_1 =</span> <span class="st">"1"</span>, <span class="at">Timar_2 =</span> <span class="st">"2"</span>, </span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>            <span class="at">Timar_3 =</span> <span class="st">"3"</span>, <span class="at">Timar_4 =</span> <span class="st">"4"</span>, <span class="at">Timar_5 =</span> <span class="st">"5"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mutate</span>(<span class="at">y =</span> y_unbalanced) <span class="sc">%&gt;%</span></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>            <span class="fu">relocate</span>(y, <span class="at">.before =</span> Fac1)</span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="do">## To prove that the data is balanced</span></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>anova_data_Balanced <span class="sc">%&gt;%</span></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">Interaction =</span> <span class="fu">interaction</span>(Fac1, Fac2, Fac3)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(., Interaction) <span class="sc">%&gt;%</span></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a><span class="fu">kbl</span>(<span class="at">caption =</span> <span class="st">"To prove that the data is balanced"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_paper</span>(<span class="st">"hover"</span>, <span class="at">full_width =</span> F) <span class="sc">%&gt;%</span></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">"500px"</span>, <span class="at">height =</span> <span class="st">"200px"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:500px; ">
+<table class="lightable-paper lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>To prove that the data is balanced</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Interaction</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">A.Level_1.Timar_1</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B.Level_1.Timar_1</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C.Level_1.Timar_1</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D.Level_1.Timar_1</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A.Level_2.Timar_1</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B.Level_2.Timar_1</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C.Level_2.Timar_1</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D.Level_2.Timar_1</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A.Level_3.Timar_1</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B.Level_3.Timar_1</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C.Level_3.Timar_1</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D.Level_3.Timar_1</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A.Level_1.Timar_2</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B.Level_1.Timar_2</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C.Level_1.Timar_2</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D.Level_1.Timar_2</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A.Level_2.Timar_2</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B.Level_2.Timar_2</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C.Level_2.Timar_2</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D.Level_2.Timar_2</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A.Level_3.Timar_2</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B.Level_3.Timar_2</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C.Level_3.Timar_2</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D.Level_3.Timar_2</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A.Level_1.Timar_3</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B.Level_1.Timar_3</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C.Level_1.Timar_3</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D.Level_1.Timar_3</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A.Level_2.Timar_3</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B.Level_2.Timar_3</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C.Level_2.Timar_3</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D.Level_2.Timar_3</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A.Level_3.Timar_3</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B.Level_3.Timar_3</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C.Level_3.Timar_3</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D.Level_3.Timar_3</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A.Level_1.Timar_4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B.Level_1.Timar_4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C.Level_1.Timar_4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D.Level_1.Timar_4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A.Level_2.Timar_4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B.Level_2.Timar_4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C.Level_2.Timar_4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D.Level_2.Timar_4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A.Level_3.Timar_4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B.Level_3.Timar_4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C.Level_3.Timar_4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D.Level_3.Timar_4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A.Level_1.Timar_5</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B.Level_1.Timar_5</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C.Level_1.Timar_5</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D.Level_1.Timar_5</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A.Level_2.Timar_5</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B.Level_2.Timar_5</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C.Level_2.Timar_5</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D.Level_2.Timar_5</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A.Level_3.Timar_5</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B.Level_3.Timar_5</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C.Level_3.Timar_5</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D.Level_3.Timar_5</td>
+<td style="text-align: right;">4</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+<details>
+<summary>show the code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">## to display balanced data</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kbl</span>(anova_data_Balanced, <span class="at">caption =</span> <span class="st">"to display balanced data"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_paper</span>(<span class="st">"hover"</span>, <span class="at">full_width =</span> F) <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">"500px"</span>, <span class="at">height =</span> <span class="st">"200px"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:500px; ">
+<table class="lightable-paper lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>to display balanced data</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">y</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Fac1</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Fac2</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Fac3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.37</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2.18</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2.16</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5.60</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2.33</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3.18</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6.49</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8.74</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3.58</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5.69</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10.51</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">12.39</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.38</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.79</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7.12</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">7.96</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3.98</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8.94</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">12.82</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">16.59</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6.92</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">12.78</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">18.07</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">22.01</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3.62</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5.94</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8.84</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10.53</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5.52</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">12.42</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">19.36</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">23.90</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9.39</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">17.95</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">25.62</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">35.59</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3.61</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">7.94</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">13.10</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">16.76</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7.84</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">15.75</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">24.70</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">32.56</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">11.31</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">23.29</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">36.36</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">48.77</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4.89</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10.88</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">15.40</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">19.39</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10.34</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">18.87</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">31.43</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">41.98</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">14.63</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">28.96</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">45.57</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">59.86</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3.40</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.96</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3.69</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4.03</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.26</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4.19</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4.20</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">9.47</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3.15</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8.17</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9.48</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">11.29</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2.61</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3.07</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4.75</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8.29</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3.56</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8.00</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">12.07</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">15.41</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5.43</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">11.86</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">19.18</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">22.48</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3.59</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6.33</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10.06</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">11.70</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6.37</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">12.27</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">17.46</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">25.21</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10.16</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">18.70</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">28.59</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">36.56</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2.72</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">7.43</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10.78</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">15.53</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7.38</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">16.04</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">23.09</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">32.16</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">11.35</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">25.77</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">36.72</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">48.91</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5.38</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">11.68</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">14.36</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">19.54</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">11.43</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">19.35</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">29.79</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">39.61</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">14.68</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">29.72</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">45.49</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">59.82</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.49</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3.34</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2.79</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3.82</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.90</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4.71</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5.93</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">7.96</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2.32</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5.68</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9.06</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">11.41</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2.53</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2.48</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6.31</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6.46</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3.70</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">7.47</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">11.35</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">15.94</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4.09</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">13.18</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">16.34</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">23.54</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.88</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5.25</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">11.09</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">12.02</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4.71</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10.36</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">18.45</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">23.98</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8.68</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">17.07</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">25.51</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">34.92</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">7.38</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10.62</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">17.87</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8.43</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">15.76</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">25.06</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">32.89</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">11.38</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">26.21</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">35.74</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">46.58</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4.86</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10.21</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">17.31</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20.11</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10.46</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">19.92</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">29.67</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">39.97</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">15.79</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">32.08</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">46.03</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">61.21</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">-0.23</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2.98</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3.22</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2.53</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2.52</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3.84</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7.46</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">7.23</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2.57</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5.07</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8.82</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">12.40</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.27</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4.83</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4.79</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6.95</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5.44</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6.98</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">12.41</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">15.62</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6.41</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">13.69</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">19.59</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">23.67</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.71</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8.50</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9.67</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">12.54</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5.99</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">12.51</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">17.84</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">24.42</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8.60</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">16.63</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">27.99</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">37.52</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3.69</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6.75</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">12.64</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">15.96</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6.27</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">16.00</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">23.37</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">31.66</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10.84</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">25.80</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">35.67</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">46.39</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5.20</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10.26</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">14.01</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">17.11</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9.36</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20.57</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">29.94</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">39.90</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">15.56</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">28.81</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">46.10</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">59.99</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+<details>
+<summary>show the code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">## To prove that the data is unbalanced</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>Anova_data_unbalanced <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">Interaction =</span> <span class="fu">interaction</span>(Fac1, Fac2, Fac3)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(., Interaction) <span class="sc">%&gt;%</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">kbl</span>(<span class="at">caption =</span> <span class="st">"To prove that the data is unbalanced"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_paper</span>(<span class="st">"hover"</span>, <span class="at">full_width =</span> F) <span class="sc">%&gt;%</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">"500px"</span>, <span class="at">height =</span> <span class="st">"200px"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:500px; ">
+<table class="lightable-paper lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>To prove that the data is unbalanced</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Interaction</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">A.Level_1.Timar_1</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B.Level_1.Timar_1</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C.Level_1.Timar_1</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D.Level_1.Timar_1</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A.Level_2.Timar_1</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B.Level_2.Timar_1</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C.Level_2.Timar_1</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D.Level_2.Timar_1</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A.Level_3.Timar_1</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B.Level_3.Timar_1</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C.Level_3.Timar_1</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D.Level_3.Timar_1</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A.Level_1.Timar_2</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B.Level_1.Timar_2</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C.Level_1.Timar_2</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D.Level_1.Timar_2</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A.Level_2.Timar_2</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B.Level_2.Timar_2</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C.Level_2.Timar_2</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D.Level_2.Timar_2</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A.Level_3.Timar_2</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B.Level_3.Timar_2</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C.Level_3.Timar_2</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D.Level_3.Timar_2</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A.Level_1.Timar_3</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B.Level_1.Timar_3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C.Level_1.Timar_3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D.Level_1.Timar_3</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A.Level_2.Timar_3</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B.Level_2.Timar_3</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C.Level_2.Timar_3</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D.Level_2.Timar_3</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A.Level_3.Timar_3</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B.Level_3.Timar_3</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C.Level_3.Timar_3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D.Level_3.Timar_3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A.Level_1.Timar_4</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B.Level_1.Timar_4</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C.Level_1.Timar_4</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D.Level_1.Timar_4</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A.Level_2.Timar_4</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B.Level_2.Timar_4</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C.Level_2.Timar_4</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D.Level_2.Timar_4</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A.Level_3.Timar_4</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B.Level_3.Timar_4</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C.Level_3.Timar_4</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D.Level_3.Timar_4</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A.Level_1.Timar_5</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B.Level_1.Timar_5</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C.Level_1.Timar_5</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D.Level_1.Timar_5</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A.Level_2.Timar_5</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B.Level_2.Timar_5</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C.Level_2.Timar_5</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D.Level_2.Timar_5</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A.Level_3.Timar_5</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B.Level_3.Timar_5</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C.Level_3.Timar_5</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D.Level_3.Timar_5</td>
+<td style="text-align: right;">2</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+<details>
+<summary>show the code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">## To display unbalanced data</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kbl</span>(Anova_data_unbalanced, <span class="at">caption =</span> <span class="st">"To display unbalanced data"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_paper</span>(<span class="st">"hover"</span>, <span class="at">full_width =</span> F) <span class="sc">%&gt;%</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">"500px"</span>, <span class="at">height =</span> <span class="st">"200px"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:500px; ">
+<table class="lightable-paper lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>To display unbalanced data</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">y</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Fac1</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Fac2</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Fac3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.37</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.18</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.16</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3.60</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2.33</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.18</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2.49</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3.74</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3.58</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3.69</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5.51</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4.39</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.38</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">-0.21</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3.12</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.96</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.98</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2.94</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4.82</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4.59</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4.92</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4.78</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6.07</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4.01</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6.62</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5.94</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5.84</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4.53</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5.52</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8.42</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9.36</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">7.90</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3.39</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2.95</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.62</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2.59</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5.61</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5.94</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7.10</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6.76</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8.84</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8.75</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">12.70</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">12.56</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">11.31</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">11.29</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">12.36</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">12.77</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.89</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2.88</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2.40</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.39</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2.34</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.87</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5.43</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5.98</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3.63</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4.96</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6.57</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5.86</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8.40</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5.96</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6.69</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6.03</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7.26</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8.19</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6.20</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">9.47</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8.15</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10.17</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8.48</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3.29</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4.61</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3.07</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6.75</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8.29</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">11.56</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">12.00</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">12.07</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">11.41</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">11.43</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">11.86</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">17.18</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">14.48</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">16.59</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">16.33</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">17.06</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">15.70</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6.37</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6.27</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">11.46</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">13.21</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">19.16</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">18.70</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">19.59</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">18.56</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">16.72</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">17.43</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">16.78</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">23.53</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">23.38</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">24.04</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">23.09</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">24.16</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">23.35</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4.77</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3.72</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3.91</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3.38</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4.68</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2.36</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5.54</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7.43</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5.35</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8.79</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8.61</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8.68</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">11.72</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">12.49</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">11.82</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">11.49</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">13.34</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">11.79</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">11.82</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5.90</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6.71</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">11.93</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">11.96</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">11.32</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">11.68</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">12.06</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">17.41</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">18.53</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">22.48</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">24.31</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">22.46</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">23.70</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">23.47</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8.35</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8.94</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7.09</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10.18</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">16.34</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">17.54</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">16.88</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">17.25</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">20.09</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">18.02</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">16.71</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">25.36</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">27.45</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">26.98</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">35.68</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">35.07</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">34.51</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2.92</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3.38</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2.62</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5.87</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4.43</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3.76</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9.06</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8.89</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7.38</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10.21</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7.74</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10.58</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">11.86</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">12.21</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">14.31</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">12.11</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">16.46</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">15.92</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">15.67</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">15.97</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">16.79</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10.08</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9.03</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">9.21</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">14.77</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">16.98</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">16.22</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">14.53</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">16.52</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">23.84</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">25.46</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">31.23</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">31.57</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">31.07</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">31.82</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">32.40</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">31.27</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">32.83</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10.79</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10.95</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">25.44</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">22.98</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">24.41</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">23.62</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">24.41</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">37.69</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">37.59</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">47.67</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">45.71</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">50.50</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">48.67</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">48.54</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">47.99</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">48.51</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4.84</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5.42</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4.60</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8.63</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10.99</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">11.52</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9.69</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">13.75</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">15.64</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">14.96</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">18.27</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20.00</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">19.37</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">19.66</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">18.84</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">21.80</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">19.67</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_1</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8.39</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10.20</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10.26</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9.01</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">7.11</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9.36</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10.57</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">19.94</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">19.90</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">20.56</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">28.81</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">31.10</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">29.99</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">30.71</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">31.03</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">30.22</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">39.12</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">41.16</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">38.00</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_2</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">14.46</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">14.74</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">14.83</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">16.02</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">15.14</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">15.41</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">14.93</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">29.75</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">30.70</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">31.15</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">27.60</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">30.57</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">30.37</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">29.57</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">45.95</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">44.61</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">44.72</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">45.86</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">46.72</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">45.27</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">44.58</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">58.81</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">59.67</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">Level_3</td>
+<td style="text-align: left;">Timar_5</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+<p><br><br></p>
+<div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
+برای پیاده‌سازی یک مدل آنالیز واریانس از نوع اول و یا انواع دیگر آن می‌توانیم از اکثر نرم‌افزارهای آماری از قبیل <bdi>SPSS, SAS, STATA, MINITAB, R, ...</bdi>&nbsp; استفاده کنیم البته تابع <bdi>aov</bdi>&nbsp; به صورت پیش فرض از نوع ۱ برای مجموع مربعات استفاده می‌کند ولی با استفاده از تابع <bdi>Anova</bdi>&nbsp; درون بسته <bdi>car</bdi>&nbsp; می‌توانیم به انواع دیگر روش‌های مجموع مربعات دسترسی داشته باشیم. البته در پایتون این امر با سهولت بیشتری انجام می‌شود. به کدهای پایین توجه کنید؛
+</div>
+<div class="cell">
+<details>
+<summary>show the code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>pathh <span class="ot">&lt;-</span> <span class="fu">Sys.which</span>(<span class="st">"python"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>            <span class="fu">gsub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">"</span>, <span class="st">"//"</span>, <span class="at">x =</span> _,  <span class="at">fixed =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">use_python</span>(pathh)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Type 1 Anova for Balanced Design </span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>Model_R_Balanced_data_type1 <span class="ot">&lt;-</span> <span class="fu">aov</span>(y <span class="sc">~</span> Fac1 <span class="sc">*</span> Fac2 <span class="sc">*</span> Fac3, <span class="at">data =</span> anova_data_Balanced) </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Model_R_Balanced_data_type1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>                Df Sum Sq Mean Sq F value Pr(&gt;F)    
+Fac1             3  10891    3630 3816.15 &lt;2e-16 ***
+Fac2             2   9153    4576 4810.76 &lt;2e-16 ***
+Fac3             4  12103    3026 3180.78 &lt;2e-16 ***
+Fac1:Fac2        6   1806     301  316.39 &lt;2e-16 ***
+Fac1:Fac3       12   2443     204  214.04 &lt;2e-16 ***
+Fac2:Fac3        8   2030     254  266.78 &lt;2e-16 ***
+Fac1:Fac2:Fac3  24    455      19   19.93 &lt;2e-16 ***
+Residuals      180    171       1                   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<details>
+<summary>show the code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Type 1 Anova for Unbalanced Design</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>Model_R_Unbalanced_data_type1 <span class="ot">&lt;-</span> <span class="fu">aov</span>(y <span class="sc">~</span> Fac1 <span class="sc">*</span> Fac2 <span class="sc">*</span> Fac3, <span class="at">data =</span> Anova_data_unbalanced) </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Model_R_Unbalanced_data_type1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>                Df Sum Sq Mean Sq F value Pr(&gt;F)    
+Fac1             3  10153    3384 3715.40 &lt;2e-16 ***
+Fac2             2  10464    5232 5743.60 &lt;2e-16 ***
+Fac3             4  12940    3235 3551.36 &lt;2e-16 ***
+Fac1:Fac2        6   1811     302  331.38 &lt;2e-16 ***
+Fac1:Fac3       12   2570     214  235.14 &lt;2e-16 ***
+Fac2:Fac3        8   2142     268  293.96 &lt;2e-16 ***
+Fac1:Fac2:Fac3  24    423      18   19.34 &lt;2e-16 ***
+Residuals      209    190       1                   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<hr>
+<div class="cell">
+<details>
+<summary>show the code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.formula.api <span class="im">import</span> ols</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>py_Balanced_data <span class="op">=</span> r.anova_data_Balanced.copy()</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>py_Unbalanced_data <span class="op">=</span> r.Anova_data_unbalanced.copy()</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>py_Balanced_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>      y Fac1     Fac2     Fac3
+0  0.37    A  Level_1  Timar_1
+1  2.18    B  Level_1  Timar_1
+2  2.16    C  Level_1  Timar_1
+3  5.60    D  Level_1  Timar_1
+4  2.33    A  Level_2  Timar_1</code></pre>
+</div>
+<details>
+<summary>show the code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>py_Unbalanced_data.tail()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>         y Fac1     Fac2     Fac3
+264  46.72    C  Level_3  Timar_5
+265  45.27    C  Level_3  Timar_5
+266  44.58    C  Level_3  Timar_5
+267  58.81    D  Level_3  Timar_5
+268  59.67    D  Level_3  Timar_5</code></pre>
+</div>
+<details>
+<summary>show the code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">## python type I anova for Balanced data</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>Model_py_Balanced_data_type1 <span class="op">=</span> ols(<span class="st">'y ~ C(Fac1)*C(Fac2)*C(Fac3)'</span>, </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                                data <span class="op">=</span> py_Balanced_data).fit()</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> sm.stats.anova_lm(Model_py_Balanced_data_type1, typ <span class="op">=</span> <span class="st">"I"</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>                            df        sum_sq  ...            F         PR(&gt;F)
+C(Fac1)                    3.0  10890.784981  ...  3816.151153  1.275200e-162
+C(Fac2)                    2.0   9152.837826  ...  4810.756895  5.729827e-157
+C(Fac3)                    4.0  12103.369086  ...  3180.782146  9.225310e-166
+C(Fac1):C(Fac2)            6.0   1805.876867  ...   316.391293   8.392768e-93
+C(Fac1):C(Fac3)           12.0   2443.406188  ...   214.043509   1.183508e-99
+C(Fac2):C(Fac3)            8.0   2030.294224  ...   266.782066   1.535907e-95
+C(Fac1):C(Fac2):C(Fac3)   24.0    454.920232  ...    19.925611   1.038994e-38
+Residual                 180.0    171.231975  ...          NaN            NaN
+
+[8 rows x 5 columns]</code></pre>
+</div>
+<details>
+<summary>show the code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">## python type I anova for Unbalanced data</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>Model_py_Unbalanced_data_type1 <span class="op">=</span> ols(<span class="st">'y ~ C(Fac1)*C(Fac2)*C(Fac3)'</span>, </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                                    data <span class="op">=</span> py_Unbalanced_data).fit()</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> sm.stats.anova_lm(Model_py_Unbalanced_data_type1, typ <span class="op">=</span> <span class="st">"I"</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>                            df        sum_sq  ...            F         PR(&gt;F)
+C(Fac1)                    3.0  10153.298166  ...  3715.399781  5.584773e-181
+C(Fac2)                    2.0  10463.929154  ...  5743.603623  2.210949e-183
+C(Fac3)                    4.0  12940.040244  ...  3551.364929  7.547920e-191
+C(Fac1):C(Fac2)            6.0   1811.177285  ...   331.382354  7.790996e-104
+C(Fac1):C(Fac3)           12.0   2570.313284  ...   235.138899  3.618953e-114
+C(Fac2):C(Fac3)            8.0   2142.190142  ...   293.959632  2.993885e-109
+C(Fac1):C(Fac2):C(Fac3)   24.0    422.818026  ...    19.340243   1.084539e-40
+Residual                 209.0    190.382322  ...          NaN            NaN
+
+[8 rows x 5 columns]</code></pre>
+</div>
+</div>
+<div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
+واضح هست که نتایج هر دو محیط <bdi><b>(R, python)</b></bdi>&nbsp; یکسان هست فقط بعضی مقادیر در <bdi>R</bdi> گرد شده‌اند. 
+</div>
+<hr>
+<p><br><br></p>
+</section>
+<section id="type-ii" class="level2">
+<h2 class="anchored" data-anchor-id="type-ii">Type II</h2>
+<div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
+<h4 style="color: blue;" class="anchored"><b>
+مجموع مربعات نوع ۲</b>
+</h4>
+</div>
+<p><br><br></p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
+<h4 style="color: blue;" class="anchored">
+<b>
+منابع
+</b>
+</h4>
+</div>
+<p id="f1">
+[1] Zahn. Ista. “Working with unbalanced cell sizes in multiple regression with categorical predictors”, 2009. <a href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=sta+ZIahn.+%E2%80%9CWorking+with+unbalanced+cell+sizes+in+multiple+regression+with+categorical+predictors%E2%80%9D%2C+2009.&amp;btnG=">[Google Scholar]</a>
+</p>
 
 
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
