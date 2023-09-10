@@ -12,13 +12,12 @@ website:
   twitter-card: 
     image: "./images/logo_image.jpg"
   site-url: https://stats9.github.io/
-  comments: 
-    giscus: 
+  comments:
+    utterances: 
       repo: stats9/BlueSkyProject
-      reactions-enabled: true
-      input-position: bottom
-      language: فارسی
-      loading: lazy
+      label: General
+      theme: github-dark-orange
+      issue-term: og:title
   sidebar: 
     style: "docked"
     border: true

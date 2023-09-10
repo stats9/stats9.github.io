@@ -13,5 +13,296 @@ title: ""
    <a href = https://www.ucl.ac.uk/biosciences/gee/ucl-centre-computational-biology/ronald-aylmer-fisher-1890-1962><img src="./images/fisher.png" align = "center" alt="my pix" width="600" height="400"></a>
    <figcaption><b><p dir = "rtl" style = "color: darkblue; text-align: center;">رونالد فیشر: تولد  ۱۸۹۰،  مرگ  ۱۹۶۲</p></b></figcaption>
 </figure>
+<br><br><br>
 
 
+## About Anova
+<div dir = "rtl", style = "font-size: 18px; font-family: Yas">
+<h4 style = "color: blue;">
+درباره آنالیز واریانس
+</h4>
+
+آنالیز واریانس یا در اصطلاح آن <bdi>Anova</bdi>&nbsp; یک فرآیند آماری برای تجزیه و تحلیل مقدار واریانس است که برای بررسی اثرات عامل‌های مختلف بر‌روی یک ویژگی خاص (متغیرپاسخ هدف ما) که باید یک کمیت پیوسته و دارای شرایط خاصی باشد به کار می رود. این روش 
+در ابتدا توسط <a href = https://en.wikipedia.org/wiki/Ronald_Fisher>رونالد فیشر</a> در سال ۱۹۲۵ برای یک مدل   <a href = https://www.statisticshowto.com/balanced-and-unbalanced-designs/>طرح آزمایش متعادل</a> ابداع شد. <br>
+<bdi>Anova</bdi>&nbsp; از آن‌جهت می‌تواند در تحقیقات اهمیت داشته باشد که ابزار لازم برای مقایسه بیش از دو گروه را به طور همزمان برای تعیین این‌که اصولا تفاوت معناداری بین گروه‌ها وجود دارد یا خیر، فراهم می‌کند. برای جزئیات بیشتر در مورد این روش آماری می‌توانید از این <a href = https://blog.faradars.org/anova/>لینک</a> بازدید کنید. 
+</div>
+
+## Types of SS Calculation methods in Anova
+<div dir = "rtl", style = "font-size: 18px; font-family: Yas">
+<h4 style = "color: blue;">
+<b>
+انواع روش‌های محاسبه مربعات تیماری
+</b>
+</h4>
+هنگامی که داده‌ها نامعادل هستند یعنی توزیع مشاهدات در سطوح عوامل با هم یکسان نیست، ۴ رویکرد متفاوت برای به‌دست آوردن مجموع مربعات وجود دارد. که ۳ تای آن‌ها پر‌کابرد‌تر می‌باشند. که با نماد 
+<ul>
+<li>
+<bdi>Type I</bdi>
+</li>
+<li>
+<bdi>Type II</bdi>
+</li>
+<li>
+Type III</bdi>
+</li>
+<li>
+<bdi>Type IV</bdi>
+</li>
+</ul>
+مشخص می‌شوند. آن طور که مشخص هست، این نمادها از نرم‌افزار <bdi>SAS</bdi>&nbsp; وارد ادبیات آماری شده‌اند، که البته در حال‌حاضر خیلی پر‌استفاده شده‌اند. نکته‌ای که وجود دارد، این‌هست که چه زمانی باید از هر کدام از این روش‌ها استفاده کرد که خود محل بحث‌های زیادی در ادبیات آماری بوده هست. ولی در حالت کلی بر‌میگردد به این‌که ما چه فرضیات ابتدایی در مورد داده‌ها داریم و هدف ما بررسی چه چیزهایی هست. <br>
+مدلی را در نظر بگیرید که شامل دو عامل <bdi>A</bdi> و <bdi>B</bdi> باشد. بنابراین دو اثر اصلی و یک اثر توأم <bdi>AB</bdi>&nbsp; در مدل تحلیل شما می‌تواند وجود داشته باشد.  مدل کامل را با این نماد نشان می‌دهیم <bdi>SS(A, B, AB)</bdi>&nbsp;. <br> 
+مدل‌های دیگری که برای این مثال فرضی ما می‌توانند وجود داشته باشند عبارتند از؛ <bdi>SS(A, B)</bdi>&nbsp; مدلی که اثر توأم را در خود قرار نداده هست و یا مدلی که اثر اصلی عامل <bdi>A</bdi> را در نظر نمی‌گیرد، که با نماد <bdi>SS(B, AB)</bdi>&nbsp; نشان داده می‌شود و ...<br>
+ یک روش برای این‌که بتوان تأثیر و یا معنادار بودن تأثیر، اثرات اصلی یا توأم را بررسی کرد، مقایسه مدل‌های حامل این اثرات و مدل‌هایی که این اثرات را در بر ندارند می‌باشد. مثلا در مثال ما اگر بخواهیم اثر <bdi>AB</bdi>&nbsp; را بررسی کنیم می‌توانیم مدل‌های <bdi>SS(A, B), SS(A, B, AB)</bdi>&nbsp; را با هم مقایسه کنیم.
+ <br>
+ اگر بخواهیم تأثیر عامل‌های در حضور بقیه عوامل بسنجیم و یا افزایش مربعات را با اضافه کردن یک اثر در حضور بقیه اثرات بسنجیم می‌توانیم به شکل زیر آن را بیان کنیم؛
+</div>
+```r
+SS(AB| A, B) = SS(A, B, AB) - SS(A, B)
+SS(A | B, AB) = SS(A, B, AB) – SS(B, AB)
+SS(B | A, AB) = SS(A, B, AB) – SS(A, AB)
+SS(A | B) = SS(A, B) – SS(B)
+SS(B | A) = SS(A, B) – SS(A)
+```
+<div dir = "rtl", style = "font-size: 18px; font-family: Yas">
+در نمادهای بالا، منظور از فرضا <bdi>SS(AB|A, B)</bdi>&nbsp; اشاره دارد به افزایشی که در مجموع مربعات تیماری حادث می‌شود وقتی در حضور اثرات اصلی <bdi>A</bdi> و </bdi>B</bdi> اثر توأم این دو را نیز اضافه کنیم و یا مثلا منظور از <bdi>SS(B|A)</bdi>&nbsp; اشاره دارد به‌این‌که میزان افزایش در مربعات تیماری وقتی اثر اصلی <bdi>A</bdi> حضور دارد و ما اثر <bdi>B</bdi> را اضافه کنیم. <br>
+در این‌جاست که اصولا انواع مختلف محاسبه مجموع مربعات شکل می‌گیرد. یا به شکل شفاف‌تر نحوه تعریف اثرات هست که که باعث شکل‌گیری این تفاوت‌ها می‌شود. 
+</div>
+<hr/><br><br>
+
+
+## Type I
+
+<div dir = "rtl", style = "font-size: 18px; font-family: Yas">
+<h4 style = "color: blue;"><b>
+مجموع مربعات نوع ۱
+</b>
+</h4>
+
+در این شیوه، تعریف اثرات برای مثال فرضی که گفتیم به این شکل هست؛ 
+<ul>
+<li>
+<bdi>SS(A):</bdi>&nbsp; برای عامل <bdi>A</bdi>
+</li>
+<li>
+<bdi>SS(B | A):</bdi>&nbsp; برای عامل <bdi>B</bdi>
+</li>
+<li>
+<bdi>SS(AB | B, A):</bdi>&nbsp; برای اثر توأم <bdi>AB</bdi>
+</li>
+</ul>
+عبارات بالا، این مفهوم را دارد که ابتدا اثر اصلی عامل <bdi>A</bdi> سپس اثر اصلی عامل  <bdi>B</bdi> و در انتها اثر متقابل </bdi>AB</bdi> مورد بررسی قرار می‌گیرند. <br>
+به دلیل ماهیت سلسله مراتبی و این واقعیت که دو عامل اصلی به ترتیب خاصی مورد آزمایش قرار می‌گیرند. این نوع مجموع مربعات وابسته به این‌که کدام اثر اصلی ابتدا در نظر گرفته شود. نتایج متفاوتی برای داده‌های نامتعادل به همراه خواهد داشت. 
+<br>
+برای داده‌ها نامتعادل  این رویکرد تفاوت در میانگین وزن‌‌های اثرات حاشیه‌ای  را مورد آزمایش قرار می‌دهد. از نظر عملی، این بدان‌معناست که نتایج به اندازه نمونه‌های محقق شده بستگی پیدا می کند، به‌عبارت دیگر اولین عامل را بدون کنترل عامل دیگر آزمایش می‌کند. برای جزئیات بیشتر می‌توانید به <a href="#f1"><bdi>[1]</bdi></a> مراجعه کنید. <br>
+<span style = "color: red;"><b>
+این شیوه اصولا برای طرح‌های نامتعادل پیشنهاد نمی شود. 
+</b></span>
+<br><br>
+
+مثال: <br>
+من برای مثال‌های که در این صفحه می‌خواهم بیاورم. از دو مجموعه داده استفاده کرده‌ام، یکی برای طرح متعادل هست و یکی برای به‌اصطلاح طرح نامتعادل. داده‌ها به صورت شبیه‌سازی شده هست. که کد وخروجی داده‌ها در ادامه خواهید دید. 
+<br> 
+البته با ذکر این‌نکته که خروجی به منظور نمایش داده‌ها و همچنین نشان دادن متعادل بودن یا نامتعادل بودن داده‌های طرح می‌باشد. 
+</div>
+
+
+```{r}
+#| warning: false
+#| message: false
+#| code-fold: true
+#| code-summary: "show the code"
+
+
+## loading require package
+set.seed(1)
+library(tidyverse)
+library(AlgDesign)
+library(splitstackshape)
+library(kableExtra)
+
+## To create a design with 3 factors and a specified number of levels
+Design_factorial <- gen.factorial(levels = c(4, 3, 5), nVars = 3, 
+varNames = c("Fac1", "Fac2", "Fac3"), center = FALSE)
+Anova_data <- purrr :: map_dfr(seq_len(4), ~Design_factorial)
+y <- Anova_data %>%
+        apply(., MARGIN = 1, function(x) prod(x)) %>%
+        unlist %>%
+        rnorm(n = 240, mean = ., sd = 1) %>% 
+        round(2)
+
+
+## To simulate data for a balanced design
+anova_data_Balanced <- Anova_data %>%
+    mutate(across(starts_with("Fac"), ~ as.factor(.x))) %>%
+    mutate(Fac1 = fct_recode(Fac1, 
+            A = "1", B = "2", C = "3", D = "4"), 
+            Fac2 = fct_recode(Fac2, Level_1 = "1", 
+            Level_2 = "2", Level_3 = "3"), 
+            Fac3 = fct_recode(Fac3, Timar_1 = "1", Timar_2 = "2", 
+            Timar_3 = "3", Timar_4 = "4", Timar_5 = "5")) %>%
+            mutate(y = y) %>%
+            relocate(y, .before = Fac1)
+
+
+
+
+## To simulate data for a Unbalanced design
+set.seed(1)
+Count <- sample(c(2, 3, 4, 5, 6, 7), size = 60, replace = TRUE)
+library(data.table)
+dat <- as.data.table(Design_factorial)
+Anova_data_unbalanced <- dat %>% expandRows(count = get("Count"), count.is.col = FALSE, drop = TRUE)
+
+
+set.seed(1)
+y_unbalanced <- Anova_data_unbalanced %>%
+        apply(., MARGIN = 1, function(x) prod(x)) %>%
+        unlist %>%
+        rnorm(n = 269, mean = ., sd = 1) %>% 
+        round(2)
+
+Anova_data_unbalanced <- Anova_data_unbalanced %>%
+    mutate(across(starts_with("Fac"), ~ as.factor(.x))) %>%
+    mutate(Fac1 = fct_recode(Fac1, 
+            A = "1", B = "2", C = "3", D = "4"), 
+            Fac2 = fct_recode(Fac2, Level_1 = "1", 
+            Level_2 = "2", Level_3 = "3"), 
+            Fac3 = fct_recode(Fac3, Timar_1 = "1", Timar_2 = "2", 
+            Timar_3 = "3", Timar_4 = "4", Timar_5 = "5")) %>%
+            mutate(y = y_unbalanced) %>%
+            relocate(y, .before = Fac1)
+
+## To prove that the data is balanced
+anova_data_Balanced %>%
+mutate(Interaction = interaction(Fac1, Fac2, Fac3)) %>%
+count(., Interaction) %>%
+kbl(caption = "To prove that the data is balanced") %>%
+kable_paper("hover", full_width = F) %>%
+  scroll_box(width = "500px", height = "200px")
+
+## to display balanced data
+kbl(anova_data_Balanced, caption = "to display balanced data") %>%
+kable_paper("hover", full_width = F) %>%
+  scroll_box(width = "500px", height = "200px")
+
+## To prove that the data is unbalanced
+Anova_data_unbalanced %>%
+mutate(Interaction = interaction(Fac1, Fac2, Fac3)) %>%
+count(., Interaction) %>%
+kbl(caption = "To prove that the data is unbalanced") %>%
+kable_paper("hover", full_width = F) %>%
+  scroll_box(width = "500px", height = "200px")
+
+## To display unbalanced data
+kbl(Anova_data_unbalanced, caption = "To display unbalanced data") %>%
+kable_paper("hover", full_width = F) %>%
+  scroll_box(width = "500px", height = "200px")
+```
+<br><br>
+
+<div dir = "rtl", style = "font-size: 18px; font-family: Yas">
+برای پیاده‌سازی یک مدل آنالیز واریانس از نوع اول و یا انواع دیگر آن می‌توانیم از اکثر نرم‌افزارهای آماری از قبیل <bdi>SPSS, SAS, STATA, MINITAB, R, ...</bdi>&nbsp; استفاده کنیم البته تابع <bdi>aov</bdi>&nbsp; به صورت پیش فرض از نوع ۱ برای مجموع مربعات استفاده می‌کند ولی با استفاده از تابع <bdi>Anova</bdi>&nbsp; درون بسته <bdi>car</bdi>&nbsp; می‌توانیم به انواع دیگر روش‌های مجموع مربعات دسترسی داشته باشیم. البته در پایتون این امر با سهولت بیشتری انجام می‌شود. به کدهای پایین توجه کنید؛
+</div>
+
+
+```{r}
+#| code-fold: true
+#| code-summary: "show the code"
+#| warning: false
+#| message: false
+
+library(reticulate)
+pathh <- Sys.which("python") |>
+            gsub("\\", "//", x = _,  fixed = TRUE)
+use_python(pathh)
+
+## Type 1 Anova for Balanced Design 
+Model_R_Balanced_data_type1 <- aov(y ~ Fac1 * Fac2 * Fac3, data = anova_data_Balanced) 
+summary(Model_R_Balanced_data_type1)
+
+## Type 1 Anova for Unbalanced Design
+Model_R_Unbalanced_data_type1 <- aov(y ~ Fac1 * Fac2 * Fac3, data = Anova_data_unbalanced) 
+summary(Model_R_Unbalanced_data_type1)
+
+```
+
+<hr/>
+
+
+```{python}
+#| code-fold: true
+#| code-summary: "show the code"
+#| warning: false
+#| message: false
+
+
+import pandas as pd
+import numpy as np
+import statsmodels.api as sm
+from statsmodels.formula.api import ols
+
+
+py_Balanced_data = r.anova_data_Balanced.copy()
+py_Unbalanced_data = r.Anova_data_unbalanced.copy()
+py_Balanced_data.head()
+py_Unbalanced_data.tail()
+
+## python type I anova for Balanced data
+Model_py_Balanced_data_type1 = ols('y ~ C(Fac1)*C(Fac2)*C(Fac3)', 
+                                data = py_Balanced_data).fit()
+table = sm.stats.anova_lm(Model_py_Balanced_data_type1, typ = "I")
+print(table)
+
+## python type I anova for Unbalanced data
+
+Model_py_Unbalanced_data_type1 = ols('y ~ C(Fac1)*C(Fac2)*C(Fac3)', 
+                                    data = py_Unbalanced_data).fit()
+table = sm.stats.anova_lm(Model_py_Unbalanced_data_type1, typ = "I")
+print(table)
+```
+
+
+<div dir = "rtl", style = "font-size: 18px; font-family: Yas">
+واضح هست که نتایج هر دو محیط <bdi><b>(R, python)</b></bdi>&nbsp; یکسان هست فقط بعضی مقادیر در <bdi>R</bdi> گرد شده‌اند. 
+</div>
+<hr/><br><br>
+
+
+## Type II
+
+<div dir = "rtl", style = "font-size: 18px; font-family: Yas">
+<h4 style = "color: blue;"><b>
+مجموع مربعات نوع ۲</b>
+</h4>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+
+## References
+<div dir = "rtl", style = "font-size: 18px; font-family: Yas">
+<h4 style = "color: blue;">
+<b>
+منابع
+</b>
+</h4>
+</div>
+<p id = "f1">[1] Zahn. Ista. “Working with unbalanced cell sizes in multiple regression with categorical predictors”, 2009. <a href = https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=sta+ZIahn.+%E2%80%9CWorking+with+unbalanced+cell+sizes+in+multiple+regression+with+categorical+predictors%E2%80%9D%2C+2009.&btnG=>[Google Scholar]</a></p>
