@@ -50,9 +50,9 @@ Type III</bdi>
 </li>
 </ul>
 مشخص می‌شوند. آن طور که مشخص هست، این نمادها از نرم‌افزار <bdi>SAS</bdi>&nbsp; وارد ادبیات آماری شده‌اند، که البته در حال‌حاضر خیلی پر‌استفاده شده‌اند. نکته‌ای که وجود دارد، این‌هست که چه زمانی باید از هر کدام از این روش‌ها استفاده کرد که خود محل بحث‌های زیادی در ادبیات آماری بوده هست. ولی در حالت کلی بر‌میگردد به این‌که ما چه فرضیات ابتدایی در مورد داده‌ها داریم و هدف ما بررسی چه چیزهایی هست. <br>
-مدلی را در نظر بگیرید که شامل دو عامل <bdi>A</bdi> و <bdi>B</bdi> باشد. بنابراین دو اثر اصلی و یک اثر توأم <bdi>AB</bdi>&nbsp; در مدل تحلیل شما می‌تواند وجود داشته باشد.  مدل کامل را با این نماد نشان می‌دهیم <bdi>SS(A, B, AB)</bdi>&nbsp;. <br> 
-مدل‌های دیگری که برای این مثال فرضی ما می‌توانند وجود داشته باشند عبارتند از؛ <bdi>SS(A, B)</bdi>&nbsp; مدلی که اثر توأم را در خود قرار نداده هست و یا مدلی که اثر اصلی عامل <bdi>A</bdi> را در نظر نمی‌گیرد، که با نماد <bdi>SS(B, AB)</bdi>&nbsp; نشان داده می‌شود و ...<br>
- یک روش برای این‌که بتوان تأثیر و یا معنادار بودن تأثیر، اثرات اصلی یا توأم را بررسی کرد، مقایسه مدل‌های حامل این اثرات و مدل‌هایی که این اثرات را در بر ندارند می‌باشد. مثلا در مثال ما اگر بخواهیم اثر <bdi>AB</bdi>&nbsp; را بررسی کنیم می‌توانیم مدل‌های <bdi>SS(A, B), SS(A, B, AB)</bdi>&nbsp; را با هم مقایسه کنیم.
+مدلی را در نظر بگیرید که شامل دو عامل <bdi>A</bdi> و <bdi>B</bdi> باشد. بنابراین دو اثر اصلی و یک اثر توأم <bdi>AB</bdi>&nbsp; در مدل تحلیل شما می‌تواند وجود داشته باشد.  مدل کامل را با این نماد نشان می‌دهیم <code>SS(A, B, AB)</code>&nbsp;. <br> 
+مدل‌های دیگری که برای این مثال فرضی ما می‌توانند وجود داشته باشند عبارتند از؛ <code>SS(A, B)</code>&nbsp; مدلی که اثر توأم را در خود قرار نداده هست و یا مدلی که اثر اصلی عامل <bdi>A</bdi> را در نظر نمی‌گیرد، که با نماد <code>SS(B, AB)</code>&nbsp; نشان داده می‌شود و ...<br>
+ یک روش برای این‌که بتوان تأثیر و یا معنادار بودن تأثیر، اثرات اصلی یا توأم را بررسی کرد، مقایسه مدل‌های حامل این اثرات و مدل‌هایی که این اثرات را در بر ندارند می‌باشد. مثلا در مثال ما اگر بخواهیم اثر <bdi>AB</bdi>&nbsp; را بررسی کنیم می‌توانیم مدل‌های <code>SS(A, B), SS(A, B, AB)</code>&nbsp; را با هم مقایسه کنیم.
  <br>
  اگر بخواهیم تأثیر عامل‌های در حضور بقیه عوامل بسنجیم و یا افزایش مربعات را با اضافه کردن یک اثر در حضور بقیه اثرات بسنجیم می‌توانیم به شکل زیر آن را بیان کنیم؛
 </div>
@@ -64,7 +64,7 @@ SS(A | B) = SS(A, B) – SS(B)
 SS(B | A) = SS(A, B) – SS(A)
 ```
 <div dir = "rtl", style = "font-size: 18px; font-family: Yas">
-در نمادهای بالا، منظور از فرضا <bdi>SS(AB|A, B)</bdi>&nbsp; اشاره دارد به افزایشی که در مجموع مربعات تیماری حادث می‌شود وقتی در حضور اثرات اصلی <bdi>A</bdi> و </bdi>B</bdi> اثر توأم این دو را نیز اضافه کنیم و یا مثلا منظور از <bdi>SS(B|A)</bdi>&nbsp; اشاره دارد به‌این‌که میزان افزایش در مربعات تیماری وقتی اثر اصلی <bdi>A</bdi> حضور دارد و ما اثر <bdi>B</bdi> را اضافه کنیم. <br>
+در نمادهای بالا، منظور از فرضا <code>SS(AB|A, B)</code>&nbsp; اشاره دارد به افزایشی که در مجموع مربعات تیماری حادث می‌شود وقتی در حضور اثرات اصلی <bdi>A</bdi> و </bdi>B</bdi> اثر توأم این دو را نیز اضافه کنیم و یا مثلا منظور از <code>SS(B|A)</code>&nbsp; اشاره دارد به‌این‌که میزان افزایش در مربعات تیماری وقتی اثر اصلی <bdi>A</bdi> حضور دارد و ما اثر <bdi>B</bdi> را اضافه کنیم. <br>
 در این‌جاست که اصولا انواع مختلف محاسبه مجموع مربعات شکل می‌گیرد. یا به شکل شفاف‌تر نحوه تعریف اثرات هست که که باعث شکل‌گیری این تفاوت‌ها می‌شود. 
 </div>
 <hr/><br><br>
@@ -81,13 +81,13 @@ SS(B | A) = SS(A, B) – SS(A)
 در این شیوه، تعریف اثرات برای مثال فرضی که گفتیم به این شکل هست؛ 
 <ul>
 <li>
-<bdi>SS(A):</bdi>&nbsp; برای عامل <bdi>A</bdi>
+<code>SS(A)</code>: برای عامل <bdi>A</bdi>
 </li>
 <li>
-<bdi>SS(B | A):</bdi>&nbsp; برای عامل <bdi>B</bdi>
+<code>SS(B | A)</code>: برای عامل <bdi>B</bdi>
 </li>
 <li>
-<bdi>SS(AB | B, A):</bdi>&nbsp; برای اثر توأم <bdi>AB</bdi>
+<code>SS(AB | B, A)</code>: برای اثر توأم <bdi>AB</bdi>
 </li>
 </ul>
 عبارات بالا، این مفهوم را دارد که ابتدا اثر اصلی عامل <bdi>A</bdi> سپس اثر اصلی عامل  <bdi>B</bdi> و در انتها اثر متقابل </bdi>AB</bdi> مورد بررسی قرار می‌گیرند. <br>
@@ -201,39 +201,71 @@ kable_paper("hover", full_width = F) %>%
 <br><br>
 
 <div dir = "rtl", style = "font-size: 18px; font-family: Yas">
-برای پیاده‌سازی یک مدل آنالیز واریانس از نوع اول و یا انواع دیگر آن می‌توانیم از اکثر نرم‌افزارهای آماری از قبیل <bdi>SPSS, SAS, STATA, MINITAB, R, ...</bdi>&nbsp; استفاده کنیم البته تابع <bdi>aov</bdi>&nbsp; به صورت پیش فرض از نوع ۱ برای مجموع مربعات استفاده می‌کند ولی با استفاده از تابع <bdi>Anova</bdi>&nbsp; درون بسته <bdi>car</bdi>&nbsp; می‌توانیم به انواع دیگر روش‌های مجموع مربعات دسترسی داشته باشیم. البته در پایتون این امر با سهولت بیشتری انجام می‌شود. به کدهای پایین توجه کنید؛
+برای پیاده‌سازی یک مدل آنالیز واریانس از نوع اول و یا انواع دیگر آن می‌توانیم از اکثر نرم‌افزارهای آماری از قبیل <bdi>SPSS, SAS, STATA, MINITAB, R, ...</bdi>&nbsp; استفاده کنیم البته تابع <code>aov</code>&nbsp; به صورت پیش فرض از نوع ۱ برای مجموع مربعات استفاده می‌کند ولی با استفاده از تابع <code>Anova</code>&nbsp; درون بسته <code>car</code>&nbsp; می‌توانیم به انواع دیگر روش‌های مجموع مربعات دسترسی داشته باشیم. البته در پایتون این امر با سهولت بیشتری انجام می‌شود. به کدهای پایین توجه کنید؛
 </div>
+
+
 
 
 ```{r}
 #| code-fold: true
-#| code-summary: "show the code"
+#| code-summary: "show the code: create connection between R and python"
 #| warning: false
 #| message: false
+#| echo: true
+
 
 library(reticulate)
 pathh <- Sys.which("python") |>
             gsub("\\", "//", x = _,  fixed = TRUE)
 use_python(pathh)
 
+```
+
+
+```{r}
+#| code-fold: true
+#| code-summary: "show the code: R Anova Type I"
+#| warning: false
+#| message: false
+#| echo: true
+#| output: false
+#| label: R1
+
 ## Type 1 Anova for Balanced Design 
-Model_R_Balanced_data_type1 <- aov(y ~ Fac1 * Fac2 * Fac3, data = anova_data_Balanced) 
-summary(Model_R_Balanced_data_type1)
+Model_R_Balanced_data <- aov(y ~ Fac1 * Fac2 * Fac3, data = anova_data_Balanced)
+
+## get Anova type 1 with R for Balanced data
+tab_R_b1 <- anova(Model_R_Balanced_data)
 
 ## Type 1 Anova for Unbalanced Design
-Model_R_Unbalanced_data_type1 <- aov(y ~ Fac1 * Fac2 * Fac3, data = Anova_data_unbalanced) 
-summary(Model_R_Unbalanced_data_type1)
+Model_R_Unbalanced_data <- aov(y ~ Fac1 * Fac2 * Fac3, data = Anova_data_unbalanced)
+
+## get Anova type 1 with R for UnBalanced data
+tab_R_un1 <- anova(Model_R_Unbalanced_data)
+
+## set R for type III
+
+options(contrasts = c("contr.sum"
+, "contr.sum"))
+Model_R_Balanced_data_type3 <- aov(y ~ Fac1 * Fac2 * Fac3, data = anova_data_Balanced)
+Model_R_Unbalanced_data_type3 <- aov(y ~ Fac1 * Fac2 * Fac3, data = Anova_data_unbalanced)
 
 ```
 
-<hr/>
+
+
 
 
 ```{python}
 #| code-fold: true
-#| code-summary: "show the code"
+#| code-summary: "show the code: python Anova Type I"
 #| warning: false
 #| message: false
+#| echo: true
+#| output: false
+#| label: py1
+
 
 
 import pandas as pd
@@ -244,26 +276,27 @@ from statsmodels.formula.api import ols
 
 py_Balanced_data = r.anova_data_Balanced.copy()
 py_Unbalanced_data = r.Anova_data_unbalanced.copy()
-py_Balanced_data.head()
-py_Unbalanced_data.tail()
+# py_Balanced_data.head()
+# py_Unbalanced_data.tail()
 
-## python type I anova for Balanced data
+## python type I and II anova for Balanced data
 Model_py_Balanced_data_type1 = ols('y ~ C(Fac1)*C(Fac2)*C(Fac3)', 
                                 data = py_Balanced_data).fit()
-table = sm.stats.anova_lm(Model_py_Balanced_data_type1, typ = "I")
-print(table)
+tab_py_b1 = sm.stats.anova_lm(Model_py_Balanced_data_type1, typ = "I")
+# print(tab_py_b1)
 
-## python type I anova for Unbalanced data
+## python type I and II anova for Unbalanced data
 
 Model_py_Unbalanced_data_type1 = ols('y ~ C(Fac1)*C(Fac2)*C(Fac3)', 
                                     data = py_Unbalanced_data).fit()
-table = sm.stats.anova_lm(Model_py_Unbalanced_data_type1, typ = "I")
-print(table)
+tab_py_un1 = sm.stats.anova_lm(Model_py_Unbalanced_data_type1, typ = "I")
+# print(tab_py_un1)
+
 ```
 
 
 <div dir = "rtl", style = "font-size: 18px; font-family: Yas">
-واضح هست که نتایج هر دو محیط <bdi><b>(R, python)</b></bdi>&nbsp; یکسان هست فقط بعضی مقادیر در <bdi>R</bdi> گرد شده‌اند. 
+نتایج را در آخر این صفحه مورد بررسی قرار خواهیم داد. 
 </div>
 <hr/><br><br>
 
@@ -274,30 +307,414 @@ print(table)
 <h4 style = "color: blue;"><b>
 مجموع مربعات نوع ۲</b>
 </h4>
+
+برای محاسبه مجموع مربعات نوع ۲، ما  اثر‌ها را بر‌اساس فرم زیر برآورد می‌کنیم. 
+</div>
+
+```r
+SS(A|B): for factor A
+SS(B|A): for factor B
+
+```
+
+
+<div dir = "rtl", style = "font-size: 18px; font-family: Yas">
+ به عبارت دیگر، ابتدا باید اثر توأم را بر‌اساس <code>SS(AB|A, B)</code>&nbsp; معناداری آن بررسی شود. در صورتی که اثر توأمی معنادار گزارش نشد، به تحلیل اثرات اصلی بر‌اساس روش مربعات نوع ۲ بپردازیم. <br>
+اگر در واقعیت هیچ اثر توأم معناداری وجود نداشته باشد، آن‌گاه نوع ۲ از نظر آماری قدرتمند‌تر از نوع ۳ می‌باشد. برای جزئیات بیشتر درباره روش نوع ۲ می‌توانید به <a href="#f2"><bdi>[2]</bdi></a> مراجعه کنید. <br>
+از نظر محاسباتی، این روش معادل روش نوع ۱ هست، البته بر‌اساس ترتیب‌های مختلف ورود عامل‌ها به مدل و انتخاب مناسبت‌ترین خروجی. 
+برای پیاده‌سازی این روش در <code>R</code>&nbsp; باید علاوه بر‌پیاده‌سازی مدل چه با استفاده از تابع <code>aov</code>&nbsp; و چه با استفاده از تابع <code>lm</code>&nbsp; از تابع <code>car :: Anova </code>&nbsp; استفاده کنیم. در پایتون نیز این رویکرد به سادگی قابل پیاده‌سازی هست که در پایین می‌بینیم. 
+
+<br><br>
+
+مثال: 
+</div>
+
+
+```{r}
+#| code-fold: true
+#| code-summary: "show the code: R Anova Type II"
+#| warning: false
+#| message: false
+#| echo: true
+#| output: false
+#| label: R-2
+
+
+## R version
+
+## Type II Anova for Balanced Design 
+tab_R_b2 <- car :: Anova(Model_R_Balanced_data, type = "II")
+
+## Type II Anova for Unbalanced Design
+tab_R_un2 <- car :: Anova(Model_R_Unbalanced_data, type = "II")
+
+```
+```{python}
+#| code-fold: true
+#| code-summary: "show the code: python Anova Type II"
+#| warning: false
+#| message: false
+#| echo: true
+#| output: false
+#| label: py2
+
+
+## python type II anova for Balanced data
+
+tab_py_b2 = sm.stats.anova_lm(Model_py_Balanced_data_type1, typ = "II")
+# print(tab_py_b2)
+
+## python type II anova for Unbalanced data
+tab_py_un2 = sm.stats.anova_lm(Model_py_Unbalanced_data_type1, typ = "II")
+# print(tab_py_un2)
+```
+
+
+
+<div dir = "rtl", style = "font-size: 18px; font-family: Yas">
+در آخر این صفحه  یک مقایسه اجمالی جدوال خروجی را ارائه خواهم کرد. 
 </div>
 
 
 
+## Type III
+
+<div dir = "rtl", style = "font-size: 18px; font-family: Yas">
+<h4 style = "color: blue;"><b>
+مجموع مربعات نوع ۳</b>
+</h4>
+
+برای درک روش نوع ۳، باید روشی که برای برآورد مربعات اثرات اصلی به کار می‌برد را بفهمیم. این روش از قاعده زیر برای مربعات اثرات اصلی استفاده می‌کند. 
+</div>
+
+
+```r
+SS(A | B, AB) for factor A. 
+SS(B | A, AB) for factor B. 
+```
+
+
+<div dir = "rtl", style = "font-size: 18px; font-family: Yas">
+در حقیقت این روش، یک اثر اصلی را بعد از اثرات اصلی دیگر و همچنین اثرات توأم مورد بررسی قرار می‌دهد. بنابراین این رویکرد در حضور وجود اثرات توأم می‌توان مناسب‌ترین رویکرد برای به دست آوردن مربعات تیماری باشد. 
+<br>
+با‌این‌حال در صورت وجود اثرات توأم، تفسیر اثر اصلی اصولا امر راحتی نیست. و یا با بیان بهتر؛ وقتی اثر توأمی در مدل حضور دارد اصولا تفسیر اثرات اصلی به‌ تنهایی نمی‌تواند رویکرد خیلی قابل دفاعی باشد. برای جزئیات بیشتر می‌توانید به <a href="#f3"><bdi>[3]</bdi></a> مراجعه کنید. <br>
+
+<span style = "color:red;"><b>وقتی اثر توأم در مدل حضور ندارد، روش نوع ۲، روش قدرتمند‌تری می‌باشد.</b></span><br> 
+
+<br> 
+مثال: 
+</div>
+
+
+
+```{r}
+#| code-fold: true
+#| code-summary: "show the code: R Anova Type III"
+#| warning: false
+#| message: false
+#| echo: true
+#| output: false
+#| label: R-3
+
+## R version
+
+## Type III Anova for Balanced Design 
+tab_R_b3 <- car :: Anova(Model_R_Balanced_data_type3, type = "III")
+
+## Type III Anova for Unbalanced Design
+tab_R_un3 <- car :: Anova(Model_R_Unbalanced_data_type3, type = "III")
+
+```
+
+```{python}
+#| code-fold: true
+#| code-summary: "show the code: python Anova Type III"
+#| warning: false
+#| message: false
+#| echo: true
+#| output: false
+#| label: py4
+
+from patsy.contrasts import Sum
+
+## python type III anova for Balanced data
+Model_py_Balanced_data_type3 = ols('y ~ C(Fac1, Sum)*C(Fac2, Sum)*C(Fac3, Sum)', 
+                                data = py_Balanced_data).fit()
+tab_py_b3 = sm.stats.anova_lm(Model_py_Balanced_data_type3, typ = "III")
+# print(tab_py_b3)
+
+## python type III anova for Unbalanced data
+
+Model_py_Unbalanced_data_type3 = ols('y ~ C(Fac1, Sum)*C(Fac2, Sum)*C(Fac3, Sum)', 
+                                    data = py_Unbalanced_data).fit()
+tab_py_un3 = sm.stats.anova_lm(Model_py_Unbalanced_data_type3, typ = "III")
+# print(tab_py_un3)
+```
 
 
 
 
 
 
+## Type IV
+
+<div dir = "rtl", style = "font-size: 18px; font-family: Yas">
+<h4 style = "color: blue;"><b>
+مجموع مربعات نوع ۴</b>
+</h4>
+رویکرد مربعات نوع ۴، برای زمان‌هایی هست که در بعضی از سلول‌ها یا ترکیبات تیماری ما اصولا هیچ مشاهده‌ای نداریم. این روش به روش <bdi>Radical</bdi>&nbsp;  نیز معروف هست. و برآورد‌های به دست آمده در این روش اصولا منحصر به فرد نیستند. برای جزئیات بیشتر در مورد این روش می‌توانید به <a href = #f4><bdi>[4]</bdi></a>&nbsp; مراجعه کنید. 
+<br>
+<span style = "color: red;"><b>
+در صورت عدم وجود سلول خالی، نتایج این روش و رویکرد نوع ۳ تفاوتی ندارد. 
+</span></b>
+
+
+</div>
+
+
+## Compare Results
+
+<div dir = "rtl", style = "font-size: 18px; font-family: Yas">
+<h4 style = "color: blue;"><b>بررسی نتایج </b>
+</h4>
+در این قسمت می‌خواهیم نتایج روش‌های ۱ و ۲ و ۳ را با هم مقایسه کنیم. برای این منظور من جداول آنالیز واریانس خروجی در کدهایی که در بالا قرار دادم را در پایین می‌آوریم. 
+<br><br>
+
+<h5 style = "color: blue;"><b>جداول نتایج برای طرح متعادل</b>
+</h5>
+</div>
+
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+
+
+tab_R_b1 %>%
+kbl(caption = "R: Anova Type I") %>%
+kable_paper("hover", full_width = T) %>%
+footnote(general = "Balanced Desgin")
+
+py$tab_py_b1 %>%
+kbl(caption = "Python: Anova Type I") %>%
+kable_paper("hover", full_width = T)  %>%
+footnote(general = "Balanced Desgin")
+```
+
+
+
+<hr/>
+
+
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+
+tab_R_b2 %>%
+kbl(caption = "R: Anova Type II") %>%
+kable_paper("hover", full_width = T) %>%
+footnote(general = "Balanced Desgin")
+
+py$tab_py_b2 %>%
+kbl(caption = "Python: Anova Type II") %>%
+kable_paper("hover", full_width = T) %>%
+footnote(general = "Balanced Desgin")
+```
+
+<hr/>
+
+
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+
+
+tab_R_b3 %>%
+kbl(caption = "R: Anova Type III") %>%
+kable_paper("hover", full_width = T) %>%
+footnote(general = "Balanced Desgin")
+
+py$tab_py_b3 %>%
+kbl(caption = "Python: Anova Type III") %>%
+kable_paper("hover", full_width = T) %>%
+footnote(general = "Balanced Desgin")
+
+```
+
+
+<hr/><hr/>
 
 
 
 
 
 
+<div dir = "rtl", style = "font-size: 18px; font-family: Yas">
+<h5 style = "color: blue;"><b>جداول نتایج برای طرح نامتعادل</b>
+</h5>
+</div>
+
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+
+
+tab_R_un1 %>%
+kbl(caption = "R: Anova Type I") %>%
+kable_paper("hover", full_width = T) %>%
+footnote(general = "Unbalanced Desgin")
+
+py$tab_py_un1 %>%
+kbl(caption = "Python: Anova Type I") %>%
+kable_paper("hover", full_width = T) %>%
+footnote(general = "Unbalanced Desgin")
+```
+
+
+<hr/>
+
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+
+
+tab_R_un2 %>%
+kbl(caption = "R: Anova Type II") %>%
+kable_paper("hover", full_width = T) %>%
+footnote(general = "Unbalanced Desgin")
+
+py$tab_py_un2 %>%
+kbl(caption = "Python: Anova Type II") %>%
+kable_paper("hover", full_width = T) %>%
+footnote(general = "Unbalanced Desgin")
+```
 
 
 
+<hr/>
 
+
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+
+
+tab_R_un3 %>%
+kbl(caption = "R: Anova Type III") %>%
+kable_paper("hover", full_width = T) %>%
+footnote(general = "Unbalanced Desgin")
+
+py$tab_py_un3 %>%
+kbl(caption = "Python: Anova Type III") %>%
+kable_paper("hover", full_width = T) %>%
+footnote(general = "Unbalanced Desgin")
+
+```
+
+
+<hr/><hr/>
+
+
+<div dir = "rtl", style = "font-size: 18px; font-family: Yas">
+واضح هست که وقتی طرح متعادل هست، نتایج برای هر سه روش 
+</div>
+
+
+```r
+Anova Type I, Anova Type II, Anova Type III
+```
+
+
+
+<div dir = "rtl", style = "font-size: 18px; font-family: Yas">
+کاملا یکسان هست. تفاوت‌ زمانی حاصل می‌شود که طرح نامتعادل هست. لازم به ذکر هست که برای پیاده‌سازی آنالیز واریانس نوع ۳ اگر بخواهیم شرط 
+</div>
+
+
+$$
+\begin{aligned}
+& \sum_{i = 1}^a \alpha_i = 0, \\
+& \sum_{j = 1}^b \beta_j = 0, \\
+& \sum_{i = 1}^a \sum_{j = 1}^b (\alpha\beta)_{ij} = 0
+\end{aligned}
+$$
+
+
+<div dir = "rtl", style = "font-size: 18px; font-family: Yas">
+لحاظ بشود، باید وقتی در <code>R</code> کد می‌نویسیم، از دستور 
+</div>
+
+```r
+options(contrasts = c("contr.sum",  "contr.sum"))
+```
+
+
+<div dir = "rtl", style = "font-size: 18px; font-family: Yas">
+
+استفاده کنیم و در پایتون با فراخونی متد 
+</div>
+
+
+```r
+from patsy.contrasts import Sum
+```
+
+
+<div dir = "rtl", style = "font-size: 18px; font-family: Yas">
+و همچنین اضافه کردن <code>Sum</code>&nbsp;  به تابع <code>C(Factor, Sum)</code>&nbsp; در حین ساختن مدل، شرط ذکر شده را لحاظ کنیم. در غیر این صورت نتایج مدل متفاوت خواهد شد البته برای مدل آنالیز واریانس نوع ۳. 
+<br><br>
+</div>
+
+
+## Conclusion
+
+<div dir = "rtl", style = "font-size: 18px; font-family: Yas">
+<h4 style = "color: blue;"><b> حرف آخر </b>
+</h4>
+حتمن این سؤال مطرح خواهد شد که با تمام این شرحی که در این صفحه ارائه شد، ما چه زمانی باید از هر کدام از انواع روش‌های مجموع مربعات استفاده کنیم؛
+‌
+<br>
+
+<ul>
+<li>
+<b><code>Type I</code>:</b>&nbsp; این شیوه با لحاظ کردن ترتیب ورود عامل‌ها به مدل از بقیه مدل‌ها متمایز می‌شود، این روش برای طرح‌های نامتعادل توصیه نمی‌شود و همچنین برای طرح‌‌هایی که تعداد عامل‌های زیادی دارند هم توصیه نمی‌شود. ولی برای طرح‌های متعادل با تعداد عامل‌های پایین و همچنین مدل‌های <b><code>Nested-Design</code></b>&nbsp; می‌تواند مناسب باشد. و همچنین برای مدل‌های رگرسیون چند‌جمله‌ای هم مفید هست. 
+</li>
+<li>
+<b><code>Type II</code>:</b>&nbsp; درک مجموع مربعات نوع ۲ کمی دشوار‌تر هست نسبت به ۱ و ۳؛ ولی به طور کلی، نوع ۲ برای یک اثر مانند اثر عامل <bdi>A</bdi> که ممکن هست یک اثر اصلی یا حتی یک اثر توأم در نظر گرفته شود وقتی این اثر را بخواهد مثلا با اثر <bdi>B</bdi> بیان کند اثر <bdi>A</bdi> را از <bdi>B</bdi> جدا می‌کند. یعنی اثراتی که با هم اشتراک دارند باید اشتراکات آن‌ها از هم تفکیک شود. برای همین منظور اصولا این روش زمانی توصیه می شود که ما اعتقاد داشته باشیم اثرات توأم در مدل ما حضور ندارد یا اگر وجود دارد ناچیز هست. 
+</li>
+<li>
+<b><code>Type III</code>:</b>&nbsp;
+باید در این‌جا ذکر کنیم که مجموع مربعات نوع ۲ و همچنین نوع ۳ اصطلاحا به آن‌ها مجموع مربعات جزئی نیز می‌گویند. اتفاقی که در این‌جا می‌افتد و در ادبیات این رشته از آن استفاده می‌شود، محاسبه اثرات در این شیوه نیز مانند روش ۲، به این‌شکل هست که هر اثر بر‌اساس اثرات دیگر تنظیم می‌شود. این روش در حقیقت با تجزیه تحلیل مجموع مربعات وزنی که با الگوریتم یتس پیاده‌سازی می‌شود، مطابقت دارد. یکی از کارکردهای این روش زمانی هست که محقق علی‌الرغم وجود اثر توأم در مدل، نیازمند بررسی اثرات اصلی باشد و بخواهد آن‌ها را با هم مقابسه کند. (هرچند این نوع تفسیر در میان آماردانان طرفدار چندانی ندارد) واضح هست که اگر مدل فقط شامل اثرات اصلی باشد رویکرد نوع ۳ و نوع ۲ نتایج کاملا یکسانی را تولید خواهد کرد. 
+</li>
+<li>
+<b><code>Type IV</code>:</b>&nbsp;
+این شیوه اساسا برای موقیعت‌هایی طراحی شده هست که ما سلول‌های خالی داریم یا اصطلاحا بعضی از ترکیبات تیماری فاقد نمونه محقق شده هستند. نتایج این روش با روش نوع ۳ زمانی که سلول خالی در طرح وجود نداشته باشد یکسان هست. و همچنین همان‌طور که قبال هم ذکر شد و در این‌جا باز بر‌روی آن تأکید می‌شود؛ 
+<br>
+<span style = "color: red;"><b>
+وقتی طرح متعادل هست، نتایج هر ۴ روش یکسان خواهد بود. 
+</b></span>
+</li>
+</ul>
+
+</div>
 
 <br><br>
 
+
 ## References
+
+
 <div dir = "rtl", style = "font-size: 18px; font-family: Yas">
 <h4 style = "color: blue;">
 <b>
@@ -305,4 +722,12 @@ print(table)
 </b>
 </h4>
 </div>
+<br><br>
 <p id = "f1">[1] Zahn. Ista. “Working with unbalanced cell sizes in multiple regression with categorical predictors”, 2009. <a href = https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=sta+ZIahn.+%E2%80%9CWorking+with+unbalanced+cell+sizes+in+multiple+regression+with+categorical+predictors%E2%80%9D%2C+2009.&btnG=>[Google Scholar]</a></p>
+
+<p id = "f2">[2] Oyvind Langsrud. “ANOVA for unbalanced data: Use Type II instead of Type III sums of squares”, Statistics and Computing, Volume 13, Number 2, pp. 163-167, 2003. <a href = https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Oyvind+Langsrud.+%E2%80%9CANOVA+for+unbalanced+data%3A+Use+Type+II+instead+of+Type+III+sums+of+squares%E2%80%9D%2C+Statistics+and+Computing%2C+Volume+13%2C+Number+2%2C+pp.+163-167%2C+2003.&btnG=>[Google Scholar]</a></p>
+
+<p id = "f3">[3] Shaw, R. G., & Mitchell-Olds, T. (1993). ANOVA for unbalanced data: an overview. Ecology, 74(6), 1638-1645.
+<a href = https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Anova+for+Unbalanced+Data%3A+An+Overview&btnG=>[Google Scholar]</a></p>
+
+<p id = "f4">[4] <a href = https://www.utstat.utoronto.ca/reid/sta442f/2009/typeSS.pdf>URL</a></p>

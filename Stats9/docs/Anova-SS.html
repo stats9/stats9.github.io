@@ -99,6 +99,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
 <meta property="og:title" content="">
@@ -230,6 +232,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#types-of-ss-calculation-methods-in-anova" id="toc-types-of-ss-calculation-methods-in-anova" class="nav-link" data-scroll-target="#types-of-ss-calculation-methods-in-anova">Types of SS Calculation methods in Anova</a></li>
   <li><a href="#type-i" id="toc-type-i" class="nav-link" data-scroll-target="#type-i">Type I</a></li>
   <li><a href="#type-ii" id="toc-type-ii" class="nav-link" data-scroll-target="#type-ii">Type II</a></li>
+  <li><a href="#type-iii" id="toc-type-iii" class="nav-link" data-scroll-target="#type-iii">Type III</a></li>
+  <li><a href="#type-iv" id="toc-type-iv" class="nav-link" data-scroll-target="#type-iv">Type IV</a></li>
+  <li><a href="#compare-results" id="toc-compare-results" class="nav-link" data-scroll-target="#compare-results">Compare Results</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
@@ -299,9 +305,9 @@ Type III
 </li>
 </ul>
 مشخص می‌شوند. آن طور که مشخص هست، این نمادها از نرم‌افزار <bdi>SAS</bdi>&nbsp; وارد ادبیات آماری شده‌اند، که البته در حال‌حاضر خیلی پر‌استفاده شده‌اند. نکته‌ای که وجود دارد، این‌هست که چه زمانی باید از هر کدام از این روش‌ها استفاده کرد که خود محل بحث‌های زیادی در ادبیات آماری بوده هست. ولی در حالت کلی بر‌میگردد به این‌که ما چه فرضیات ابتدایی در مورد داده‌ها داریم و هدف ما بررسی چه چیزهایی هست. <br>
-مدلی را در نظر بگیرید که شامل دو عامل <bdi>A</bdi> و <bdi>B</bdi> باشد. بنابراین دو اثر اصلی و یک اثر توأم <bdi>AB</bdi>&nbsp; در مدل تحلیل شما می‌تواند وجود داشته باشد.  مدل کامل را با این نماد نشان می‌دهیم <bdi>SS(A, B, AB)</bdi>&nbsp;. <br> 
-مدل‌های دیگری که برای این مثال فرضی ما می‌توانند وجود داشته باشند عبارتند از؛ <bdi>SS(A, B)</bdi>&nbsp; مدلی که اثر توأم را در خود قرار نداده هست و یا مدلی که اثر اصلی عامل <bdi>A</bdi> را در نظر نمی‌گیرد، که با نماد <bdi>SS(B, AB)</bdi>&nbsp; نشان داده می‌شود و ...<br>
- یک روش برای این‌که بتوان تأثیر و یا معنادار بودن تأثیر، اثرات اصلی یا توأم را بررسی کرد، مقایسه مدل‌های حامل این اثرات و مدل‌هایی که این اثرات را در بر ندارند می‌باشد. مثلا در مثال ما اگر بخواهیم اثر <bdi>AB</bdi>&nbsp; را بررسی کنیم می‌توانیم مدل‌های <bdi>SS(A, B), SS(A, B, AB)</bdi>&nbsp; را با هم مقایسه کنیم.
+مدلی را در نظر بگیرید که شامل دو عامل <bdi>A</bdi> و <bdi>B</bdi> باشد. بنابراین دو اثر اصلی و یک اثر توأم <bdi>AB</bdi>&nbsp; در مدل تحلیل شما می‌تواند وجود داشته باشد.  مدل کامل را با این نماد نشان می‌دهیم <code>SS(A, B, AB)</code>&nbsp;. <br> 
+مدل‌های دیگری که برای این مثال فرضی ما می‌توانند وجود داشته باشند عبارتند از؛ <code>SS(A, B)</code>&nbsp; مدلی که اثر توأم را در خود قرار نداده هست و یا مدلی که اثر اصلی عامل <bdi>A</bdi> را در نظر نمی‌گیرد، که با نماد <code>SS(B, AB)</code>&nbsp; نشان داده می‌شود و ...<br>
+ یک روش برای این‌که بتوان تأثیر و یا معنادار بودن تأثیر، اثرات اصلی یا توأم را بررسی کرد، مقایسه مدل‌های حامل این اثرات و مدل‌هایی که این اثرات را در بر ندارند می‌باشد. مثلا در مثال ما اگر بخواهیم اثر <bdi>AB</bdi>&nbsp; را بررسی کنیم می‌توانیم مدل‌های <code>SS(A, B), SS(A, B, AB)</code>&nbsp; را با هم مقایسه کنیم.
  <br>
  اگر بخواهیم تأثیر عامل‌های در حضور بقیه عوامل بسنجیم و یا افزایش مربعات را با اضافه کردن یک اثر در حضور بقیه اثرات بسنجیم می‌توانیم به شکل زیر آن را بیان کنیم؛
 </div>
@@ -311,7 +317,7 @@ Type III
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">SS</span>(A <span class="sc">|</span> B) <span class="ot">=</span> <span class="fu">SS</span>(A, B) – <span class="fu">SS</span>(B)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">SS</span>(B <span class="sc">|</span> A) <span class="ot">=</span> <span class="fu">SS</span>(A, B) – <span class="fu">SS</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
-در نمادهای بالا، منظور از فرضا <bdi>SS(AB|A, B)</bdi>&nbsp; اشاره دارد به افزایشی که در مجموع مربعات تیماری حادث می‌شود وقتی در حضور اثرات اصلی <bdi>A</bdi> و B اثر توأم این دو را نیز اضافه کنیم و یا مثلا منظور از <bdi>SS(B|A)</bdi>&nbsp; اشاره دارد به‌این‌که میزان افزایش در مربعات تیماری وقتی اثر اصلی <bdi>A</bdi> حضور دارد و ما اثر <bdi>B</bdi> را اضافه کنیم. <br>
+در نمادهای بالا، منظور از فرضا <code>SS(AB|A, B)</code>&nbsp; اشاره دارد به افزایشی که در مجموع مربعات تیماری حادث می‌شود وقتی در حضور اثرات اصلی <bdi>A</bdi> و B اثر توأم این دو را نیز اضافه کنیم و یا مثلا منظور از <code>SS(B|A)</code>&nbsp; اشاره دارد به‌این‌که میزان افزایش در مربعات تیماری وقتی اثر اصلی <bdi>A</bdi> حضور دارد و ما اثر <bdi>B</bdi> را اضافه کنیم. <br>
 در این‌جاست که اصولا انواع مختلف محاسبه مجموع مربعات شکل می‌گیرد. یا به شکل شفاف‌تر نحوه تعریف اثرات هست که که باعث شکل‌گیری این تفاوت‌ها می‌شود. 
 </div>
 <hr>
@@ -328,13 +334,13 @@ Type III
 در این شیوه، تعریف اثرات برای مثال فرضی که گفتیم به این شکل هست؛ 
 <ul>
 <li>
-<bdi>SS(A):</bdi>&nbsp; برای عامل <bdi>A</bdi>
+<code>SS(A)</code>: برای عامل <bdi>A</bdi>
 </li>
 <li>
-<bdi>SS(B | A):</bdi>&nbsp; برای عامل <bdi>B</bdi>
+<code>SS(B | A)</code>: برای عامل <bdi>B</bdi>
 </li>
 <li>
-<bdi>SS(AB | B, A):</bdi>&nbsp; برای اثر توأم <bdi>AB</bdi>
+<code>SS(AB | B, A)</code>: برای اثر توأم <bdi>AB</bdi>
 </li>
 </ul>
 عبارات بالا، این مفهوم را دارد که ابتدا اثر اصلی عامل <bdi>A</bdi> سپس اثر اصلی عامل  <bdi>B</bdi> و در انتها اثر متقابل AB مورد بررسی قرار می‌گیرند. <br>
@@ -4050,133 +4056,72 @@ Type III
 </div>
 <p><br><br></p>
 <div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
-برای پیاده‌سازی یک مدل آنالیز واریانس از نوع اول و یا انواع دیگر آن می‌توانیم از اکثر نرم‌افزارهای آماری از قبیل <bdi>SPSS, SAS, STATA, MINITAB, R, ...</bdi>&nbsp; استفاده کنیم البته تابع <bdi>aov</bdi>&nbsp; به صورت پیش فرض از نوع ۱ برای مجموع مربعات استفاده می‌کند ولی با استفاده از تابع <bdi>Anova</bdi>&nbsp; درون بسته <bdi>car</bdi>&nbsp; می‌توانیم به انواع دیگر روش‌های مجموع مربعات دسترسی داشته باشیم. البته در پایتون این امر با سهولت بیشتری انجام می‌شود. به کدهای پایین توجه کنید؛
+برای پیاده‌سازی یک مدل آنالیز واریانس از نوع اول و یا انواع دیگر آن می‌توانیم از اکثر نرم‌افزارهای آماری از قبیل <bdi>SPSS, SAS, STATA, MINITAB, R, ...</bdi>&nbsp; استفاده کنیم البته تابع <code>aov</code>&nbsp; به صورت پیش فرض از نوع ۱ برای مجموع مربعات استفاده می‌کند ولی با استفاده از تابع <code>Anova</code>&nbsp; درون بسته <code>car</code>&nbsp; می‌توانیم به انواع دیگر روش‌های مجموع مربعات دسترسی داشته باشیم. البته در پایتون این امر با سهولت بیشتری انجام می‌شود. به کدهای پایین توجه کنید؛
 </div>
 <div class="cell">
 <details>
-<summary>show the code</summary>
+<summary>show the code: create connection between R and python</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>pathh <span class="ot">&lt;-</span> <span class="fu">Sys.which</span>(<span class="st">"python"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>            <span class="fu">gsub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">"</span>, <span class="st">"//"</span>, <span class="at">x =</span> _,  <span class="at">fixed =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">use_python</span>(pathh)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Type 1 Anova for Balanced Design </span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>Model_R_Balanced_data_type1 <span class="ot">&lt;-</span> <span class="fu">aov</span>(y <span class="sc">~</span> Fac1 <span class="sc">*</span> Fac2 <span class="sc">*</span> Fac3, <span class="at">data =</span> anova_data_Balanced) </span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Model_R_Balanced_data_type1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">use_python</span>(pathh)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>                Df Sum Sq Mean Sq F value Pr(&gt;F)    
-Fac1             3  10891    3630 3816.15 &lt;2e-16 ***
-Fac2             2   9153    4576 4810.76 &lt;2e-16 ***
-Fac3             4  12103    3026 3180.78 &lt;2e-16 ***
-Fac1:Fac2        6   1806     301  316.39 &lt;2e-16 ***
-Fac1:Fac3       12   2443     204  214.04 &lt;2e-16 ***
-Fac2:Fac3        8   2030     254  266.78 &lt;2e-16 ***
-Fac1:Fac2:Fac3  24    455      19   19.93 &lt;2e-16 ***
-Residuals      180    171       1                   
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
-<details>
-<summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Type 1 Anova for Unbalanced Design</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>Model_R_Unbalanced_data_type1 <span class="ot">&lt;-</span> <span class="fu">aov</span>(y <span class="sc">~</span> Fac1 <span class="sc">*</span> Fac2 <span class="sc">*</span> Fac3, <span class="at">data =</span> Anova_data_unbalanced) </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Model_R_Unbalanced_data_type1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>                Df Sum Sq Mean Sq F value Pr(&gt;F)    
-Fac1             3  10153    3384 3715.40 &lt;2e-16 ***
-Fac2             2  10464    5232 5743.60 &lt;2e-16 ***
-Fac3             4  12940    3235 3551.36 &lt;2e-16 ***
-Fac1:Fac2        6   1811     302  331.38 &lt;2e-16 ***
-Fac1:Fac3       12   2570     214  235.14 &lt;2e-16 ***
-Fac2:Fac3        8   2142     268  293.96 &lt;2e-16 ***
-Fac1:Fac2:Fac3  24    423      18   19.34 &lt;2e-16 ***
-Residuals      209    190       1                   
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
-</div>
-</div>
-<hr>
 <div class="cell">
 <details>
-<summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.formula.api <span class="im">import</span> ols</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>py_Balanced_data <span class="op">=</span> r.anova_data_Balanced.copy()</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>py_Unbalanced_data <span class="op">=</span> r.Anova_data_unbalanced.copy()</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>py_Balanced_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<summary>show the code: R Anova Type I</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Type 1 Anova for Balanced Design </span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>Model_R_Balanced_data <span class="ot">&lt;-</span> <span class="fu">aov</span>(y <span class="sc">~</span> Fac1 <span class="sc">*</span> Fac2 <span class="sc">*</span> Fac3, <span class="at">data =</span> anova_data_Balanced)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="do">## get Anova type 1 with R for Balanced data</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>tab_R_b1 <span class="ot">&lt;-</span> <span class="fu">anova</span>(Model_R_Balanced_data)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Type 1 Anova for Unbalanced Design</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>Model_R_Unbalanced_data <span class="ot">&lt;-</span> <span class="fu">aov</span>(y <span class="sc">~</span> Fac1 <span class="sc">*</span> Fac2 <span class="sc">*</span> Fac3, <span class="at">data =</span> Anova_data_unbalanced)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="do">## get Anova type 1 with R for UnBalanced data</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>tab_R_un1 <span class="ot">&lt;-</span> <span class="fu">anova</span>(Model_R_Unbalanced_data)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="do">## set R for type III</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">contrasts =</span> <span class="fu">c</span>(<span class="st">"contr.sum"</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>, <span class="st">"contr.sum"</span>))</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>Model_R_Balanced_data_type3 <span class="ot">&lt;-</span> <span class="fu">aov</span>(y <span class="sc">~</span> Fac1 <span class="sc">*</span> Fac2 <span class="sc">*</span> Fac3, <span class="at">data =</span> anova_data_Balanced)</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>Model_R_Unbalanced_data_type3 <span class="ot">&lt;-</span> <span class="fu">aov</span>(y <span class="sc">~</span> Fac1 <span class="sc">*</span> Fac2 <span class="sc">*</span> Fac3, <span class="at">data =</span> Anova_data_unbalanced)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>      y Fac1     Fac2     Fac3
-0  0.37    A  Level_1  Timar_1
-1  2.18    B  Level_1  Timar_1
-2  2.16    C  Level_1  Timar_1
-3  5.60    D  Level_1  Timar_1
-4  2.33    A  Level_2  Timar_1</code></pre>
 </div>
+<div class="cell">
 <details>
-<summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>py_Unbalanced_data.tail()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<summary>show the code: python Anova Type I</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.formula.api <span class="im">import</span> ols</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>py_Balanced_data <span class="op">=</span> r.anova_data_Balanced.copy()</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>py_Unbalanced_data <span class="op">=</span> r.Anova_data_unbalanced.copy()</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># py_Balanced_data.head()</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co"># py_Unbalanced_data.tail()</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">## python type I and II anova for Balanced data</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>Model_py_Balanced_data_type1 <span class="op">=</span> ols(<span class="st">'y ~ C(Fac1)*C(Fac2)*C(Fac3)'</span>, </span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>                                data <span class="op">=</span> py_Balanced_data).fit()</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>tab_py_b1 <span class="op">=</span> sm.stats.anova_lm(Model_py_Balanced_data_type1, typ <span class="op">=</span> <span class="st">"I"</span>)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="co"># print(tab_py_b1)</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="co">## python type I and II anova for Unbalanced data</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>Model_py_Unbalanced_data_type1 <span class="op">=</span> ols(<span class="st">'y ~ C(Fac1)*C(Fac2)*C(Fac3)'</span>, </span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>                                    data <span class="op">=</span> py_Unbalanced_data).fit()</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>tab_py_un1 <span class="op">=</span> sm.stats.anova_lm(Model_py_Unbalanced_data_type1, typ <span class="op">=</span> <span class="st">"I"</span>)</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="co"># print(tab_py_un1)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>         y Fac1     Fac2     Fac3
-264  46.72    C  Level_3  Timar_5
-265  45.27    C  Level_3  Timar_5
-266  44.58    C  Level_3  Timar_5
-267  58.81    D  Level_3  Timar_5
-268  59.67    D  Level_3  Timar_5</code></pre>
-</div>
-<details>
-<summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">## python type I anova for Balanced data</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>Model_py_Balanced_data_type1 <span class="op">=</span> ols(<span class="st">'y ~ C(Fac1)*C(Fac2)*C(Fac3)'</span>, </span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                                data <span class="op">=</span> py_Balanced_data).fit()</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> sm.stats.anova_lm(Model_py_Balanced_data_type1, typ <span class="op">=</span> <span class="st">"I"</span>)</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>                            df        sum_sq  ...            F         PR(&gt;F)
-C(Fac1)                    3.0  10890.784981  ...  3816.151153  1.275200e-162
-C(Fac2)                    2.0   9152.837826  ...  4810.756895  5.729827e-157
-C(Fac3)                    4.0  12103.369086  ...  3180.782146  9.225310e-166
-C(Fac1):C(Fac2)            6.0   1805.876867  ...   316.391293   8.392768e-93
-C(Fac1):C(Fac3)           12.0   2443.406188  ...   214.043509   1.183508e-99
-C(Fac2):C(Fac3)            8.0   2030.294224  ...   266.782066   1.535907e-95
-C(Fac1):C(Fac2):C(Fac3)   24.0    454.920232  ...    19.925611   1.038994e-38
-Residual                 180.0    171.231975  ...          NaN            NaN
-
-[8 rows x 5 columns]</code></pre>
-</div>
-<details>
-<summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">## python type I anova for Unbalanced data</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>Model_py_Unbalanced_data_type1 <span class="op">=</span> ols(<span class="st">'y ~ C(Fac1)*C(Fac2)*C(Fac3)'</span>, </span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                                    data <span class="op">=</span> py_Unbalanced_data).fit()</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> sm.stats.anova_lm(Model_py_Unbalanced_data_type1, typ <span class="op">=</span> <span class="st">"I"</span>)</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>                            df        sum_sq  ...            F         PR(&gt;F)
-C(Fac1)                    3.0  10153.298166  ...  3715.399781  5.584773e-181
-C(Fac2)                    2.0  10463.929154  ...  5743.603623  2.210949e-183
-C(Fac3)                    4.0  12940.040244  ...  3551.364929  7.547920e-191
-C(Fac1):C(Fac2)            6.0   1811.177285  ...   331.382354  7.790996e-104
-C(Fac1):C(Fac3)           12.0   2570.313284  ...   235.138899  3.618953e-114
-C(Fac2):C(Fac3)            8.0   2142.190142  ...   293.959632  2.993885e-109
-C(Fac1):C(Fac2):C(Fac3)   24.0    422.818026  ...    19.340243   1.084539e-40
-Residual                 209.0    190.382322  ...          NaN            NaN
-
-[8 rows x 5 columns]</code></pre>
-</div>
 </div>
 <div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
-واضح هست که نتایج هر دو محیط <bdi><b>(R, python)</b></bdi>&nbsp; یکسان هست فقط بعضی مقادیر در <bdi>R</bdi> گرد شده‌اند. 
+نتایج را در آخر این صفحه مورد بررسی قرار خواهیم داد. 
 </div>
 <hr>
 <p><br><br></p>
@@ -4187,6 +4132,1364 @@ Residual                 209.0    190.382322  ...          NaN            NaN
 <h4 style="color: blue;" class="anchored"><b>
 مجموع مربعات نوع ۲</b>
 </h4>
+
+برای محاسبه مجموع مربعات نوع ۲، ما  اثر‌ها را بر‌اساس فرم زیر برآورد می‌کنیم. 
+</div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">SS</span>(A<span class="sc">|</span>B)<span class="sc">:</span> <span class="cf">for</span> factor A</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">SS</span>(B<span class="sc">|</span>A)<span class="sc">:</span> <span class="cf">for</span> factor B</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
+ به عبارت دیگر، ابتدا باید اثر توأم را بر‌اساس <code>SS(AB|A, B)</code>&nbsp; معناداری آن بررسی شود. در صورتی که اثر توأمی معنادار گزارش نشد، به تحلیل اثرات اصلی بر‌اساس روش مربعات نوع ۲ بپردازیم. <br>
+اگر در واقعیت هیچ اثر توأم معناداری وجود نداشته باشد، آن‌گاه نوع ۲ از نظر آماری قدرتمند‌تر از نوع ۳ می‌باشد. برای جزئیات بیشتر درباره روش نوع ۲ می‌توانید به <a href="#f2"><bdi>[2]</bdi></a> مراجعه کنید. <br>
+از نظر محاسباتی، این روش معادل روش نوع ۱ هست، البته بر‌اساس ترتیب‌های مختلف ورود عامل‌ها به مدل و انتخاب مناسبت‌ترین خروجی. 
+برای پیاده‌سازی این روش در <code>R</code>&nbsp; باید علاوه بر‌پیاده‌سازی مدل چه با استفاده از تابع <code>aov</code>&nbsp; و چه با استفاده از تابع <code>lm</code>&nbsp; از تابع <code>car :: Anova </code>&nbsp; استفاده کنیم. در پایتون نیز این رویکرد به سادگی قابل پیاده‌سازی هست که در پایین می‌بینیم. 
+
+<br><br>
+
+مثال: 
+</div>
+<div class="cell">
+<details>
+<summary>show the code: R Anova Type II</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## R version</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Type II Anova for Balanced Design </span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>tab_R_b2 <span class="ot">&lt;-</span> car <span class="sc">::</span> <span class="fu">Anova</span>(Model_R_Balanced_data, <span class="at">type =</span> <span class="st">"II"</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Type II Anova for Unbalanced Design</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>tab_R_un2 <span class="ot">&lt;-</span> car <span class="sc">::</span> <span class="fu">Anova</span>(Model_R_Unbalanced_data, <span class="at">type =</span> <span class="st">"II"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>show the code: python Anova Type II</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">## python type II anova for Balanced data</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>tab_py_b2 <span class="op">=</span> sm.stats.anova_lm(Model_py_Balanced_data_type1, typ <span class="op">=</span> <span class="st">"II"</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># print(tab_py_b2)</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">## python type II anova for Unbalanced data</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>tab_py_un2 <span class="op">=</span> sm.stats.anova_lm(Model_py_Unbalanced_data_type1, typ <span class="op">=</span> <span class="st">"II"</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co"># print(tab_py_un2)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
+در آخر این صفحه  یک مقایسه اجمالی جدوال خروجی را ارائه خواهم کرد. 
+</div>
+</section>
+<section id="type-iii" class="level2">
+<h2 class="anchored" data-anchor-id="type-iii">Type III</h2>
+<div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
+<h4 style="color: blue;" class="anchored"><b>
+مجموع مربعات نوع ۳</b>
+</h4>
+
+برای درک روش نوع ۳، باید روشی که برای برآورد مربعات اثرات اصلی به کار می‌برد را بفهمیم. این روش از قاعده زیر برای مربعات اثرات اصلی استفاده می‌کند. 
+</div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">SS</span>(A <span class="sc">|</span> B, AB) <span class="cf">for</span> factor A. </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">SS</span>(B <span class="sc">|</span> A, AB) <span class="cf">for</span> factor B. </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
+در حقیقت این روش، یک اثر اصلی را بعد از اثرات اصلی دیگر و همچنین اثرات توأم مورد بررسی قرار می‌دهد. بنابراین این رویکرد در حضور وجود اثرات توأم می‌توان مناسب‌ترین رویکرد برای به دست آوردن مربعات تیماری باشد. 
+<br>
+با‌این‌حال در صورت وجود اثرات توأم، تفسیر اثر اصلی اصولا امر راحتی نیست. و یا با بیان بهتر؛ وقتی اثر توأمی در مدل حضور دارد اصولا تفسیر اثرات اصلی به‌ تنهایی نمی‌تواند رویکرد خیلی قابل دفاعی باشد. برای جزئیات بیشتر می‌توانید به <a href="#f3"><bdi>[3]</bdi></a> مراجعه کنید. <br>
+
+<span style="color:red;"><b>وقتی اثر توأم در مدل حضور ندارد، روش نوع ۲، روش قدرتمند‌تری می‌باشد.</b></span><br> 
+
+<br> 
+مثال: 
+</div>
+<div class="cell">
+<details>
+<summary>show the code: R Anova Type III</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="do">## R version</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Type III Anova for Balanced Design </span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>tab_R_b3 <span class="ot">&lt;-</span> car <span class="sc">::</span> <span class="fu">Anova</span>(Model_R_Balanced_data_type3, <span class="at">type =</span> <span class="st">"III"</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Type III Anova for Unbalanced Design</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>tab_R_un3 <span class="ot">&lt;-</span> car <span class="sc">::</span> <span class="fu">Anova</span>(Model_R_Unbalanced_data_type3, <span class="at">type =</span> <span class="st">"III"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>show the code: python Anova Type III</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> patsy.contrasts <span class="im">import</span> Sum</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">## python type III anova for Balanced data</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>Model_py_Balanced_data_type3 <span class="op">=</span> ols(<span class="st">'y ~ C(Fac1, Sum)*C(Fac2, Sum)*C(Fac3, Sum)'</span>, </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>                                data <span class="op">=</span> py_Balanced_data).fit()</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>tab_py_b3 <span class="op">=</span> sm.stats.anova_lm(Model_py_Balanced_data_type3, typ <span class="op">=</span> <span class="st">"III"</span>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># print(tab_py_b3)</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">## python type III anova for Unbalanced data</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>Model_py_Unbalanced_data_type3 <span class="op">=</span> ols(<span class="st">'y ~ C(Fac1, Sum)*C(Fac2, Sum)*C(Fac3, Sum)'</span>, </span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>                                    data <span class="op">=</span> py_Unbalanced_data).fit()</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>tab_py_un3 <span class="op">=</span> sm.stats.anova_lm(Model_py_Unbalanced_data_type3, typ <span class="op">=</span> <span class="st">"III"</span>)</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co"># print(tab_py_un3)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="type-iv" class="level2">
+<h2 class="anchored" data-anchor-id="type-iv">Type IV</h2>
+<div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
+<h4 style="color: blue;" class="anchored"><b>
+مجموع مربعات نوع ۴</b>
+</h4>
+رویکرد مربعات نوع ۴، برای زمان‌هایی هست که در بعضی از سلول‌ها یا ترکیبات تیماری ما اصولا هیچ مشاهده‌ای نداریم. این روش به روش <bdi>Radical</bdi>&nbsp;  نیز معروف هست. و برآورد‌های به دست آمده در این روش اصولا منحصر به فرد نیستند. برای جزئیات بیشتر در مورد این روش می‌توانید به <a href="#f4"><bdi>[4]</bdi></a>&nbsp; مراجعه کنید. 
+<br>
+<span style="color: red;"><b>
+در صورت عدم وجود سلول خالی، نتایج این روش و رویکرد نوع ۳ تفاوتی ندارد. 
+</b></span>
+
+
+</div>
+</section>
+<section id="compare-results" class="level2">
+<h2 class="anchored" data-anchor-id="compare-results">Compare Results</h2>
+<div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
+<h4 style="color: blue;" class="anchored"><b>بررسی نتایج </b>
+</h4>
+در این قسمت می‌خواهیم نتایج روش‌های ۱ و ۲ و ۳ را با هم مقایسه کنیم. برای این منظور من جداول آنالیز واریانس خروجی در کدهایی که در بالا قرار دادم را در پایین می‌آوریم. 
+<br><br>
+
+<h5 style="color: blue;" class="anchored"><b>جداول نتایج برای طرح متعادل</b>
+</h5>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="lightable-paper lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>R: Anova Type I</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Df</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Sum Sq</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Mean Sq</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">F value</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Fac1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">10890.7850</td>
+<td style="text-align: right;">3630.2616604</td>
+<td style="text-align: right;">3816.15115</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fac2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">9152.8378</td>
+<td style="text-align: right;">4576.4189129</td>
+<td style="text-align: right;">4810.75689</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fac3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">12103.3691</td>
+<td style="text-align: right;">3025.8422715</td>
+<td style="text-align: right;">3180.78215</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fac1:Fac2</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1805.8769</td>
+<td style="text-align: right;">300.9794779</td>
+<td style="text-align: right;">316.39129</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fac1:Fac3</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">2443.4062</td>
+<td style="text-align: right;">203.6171823</td>
+<td style="text-align: right;">214.04351</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fac2:Fac3</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">2030.2942</td>
+<td style="text-align: right;">253.7867780</td>
+<td style="text-align: right;">266.78207</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fac1:Fac2:Fac3</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">454.9202</td>
+<td style="text-align: right;">18.9550097</td>
+<td style="text-align: right;">19.92561</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Residuals</td>
+<td style="text-align: right;">180</td>
+<td style="text-align: right;">171.2320</td>
+<td style="text-align: right;">0.9512887</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+</tbody><tfoot>
+<tr class="odd">
+<td style="text-align: left; padding: 0;"><span style="font-style: italic;">Note: </span></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0;"><sup></sup> Balanced Desgin</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+</tfoot>
+
+</table>
+
+
+</div>
+<div class="cell-output-display">
+<table class="lightable-paper lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Python: Anova Type I</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">df</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">sum_sq</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">mean_sq</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">F</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">PR(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">C(Fac1)</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">10890.7850</td>
+<td style="text-align: right;">3630.2616604</td>
+<td style="text-align: right;">3816.15115</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C(Fac2)</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">9152.8378</td>
+<td style="text-align: right;">4576.4189129</td>
+<td style="text-align: right;">4810.75689</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C(Fac3)</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">12103.3691</td>
+<td style="text-align: right;">3025.8422715</td>
+<td style="text-align: right;">3180.78215</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C(Fac1):C(Fac2)</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1805.8769</td>
+<td style="text-align: right;">300.9794779</td>
+<td style="text-align: right;">316.39129</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C(Fac1):C(Fac3)</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">2443.4062</td>
+<td style="text-align: right;">203.6171823</td>
+<td style="text-align: right;">214.04351</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C(Fac2):C(Fac3)</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">2030.2942</td>
+<td style="text-align: right;">253.7867780</td>
+<td style="text-align: right;">266.78207</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C(Fac1):C(Fac2):C(Fac3)</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">454.9202</td>
+<td style="text-align: right;">18.9550097</td>
+<td style="text-align: right;">19.92561</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Residual</td>
+<td style="text-align: right;">180</td>
+<td style="text-align: right;">171.2320</td>
+<td style="text-align: right;">0.9512887</td>
+<td style="text-align: right;">NaN</td>
+<td style="text-align: right;">NaN</td>
+</tr>
+</tbody><tfoot>
+<tr class="odd">
+<td style="text-align: left; padding: 0;"><span style="font-style: italic;">Note: </span></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0;"><sup></sup> Balanced Desgin</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+</tfoot>
+
+</table>
+
+
+</div>
+</div>
+<hr>
+<div class="cell">
+<div class="cell-output-display">
+<table class="lightable-paper lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>R: Anova Type II</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Sum Sq</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Df</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">F value</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Fac1</td>
+<td style="text-align: right;">10890.7850</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3816.15115</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fac2</td>
+<td style="text-align: right;">9152.8378</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4810.75689</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fac3</td>
+<td style="text-align: right;">12103.3691</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3180.78215</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fac1:Fac2</td>
+<td style="text-align: right;">1805.8769</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">316.39129</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fac1:Fac3</td>
+<td style="text-align: right;">2443.4062</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">214.04351</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fac2:Fac3</td>
+<td style="text-align: right;">2030.2942</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">266.78207</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fac1:Fac2:Fac3</td>
+<td style="text-align: right;">454.9202</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">19.92561</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Residuals</td>
+<td style="text-align: right;">171.2320</td>
+<td style="text-align: right;">180</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+</tbody><tfoot>
+<tr class="odd">
+<td style="text-align: left; padding: 0;"><span style="font-style: italic;">Note: </span></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0;"><sup></sup> Balanced Desgin</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+</tfoot>
+
+</table>
+
+
+</div>
+<div class="cell-output-display">
+<table class="lightable-paper lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Python: Anova Type II</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">sum_sq</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">df</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">F</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">PR(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">C(Fac1)</td>
+<td style="text-align: right;">10890.7850</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3816.15115</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C(Fac2)</td>
+<td style="text-align: right;">9152.8378</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4810.75689</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C(Fac3)</td>
+<td style="text-align: right;">12103.3691</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3180.78215</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C(Fac1):C(Fac2)</td>
+<td style="text-align: right;">1805.8769</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">316.39129</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C(Fac1):C(Fac3)</td>
+<td style="text-align: right;">2443.4062</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">214.04351</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C(Fac2):C(Fac3)</td>
+<td style="text-align: right;">2030.2942</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">266.78207</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C(Fac1):C(Fac2):C(Fac3)</td>
+<td style="text-align: right;">454.9202</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">19.92561</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Residual</td>
+<td style="text-align: right;">171.2320</td>
+<td style="text-align: right;">180</td>
+<td style="text-align: right;">NaN</td>
+<td style="text-align: right;">NaN</td>
+</tr>
+</tbody><tfoot>
+<tr class="odd">
+<td style="text-align: left; padding: 0;"><span style="font-style: italic;">Note: </span></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0;"><sup></sup> Balanced Desgin</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+</tfoot>
+
+</table>
+
+
+</div>
+</div>
+<hr>
+<div class="cell">
+<div class="cell-output-display">
+<table class="lightable-paper lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>R: Anova Type III</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Sum Sq</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Df</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">F value</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">54158.2157</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">56931.41617</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fac1</td>
+<td style="text-align: right;">10890.7850</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3816.15115</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fac2</td>
+<td style="text-align: right;">9152.8378</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4810.75689</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fac3</td>
+<td style="text-align: right;">12103.3691</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3180.78215</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fac1:Fac2</td>
+<td style="text-align: right;">1805.8769</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">316.39129</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fac1:Fac3</td>
+<td style="text-align: right;">2443.4062</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">214.04351</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fac2:Fac3</td>
+<td style="text-align: right;">2030.2942</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">266.78207</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fac1:Fac2:Fac3</td>
+<td style="text-align: right;">454.9202</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">19.92561</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Residuals</td>
+<td style="text-align: right;">171.2320</td>
+<td style="text-align: right;">180</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+</tbody><tfoot>
+<tr class="even">
+<td style="text-align: left; padding: 0;"><span style="font-style: italic;">Note: </span></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0;"><sup></sup> Balanced Desgin</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+</tfoot>
+
+</table>
+
+
+</div>
+<div class="cell-output-display">
+<table class="lightable-paper lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Python: Anova Type III</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">sum_sq</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">df</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">F</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">PR(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Intercept</td>
+<td style="text-align: right;">54158.2157</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">56931.41617</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C(Fac1, Sum)</td>
+<td style="text-align: right;">10890.7850</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3816.15115</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C(Fac2, Sum)</td>
+<td style="text-align: right;">9152.8378</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4810.75689</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C(Fac3, Sum)</td>
+<td style="text-align: right;">12103.3691</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3180.78215</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C(Fac1, Sum):C(Fac2, Sum)</td>
+<td style="text-align: right;">1805.8769</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">316.39129</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C(Fac1, Sum):C(Fac3, Sum)</td>
+<td style="text-align: right;">2443.4062</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">214.04351</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C(Fac2, Sum):C(Fac3, Sum)</td>
+<td style="text-align: right;">2030.2942</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">266.78207</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C(Fac1, Sum):C(Fac2, Sum):C(Fac3, Sum)</td>
+<td style="text-align: right;">454.9202</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">19.92561</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Residual</td>
+<td style="text-align: right;">171.2320</td>
+<td style="text-align: right;">180</td>
+<td style="text-align: right;">NaN</td>
+<td style="text-align: right;">NaN</td>
+</tr>
+</tbody><tfoot>
+<tr class="even">
+<td style="text-align: left; padding: 0;"><span style="font-style: italic;">Note: </span></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0;"><sup></sup> Balanced Desgin</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+</tfoot>
+
+</table>
+
+
+</div>
+</div>
+<hr>
+<hr>
+<div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
+<h5 style="color: blue;" class="anchored"><b>جداول نتایج برای طرح نامتعادل</b>
+</h5>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="lightable-paper lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>R: Anova Type I</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Df</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Sum Sq</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Mean Sq</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">F value</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Fac1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">10153.2982</td>
+<td style="text-align: right;">3384.4327219</td>
+<td style="text-align: right;">3715.39978</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fac2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">10463.9292</td>
+<td style="text-align: right;">5231.9645771</td>
+<td style="text-align: right;">5743.60362</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fac3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">12940.0402</td>
+<td style="text-align: right;">3235.0100610</td>
+<td style="text-align: right;">3551.36493</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fac1:Fac2</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1811.1773</td>
+<td style="text-align: right;">301.8628809</td>
+<td style="text-align: right;">331.38235</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fac1:Fac3</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">2570.3133</td>
+<td style="text-align: right;">214.1927737</td>
+<td style="text-align: right;">235.13890</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fac2:Fac3</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">2142.1901</td>
+<td style="text-align: right;">267.7737678</td>
+<td style="text-align: right;">293.95963</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fac1:Fac2:Fac3</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">422.8180</td>
+<td style="text-align: right;">17.6174177</td>
+<td style="text-align: right;">19.34024</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Residuals</td>
+<td style="text-align: right;">209</td>
+<td style="text-align: right;">190.3823</td>
+<td style="text-align: right;">0.9109202</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+</tbody><tfoot>
+<tr class="odd">
+<td style="text-align: left; padding: 0;"><span style="font-style: italic;">Note: </span></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0;"><sup></sup> Unbalanced Desgin</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+</tfoot>
+
+</table>
+
+
+</div>
+<div class="cell-output-display">
+<table class="lightable-paper lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Python: Anova Type I</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">df</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">sum_sq</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">mean_sq</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">F</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">PR(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">C(Fac1)</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">10153.2982</td>
+<td style="text-align: right;">3384.4327219</td>
+<td style="text-align: right;">3715.39978</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C(Fac2)</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">10463.9292</td>
+<td style="text-align: right;">5231.9645771</td>
+<td style="text-align: right;">5743.60362</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C(Fac3)</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">12940.0402</td>
+<td style="text-align: right;">3235.0100610</td>
+<td style="text-align: right;">3551.36493</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C(Fac1):C(Fac2)</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1811.1773</td>
+<td style="text-align: right;">301.8628809</td>
+<td style="text-align: right;">331.38235</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C(Fac1):C(Fac3)</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">2570.3133</td>
+<td style="text-align: right;">214.1927737</td>
+<td style="text-align: right;">235.13890</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C(Fac2):C(Fac3)</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">2142.1901</td>
+<td style="text-align: right;">267.7737678</td>
+<td style="text-align: right;">293.95963</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C(Fac1):C(Fac2):C(Fac3)</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">422.8180</td>
+<td style="text-align: right;">17.6174177</td>
+<td style="text-align: right;">19.34024</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Residual</td>
+<td style="text-align: right;">209</td>
+<td style="text-align: right;">190.3823</td>
+<td style="text-align: right;">0.9109202</td>
+<td style="text-align: right;">NaN</td>
+<td style="text-align: right;">NaN</td>
+</tr>
+</tbody><tfoot>
+<tr class="odd">
+<td style="text-align: left; padding: 0;"><span style="font-style: italic;">Note: </span></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0;"><sup></sup> Unbalanced Desgin</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+</tfoot>
+
+</table>
+
+
+</div>
+</div>
+<hr>
+<div class="cell">
+<div class="cell-output-display">
+<table class="lightable-paper lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>R: Anova Type II</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Sum Sq</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Df</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">F value</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Fac1</td>
+<td style="text-align: right;">11134.2492</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4074.35952</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fac2</td>
+<td style="text-align: right;">10046.3696</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">5514.40704</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fac3</td>
+<td style="text-align: right;">13243.9531</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3634.77313</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fac1:Fac2</td>
+<td style="text-align: right;">1920.8077</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">351.44090</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fac1:Fac3</td>
+<td style="text-align: right;">2531.5946</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">231.59682</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fac2:Fac3</td>
+<td style="text-align: right;">2142.1901</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">293.95963</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fac1:Fac2:Fac3</td>
+<td style="text-align: right;">422.8180</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">19.34024</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Residuals</td>
+<td style="text-align: right;">190.3823</td>
+<td style="text-align: right;">209</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+</tbody><tfoot>
+<tr class="odd">
+<td style="text-align: left; padding: 0;"><span style="font-style: italic;">Note: </span></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0;"><sup></sup> Unbalanced Desgin</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+</tfoot>
+
+</table>
+
+
+</div>
+<div class="cell-output-display">
+<table class="lightable-paper lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Python: Anova Type II</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">sum_sq</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">df</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">F</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">PR(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">C(Fac1)</td>
+<td style="text-align: right;">11134.2492</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4074.35952</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C(Fac2)</td>
+<td style="text-align: right;">10046.3696</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">5514.40704</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C(Fac3)</td>
+<td style="text-align: right;">13243.9531</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3634.77313</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C(Fac1):C(Fac2)</td>
+<td style="text-align: right;">1920.8077</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">351.44090</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C(Fac1):C(Fac3)</td>
+<td style="text-align: right;">2531.5946</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">231.59682</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C(Fac2):C(Fac3)</td>
+<td style="text-align: right;">2142.1901</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">293.95963</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C(Fac1):C(Fac2):C(Fac3)</td>
+<td style="text-align: right;">422.8180</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">19.34024</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Residual</td>
+<td style="text-align: right;">190.3823</td>
+<td style="text-align: right;">209</td>
+<td style="text-align: right;">NaN</td>
+<td style="text-align: right;">NaN</td>
+</tr>
+</tbody><tfoot>
+<tr class="odd">
+<td style="text-align: left; padding: 0;"><span style="font-style: italic;">Note: </span></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0;"><sup></sup> Unbalanced Desgin</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+</tfoot>
+
+</table>
+
+
+</div>
+</div>
+<hr>
+<div class="cell">
+<div class="cell-output-display">
+<table class="lightable-paper lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>R: Anova Type III</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Sum Sq</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Df</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">F value</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">49340.9237</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">54166.02192</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fac1</td>
+<td style="text-align: right;">10163.4257</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3719.10574</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fac2</td>
+<td style="text-align: right;">7974.9291</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4377.40269</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fac3</td>
+<td style="text-align: right;">10883.2526</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2986.88419</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fac1:Fac2</td>
+<td style="text-align: right;">1742.2812</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">318.77678</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fac1:Fac3</td>
+<td style="text-align: right;">2182.8683</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">199.69443</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fac2:Fac3</td>
+<td style="text-align: right;">1867.4754</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">256.26221</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fac1:Fac2:Fac3</td>
+<td style="text-align: right;">422.8180</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">19.34024</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Residuals</td>
+<td style="text-align: right;">190.3823</td>
+<td style="text-align: right;">209</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+</tbody><tfoot>
+<tr class="even">
+<td style="text-align: left; padding: 0;"><span style="font-style: italic;">Note: </span></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0;"><sup></sup> Unbalanced Desgin</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+</tfoot>
+
+</table>
+
+
+</div>
+<div class="cell-output-display">
+<table class="lightable-paper lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Python: Anova Type III</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">sum_sq</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">df</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">F</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">PR(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Intercept</td>
+<td style="text-align: right;">49340.9237</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">54166.02192</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C(Fac1, Sum)</td>
+<td style="text-align: right;">10163.4257</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3719.10574</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C(Fac2, Sum)</td>
+<td style="text-align: right;">7974.9291</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4377.40269</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C(Fac3, Sum)</td>
+<td style="text-align: right;">10883.2526</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2986.88419</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C(Fac1, Sum):C(Fac2, Sum)</td>
+<td style="text-align: right;">1742.2812</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">318.77678</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C(Fac1, Sum):C(Fac3, Sum)</td>
+<td style="text-align: right;">2182.8683</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">199.69443</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C(Fac2, Sum):C(Fac3, Sum)</td>
+<td style="text-align: right;">1867.4754</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">256.26221</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C(Fac1, Sum):C(Fac2, Sum):C(Fac3, Sum)</td>
+<td style="text-align: right;">422.8180</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">19.34024</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Residual</td>
+<td style="text-align: right;">190.3823</td>
+<td style="text-align: right;">209</td>
+<td style="text-align: right;">NaN</td>
+<td style="text-align: right;">NaN</td>
+</tr>
+</tbody><tfoot>
+<tr class="even">
+<td style="text-align: left; padding: 0;"><span style="font-style: italic;">Note: </span></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0;"><sup></sup> Unbalanced Desgin</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+</tfoot>
+
+</table>
+
+
+</div>
+</div>
+<hr>
+<hr>
+<div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
+واضح هست که وقتی طرح متعادل هست، نتایج برای هر سه روش 
+</div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>Anova Type I, Anova Type II, Anova Type III</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
+کاملا یکسان هست. تفاوت‌ زمانی حاصل می‌شود که طرح نامتعادل هست. لازم به ذکر هست که برای پیاده‌سازی آنالیز واریانس نوع ۳ اگر بخواهیم شرط 
+</div>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; \sum_{i = 1}^a \alpha_i = 0, \\
+&amp; \sum_{j = 1}^b \beta_j = 0, \\
+&amp; \sum_{i = 1}^a \sum_{j = 1}^b (\alpha\beta)_{ij} = 0
+\end{aligned}
+\]</span></p>
+<div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
+لحاظ بشود، باید وقتی در <code>R</code> کد می‌نویسیم، از دستور 
+</div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">contrasts =</span> <span class="fu">c</span>(<span class="st">"contr.sum"</span>,  <span class="st">"contr.sum"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
+
+استفاده کنیم و در پایتون با فراخونی متد 
+</div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>from patsy.contrasts import Sum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
+و همچنین اضافه کردن <code>Sum</code>&nbsp;  به تابع <code>C(Factor, Sum)</code>&nbsp; در حین ساختن مدل، شرط ذکر شده را لحاظ کنیم. در غیر این صورت نتایج مدل متفاوت خواهد شد البته برای مدل آنالیز واریانس نوع ۳. 
+<br><br>
+</div>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
+<h4 style="color: blue;" class="anchored"><b> حرف آخر </b>
+</h4>
+حتمن این سؤال مطرح خواهد شد که با تمام این شرحی که در این صفحه ارائه شد، ما چه زمانی باید از هر کدام از انواع روش‌های مجموع مربعات استفاده کنیم؛
+‌
+<br>
+
+<ul>
+<li>
+<b><code>Type I</code>:</b>&nbsp; این شیوه با لحاظ کردن ترتیب ورود عامل‌ها به مدل از بقیه مدل‌ها متمایز می‌شود، این روش برای طرح‌های نامتعادل توصیه نمی‌شود و همچنین برای طرح‌‌هایی که تعداد عامل‌های زیادی دارند هم توصیه نمی‌شود. ولی برای طرح‌های متعادل با تعداد عامل‌های پایین و همچنین مدل‌های <b><code>Nested-Design</code></b>&nbsp; می‌تواند مناسب باشد. و همچنین برای مدل‌های رگرسیون چند‌جمله‌ای هم مفید هست. 
+</li>
+<li>
+<b><code>Type II</code>:</b>&nbsp; درک مجموع مربعات نوع ۲ کمی دشوار‌تر هست نسبت به ۱ و ۳؛ ولی به طور کلی، نوع ۲ برای یک اثر مانند اثر عامل <bdi>A</bdi> که ممکن هست یک اثر اصلی یا حتی یک اثر توأم در نظر گرفته شود وقتی این اثر را بخواهد مثلا با اثر <bdi>B</bdi> بیان کند اثر <bdi>A</bdi> را از <bdi>B</bdi> جدا می‌کند. یعنی اثراتی که با هم اشتراک دارند باید اشتراکات آن‌ها از هم تفکیک شود. برای همین منظور اصولا این روش زمانی توصیه می شود که ما اعتقاد داشته باشیم اثرات توأم در مدل ما حضور ندارد یا اگر وجود دارد ناچیز هست. 
+</li>
+<li>
+<b><code>Type III</code>:</b>&nbsp;
+باید در این‌جا ذکر کنیم که مجموع مربعات نوع ۲ و همچنین نوع ۳ اصطلاحا به آن‌ها مجموع مربعات جزئی نیز می‌گویند. اتفاقی که در این‌جا می‌افتد و در ادبیات این رشته از آن استفاده می‌شود، محاسبه اثرات در این شیوه نیز مانند روش ۲، به این‌شکل هست که هر اثر بر‌اساس اثرات دیگر تنظیم می‌شود. این روش در حقیقت با تجزیه تحلیل مجموع مربعات وزنی که با الگوریتم یتس پیاده‌سازی می‌شود، مطابقت دارد. یکی از کارکردهای این روش زمانی هست که محقق علی‌الرغم وجود اثر توأم در مدل، نیازمند بررسی اثرات اصلی باشد و بخواهد آن‌ها را با هم مقابسه کند. (هرچند این نوع تفسیر در میان آماردانان طرفدار چندانی ندارد) واضح هست که اگر مدل فقط شامل اثرات اصلی باشد رویکرد نوع ۳ و نوع ۲ نتایج کاملا یکسانی را تولید خواهد کرد. 
+</li>
+<li>
+<b><code>Type IV</code>:</b>&nbsp;
+این شیوه اساسا برای موقیعت‌هایی طراحی شده هست که ما سلول‌های خالی داریم یا اصطلاحا بعضی از ترکیبات تیماری فاقد نمونه محقق شده هستند. نتایج این روش با روش نوع ۳ زمانی که سلول خالی در طرح وجود نداشته باشد یکسان هست. و همچنین همان‌طور که قبال هم ذکر شد و در این‌جا باز بر‌روی آن تأکید می‌شود؛ 
+<br>
+<span style="color: red;"><b>
+وقتی طرح متعادل هست، نتایج هر ۴ روش یکسان خواهد بود. 
+</b></span>
+</li>
+</ul>
+
 </div>
 <p><br><br></p>
 </section>
@@ -4199,8 +5502,18 @@ Residual                 209.0    190.382322  ...          NaN            NaN
 </b>
 </h4>
 </div>
+<br><br>
 <p id="f1">
 [1] Zahn. Ista. “Working with unbalanced cell sizes in multiple regression with categorical predictors”, 2009. <a href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=sta+ZIahn.+%E2%80%9CWorking+with+unbalanced+cell+sizes+in+multiple+regression+with+categorical+predictors%E2%80%9D%2C+2009.&amp;btnG=">[Google Scholar]</a>
+</p>
+<p id="f2">
+[2] Oyvind Langsrud. “ANOVA for unbalanced data: Use Type II instead of Type III sums of squares”, Statistics and Computing, Volume 13, Number 2, pp.&nbsp;163-167, 2003. <a href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Oyvind+Langsrud.+%E2%80%9CANOVA+for+unbalanced+data%3A+Use+Type+II+instead+of+Type+III+sums+of+squares%E2%80%9D%2C+Statistics+and+Computing%2C+Volume+13%2C+Number+2%2C+pp.+163-167%2C+2003.&amp;btnG=">[Google Scholar]</a>
+</p>
+<p id="f3">
+[3] Shaw, R. G., &amp; Mitchell-Olds, T. (1993). ANOVA for unbalanced data: an overview. Ecology, 74(6), 1638-1645. <a href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Anova+for+Unbalanced+Data%3A+An+Overview&amp;btnG=">[Google Scholar]</a>
+</p>
+<p id="f4">
+[4] <a href="https://www.utstat.utoronto.ca/reid/sta442f/2009/typeSS.pdf">URL</a>
 </p>
 
 
