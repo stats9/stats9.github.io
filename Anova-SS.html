@@ -104,12 +104,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <link rel="stylesheet" href="styles.css">
 <meta property="og:title" content="">
-<meta property="og:description" content="">
 <meta property="og:image" content="https://stats9.github.io/images/anova.jpg">
 <meta property="og:locale" content="es_ES">
 <meta property="og:site-name" content="stats9">
 <meta name="twitter:title" content="">
-<meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://stats9.github.io/images/logo_image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -5433,8 +5431,13 @@ Type III
 <hr>
 <hr>
 <div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
-واضح هست که وقتی طرح متعادل هست، نتایج برای هر سه روش <code>(Anova Type I, Anova Type II, Anova Type III)</code>&nbsp;  کاملا یکسان هست. تفاوت‌ زمانی حاصل می‌شود که طرح نامتعادل هست. لازم به ذکر هست که برای پیاده‌سازی آنالیز واریانس نوع ۳ اگر بخواهیم شرط 
+واضح هست که وقتی طرح متعادل هست، نتایج برای هر سه روش 
 </div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>Anova Type I, Anova Type II, Anova Type III</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
+</div>
+کاملا یکسان هست. تفاوت‌ زمانی حاصل می‌شود که طرح نامتعادل هست. لازم به ذکر هست که برای پیاده‌سازی آنالیز واریانس نوع ۳ اگر بخواهیم شرط
+</section><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main></div>
 <p><span class="math display">\[
 \begin{aligned}
 &amp; \sum_{i = 1}^a \alpha_i = 0, \\
@@ -5443,14 +5446,23 @@ Type III
 \end{aligned}
 \]</span></p>
 <div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
-لحاظ بشود، باید وقتی در <code>R</code> کد می‌نویسیم، از دستور <code>options(contrasts = c("contr.sum",  "contr.sum"))</code>&nbsp; استفاده کنیم و در پایتون با فراخونی متد <code>from patsy.contrasts import Sum</code>&nbsp; و همچنین اضافه کردن <code>Sum</code>&nbsp; به تابع <code>C(Factor, Sum)</code>&nbsp; در حین ساختن مدل، شرط ذکر شده را لحاظ کنیم. در غیر این صورت نتایج مدل متفاوت خواهد شد البته برای مدل آنالیز واریانس نوع ۳. 
+لحاظ بشود، باید وقتی در <code>R</code> کد می‌نویسیم، از دستور 
+</div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">contrasts =</span> <span class="fu">c</span>(<span class="st">"contr.sum"</span>,  <span class="st">"contr.sum"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
+
+استفاده کنیم و در پایتون با فراخونی متد 
+</div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> patsy.contrasts <span class="im">import</span> Sum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
+و همچنین اضافه کردن به تابع <code>C(Factor, Sum)</code>&nbsp; در حین ساختن مدل، شرط ذکر شده را لحاظ کنیم. در غیر این صورت نتایج مدل متفاوت خواهد شد البته برای مدل آنالیز واریانس نوع ۳. 
 <br><br>
 </div>
-</section>
+
 <section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<h2 data-anchor-id="conclusion">Conclusion</h2>
 <div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
-<h4 style="color: blue;" class="anchored"><b> حرف آخر </b>
+<h4 style="color: blue;"><b> حرف آخر </b>
 </h4>
 حتمن این سؤال مطرح خواهد شد که با تمام این شرحی که در این صفحه ارائه شد، ما چه زمانی باید از هر کدام از انواع روش‌های مجموع مربعات استفاده کنیم؛‌
 <br>
@@ -5458,9 +5470,9 @@ Type III
 </div>
 </section>
 <section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
+<h2 data-anchor-id="references">References</h2>
 <div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
-<h4 style="color: blue;" class="anchored">
+<h4 style="color: blue;">
 <b>
 منابع
 </b>
@@ -5483,7 +5495,7 @@ Type III
 
 </section>
 
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+ <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -5728,7 +5740,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   <div class="nav-page nav-page-next">
   </div>
 </nav>
-</div> <!-- /content -->
+ <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
