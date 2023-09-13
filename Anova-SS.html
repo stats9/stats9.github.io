@@ -104,10 +104,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <link rel="stylesheet" href="styles.css">
 <meta property="og:title" content="">
+<meta property="og:description" content="">
 <meta property="og:image" content="https://stats9.github.io/images/anova.jpg">
 <meta property="og:locale" content="es_ES">
 <meta property="og:site-name" content="stats9">
 <meta name="twitter:title" content="">
+<meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://stats9.github.io/images/logo_image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -4136,10 +4138,10 @@ Type III
 <div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">SS</span>(A<span class="sc">|</span>B)<span class="sc">:</span> <span class="cf">for</span> factor A</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">SS</span>(B<span class="sc">|</span>A)<span class="sc">:</span> <span class="cf">for</span> factor B</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
-مشخص هست که هیچ اثر معنادار در مجموع مربعات نوع ۲ در نظر گرفته نمی‌شود. به عبارت دیگر، ابتدا باید اثر توأم را بر‌اساس <code>SS(AB|A, B)</code>&nbsp; معناداری آن بررسی شود. در صورتی که اثر توأمی معنادار گزارش نشد، به تحلیل اثرات اصلی بر‌اساس روش مربعات نوع ۲ بپردازیم. <br>
+ به عبارت دیگر، ابتدا باید اثر توأم را بر‌اساس <code>SS(AB|A, B)</code>&nbsp; معناداری آن بررسی شود. در صورتی که اثر توأمی معنادار گزارش نشد، به تحلیل اثرات اصلی بر‌اساس روش مربعات نوع ۲ بپردازیم. <br>
 اگر در واقعیت هیچ اثر توأم معناداری وجود نداشته باشد، آن‌گاه نوع ۲ از نظر آماری قدرتمند‌تر از نوع ۳ می‌باشد. برای جزئیات بیشتر درباره روش نوع ۲ می‌توانید به <a href="#f2"><bdi>[2]</bdi></a> مراجعه کنید. <br>
 از نظر محاسباتی، این روش معادل روش نوع ۱ هست، البته بر‌اساس ترتیب‌های مختلف ورود عامل‌ها به مدل و انتخاب مناسبت‌ترین خروجی. 
-برای پیاده‌سازی این روش در <code>R</code>&nbsp; باید علاوه بر‌پیاده‌سازی مدل چه با استفاده از تابع <code>aov</code>&nbsp; و چه با استفاده از تابع <code>lm</code>&nbsp; از تابع <code>car :: Anova </code>&nbsp; استفاده کنیم. ولی در پایتون علاوه بر‌ابزاری که کتابخانه <code>statsmodels</code>&nbsp; در اختیار ما قرار می‌دهد. یک بسته دیگر هم هست که روش نوع ۲ و همچنین نوع ۳ را پشتیبانی می‌کند. و می‌تواند خروجی‌های بهتری به ما نمایش دهد که با هم در ادامه خواهیم دید. 
+برای پیاده‌سازی این روش در <code>R</code>&nbsp; باید علاوه بر‌پیاده‌سازی مدل چه با استفاده از تابع <code>aov</code>&nbsp; و چه با استفاده از تابع <code>lm</code>&nbsp; از تابع <code>car :: Anova </code>&nbsp; استفاده کنیم. در پایتون نیز این رویکرد به سادگی قابل پیاده‌سازی هست که در پایین می‌بینیم. 
 
 <br><br>
 
@@ -4172,7 +4174,7 @@ Type III
 </details>
 </div>
 <div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
-در آخر این صفحه ما یک مقایسه اجمالی جداولی خروجی را با هم خواهیم کرد. 
+در آخر این صفحه  یک مقایسه اجمالی جدوال خروجی را ارائه خواهم کرد. 
 </div>
 </section>
 <section id="type-iii" class="level2">
@@ -4191,7 +4193,7 @@ Type III
 <br>
 با‌این‌حال در صورت وجود اثرات توأم، تفسیر اثر اصلی اصولا امر راحتی نیست. و یا با بیان بهتر؛ وقتی اثر توأمی در مدل حضور دارد اصولا تفسیر اثرات اصلی به‌ تنهایی نمی‌تواند رویکرد خیلی قابل دفاعی باشد. برای جزئیات بیشتر می‌توانید به <a href="#f3"><bdi>[3]</bdi></a> مراجعه کنید. <br>
 
-<span style="color:red;"><b>وقتی اثر توأم در مدل حضور ندارد، روی نوع ۲، روش قدرتمند‌تری می‌باشد.</b></span><br> 
+<span style="color:red;"><b>وقتی اثر توأم در مدل حضور ندارد، روش نوع ۲، روش قدرتمند‌تری می‌باشد.</b></span><br> 
 
 <br> 
 مثال: 
@@ -5435,9 +5437,8 @@ Type III
 </div>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>Anova Type I, Anova Type II, Anova Type III</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
+کاملا یکسان هست. تفاوت‌ زمانی حاصل می‌شود که طرح نامتعادل هست. لازم به ذکر هست که برای پیاده‌سازی آنالیز واریانس نوع ۳ اگر بخواهیم شرط 
 </div>
-کاملا یکسان هست. تفاوت‌ زمانی حاصل می‌شود که طرح نامتعادل هست. لازم به ذکر هست که برای پیاده‌سازی آنالیز واریانس نوع ۳ اگر بخواهیم شرط
-</section><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main></div>
 <p><span class="math display">\[
 \begin{aligned}
 &amp; \sum_{i = 1}^a \alpha_i = 0, \\
@@ -5458,25 +5459,27 @@ Type III
 و همچنین اضافه کردن <code>Sum</code>&nbsp;  به تابع <code>C(Factor, Sum)</code>&nbsp; در حین ساختن مدل، شرط ذکر شده را لحاظ کنیم. در غیر این صورت نتایج مدل متفاوت خواهد شد البته برای مدل آنالیز واریانس نوع ۳. 
 <br><br>
 </div>
-
+</section>
 <section id="conclusion" class="level2">
-<h2 data-anchor-id="conclusion">Conclusion</h2>
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
 <div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
-<h4 style="color: blue;"><b> حرف آخر </b>
+<h4 style="color: blue;" class="anchored"><b> حرف آخر </b>
 </h4>
 حتمن این سؤال مطرح خواهد شد که با تمام این شرحی که در این صفحه ارائه شد، ما چه زمانی باید از هر کدام از انواع روش‌های مجموع مربعات استفاده کنیم؛‌
 <br>
 <ul>
 <li>
-<code>Type I</code>:&nbsp; این شیوه با لحاظ کردن ترتیب ورود عامل‌ها به مدل از بقیه مدل‌ها متمایز می‌شود، این روش برای طرح‌های نامتعادل توصیه نمی شود و همچنین برای طرح‌‌هایی که تعداد عامل‌های زیادی دارند هم توصیه نمی‌شود. ولی برای طرح‌های متعادل با تعداد عامل‌های پایین و همچنین مدل‌های <code>Nested-Design</code>&nbsp; می‌تواند مناسب باشد. و همچنین برای مدل‌های رگرسیون چند‌جمله‌ای هم مفید هست. 
+<code>Type I</code>:&nbsp; این شیوه با لحاظ کردن ترتیب ورود عامل‌ها به مدل از بقیه مدل‌ها متمایز می‌شود، این روش برای طرح‌های نامتعادل توصیه نمی‌شود و همچنین برای طرح‌‌هایی که تعداد عامل‌های زیادی دارند هم توصیه نمی‌شود. ولی برای طرح‌های متعادل با تعداد عامل‌های پایین و همچنین مدل‌های <code>Nested-Design</code>&nbsp; می‌تواند مناسب باشد. و همچنین برای مدل‌های رگرسیون چند‌جمله‌ای هم مفید هست. 
 </li>
 <li>
-<code>Type II</code>:&nbsp; درک مجموع مربعات نوع ۲ کمی دشوار‌تر هست نسبت به ۱ و ۳؛ ولی به طور کلی، نوع ۲ برای یک اثر مانند اثر عامل <bdi>A</bdi> که ممکن هست یک اثر اصلی یا حتی یک اثر توأم در نظر گرفته شود وقتی این اثر را بخواهد مثلا با اثر <bdi>B</bdi> بیان کند اثر <bdi>A</bdi> را از <bdi>B</bdi> جدا می‌کند. یعنی اثراتی که با هم اشتراک دارند باید اشتراکات آن‌ها از هم تفکیک شود. برای همین منظور اصولا این نوع زمانی توصیه می شود که ما اعتقاد داشته باشیم اثرات توأم در مدل ما حضور ندارد یا اگر وجود دارد ناچیز هست. 
+<code>Type II</code>:&nbsp; درک مجموع مربعات نوع ۲ کمی دشوار‌تر هست نسبت به ۱ و ۳؛ ولی به طور کلی، نوع ۲ برای یک اثر مانند اثر عامل <bdi>A</bdi> که ممکن هست یک اثر اصلی یا حتی یک اثر توأم در نظر گرفته شود وقتی این اثر را بخواهد مثلا با اثر <bdi>B</bdi> بیان کند اثر <bdi>A</bdi> را از <bdi>B</bdi> جدا می‌کند. یعنی اثراتی که با هم اشتراک دارند باید اشتراکات آن‌ها از هم تفکیک شود. برای همین منظور اصولا این روش زمانی توصیه می شود که ما اعتقاد داشته باشیم اثرات توأم در مدل ما حضور ندارد یا اگر وجود دارد ناچیز هست. 
 </li>
 <li>
-باید در این‌جا ذکر کنیم که مجموع نوع ۲ و همچنین نوع ۳ اصطلاحا به آن‌ها مجموع مربعات جزئی نیز می‌گویند. اتفاقی که در این‌جا می‌افتد و ادبیات این رشته از آن استفاده می‌شود، این روش نیز مانند روش ۳، به این‌شکل هست که هر اثر بر‌اساس اثرات دیگر تنظیم می‌شود. این روش در حقیقت با تجزیه تحلیل مجموع مربعات وزنی که با الگوریتم یتس پیاده‌سازی می‌شود، مطابقت دارد. یکی از کارکردهای این روش زمانی هست که محقق علی‌الرغم وجود اثر توأم در مدل، نیازمند بررسی اثرات اصلی باشد و بخواهد آن‌ها را با هم مقابسه کند. (هرچند این نوع تفسیر در میان آماردانان طرفدار چندانی ندارد) واضح هست که اگر مدل فقط شامل اثرات اصلی باشد رویکرد نوع ۳ و نوع ۲ نتایج کاملا یکسانی را تولید خواهد کرد. 
+<code>Type III</code>:&nbsp;
+باید در این‌جا ذکر کنیم که مجموع مربعات نوع ۲ و همچنین نوع ۳ اصطلاحا به آن‌ها مجموع مربعات جزئی نیز می‌گویند. اتفاقی که در این‌جا می‌افتد و در ادبیات این رشته از آن استفاده می‌شود، محاسبه اثرات در این شیوه نیز مانند روش ۲، به این‌شکل هست که هر اثر بر‌اساس اثرات دیگر تنظیم می‌شود. این روش در حقیقت با تجزیه تحلیل مجموع مربعات وزنی که با الگوریتم یتس پیاده‌سازی می‌شود، مطابقت دارد. یکی از کارکردهای این روش زمانی هست که محقق علی‌الرغم وجود اثر توأم در مدل، نیازمند بررسی اثرات اصلی باشد و بخواهد آن‌ها را با هم مقابسه کند. (هرچند این نوع تفسیر در میان آماردانان طرفدار چندانی ندارد) واضح هست که اگر مدل فقط شامل اثرات اصلی باشد رویکرد نوع ۳ و نوع ۲ نتایج کاملا یکسانی را تولید خواهد کرد. 
 </li>
 <li>
+<code>Type IV</code>:&nbsp;
 این شیوه اساسا برای موقیعت‌هایی طراحی شده هست که ما سلول‌های خالی داریم یا اصطلاحا بعضی از ترکیبات تیماری فاقد نمونه محقق شده هستند. نتایج این روش با روش نوع ۳ زمانی که سلول خالی در طرح وجود نداشته باشد یکسان هست. و همچنین همان‌طور که قبال هم ذکر شد و در این‌جا باز بر‌روی آن تأکید می‌شود؛ 
 <br>
 <span style="color: red;"><b>
@@ -5487,9 +5490,9 @@ Type III
 </div>
 </section>
 <section id="references" class="level2">
-<h2 data-anchor-id="references">References</h2>
+<h2 class="anchored" data-anchor-id="references">References</h2>
 <div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
-<h4 style="color: blue;">
+<h4 style="color: blue;" class="anchored">
 <b>
 منابع
 </b>
@@ -5512,7 +5515,7 @@ Type III
 
 </section>
 
- <!-- /main -->
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -5757,7 +5760,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   <div class="nav-page nav-page-next">
   </div>
 </nav>
- <!-- /content -->
+</div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
