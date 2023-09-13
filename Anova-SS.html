@@ -334,13 +334,13 @@ Type III
 در این شیوه، تعریف اثرات برای مثال فرضی که گفتیم به این شکل هست؛ 
 <ul>
 <li>
-<code>SS(A):</code>&nbsp; برای عامل <bdi>A</bdi>
+<code>SS(A)</code>: برای عامل <bdi>A</bdi>
 </li>
 <li>
-<code>SS(B | A):</code>&nbsp; برای عامل <bdi>B</bdi>
+<code>SS(B | A)</code>: برای عامل <bdi>B</bdi>
 </li>
 <li>
-<code>SS(AB | B, A):</code>&nbsp; برای اثر توأم <bdi>AB</bdi>
+<code>SS(AB | B, A)</code>: برای اثر توأم <bdi>AB</bdi>
 </li>
 </ul>
 عبارات بالا، این مفهوم را دارد که ابتدا اثر اصلی عامل <bdi>A</bdi> سپس اثر اصلی عامل  <bdi>B</bdi> و در انتها اثر متقابل AB مورد بررسی قرار می‌گیرند. <br>
@@ -4138,7 +4138,7 @@ Type III
 <div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">SS</span>(A<span class="sc">|</span>B)<span class="sc">:</span> <span class="cf">for</span> factor A</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">SS</span>(B<span class="sc">|</span>A)<span class="sc">:</span> <span class="cf">for</span> factor B</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div dir="rtl" ,="" style="font-size: 18px; font-family: Yas">
-مشخص هست که هیچ اثر معنادار در مجموع مربعات نوع ۲ در نظر گرفته نمی‌شود. به عبارت دیگر، ابتدا باید اثر توأم را بر‌اساس <code>SS(AB|A, B)</code>&nbsp; معناداری آن بررسی شود. در صورتی که اثر توأمی معنادار گزارش نشد، به تحلیل اثرات اصلی بر‌اساس روش مربعات نو ۲ بپردازیم. <br>
+مشخص هست که هیچ اثر معنادار در مجموع مربعات نوع ۲ در نظر گرفته نمی‌شود. به عبارت دیگر، ابتدا باید اثر توأم را بر‌اساس <code>SS(AB|A, B)</code>&nbsp; معناداری آن بررسی شود. در صورتی که اثر توأمی معنادار گزارش نشد، به تحلیل اثرات اصلی بر‌اساس روش مربعات نوع ۲ بپردازیم. <br>
 اگر در واقعیت هیچ اثر توأم معناداری وجود نداشته باشد، آن‌گاه نوع ۲ از نظر آماری قدرتمند‌تر از نوع ۳ می‌باشد. برای جزئیات بیشتر درباره روش نوع ۲ می‌توانید به <a href="#f2"><bdi>[2]</bdi></a> مراجعه کنید. <br>
 از نظر محاسباتی، این روش معادل روش نوع ۱ هست، البته بر‌اساس ترتیب‌های مختلف ورود عامل‌ها به مدل و انتخاب مناسبت‌ترین خروجی. 
 برای پیاده‌سازی این روش در <code>R</code>&nbsp; باید علاوه بر‌پیاده‌سازی مدل چه با استفاده از تابع <code>aov</code>&nbsp; و چه با استفاده از تابع <code>lm</code>&nbsp; از تابع <code>car :: Anova </code>&nbsp; استفاده کنیم. ولی در پایتون علاوه بر‌ابزاری که کتابخانه <code>statsmodels</code>&nbsp; در اختیار ما قرار می‌دهد. یک بسته دیگر هم هست که روش نوع ۲ و همچنین نوع ۳ را پشتیبانی می‌کند. و می‌تواند خروجی‌های بهتری به ما نمایش دهد که با هم در ادامه خواهیم دید. 
