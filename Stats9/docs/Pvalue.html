@@ -321,7 +321,7 @@ H_1: &amp; \exists ~~ i, j ~~s.t~~ \mu_i \ne \mu_j, ~~ i, j = 1, 2, ..., k, \qua
 </div>
 <p><br></p>
 <p><span class="math display">\[
-\alpha_{Test_1} = \alpha_{Test_2} = \cdots = \alpha_{Test_6} = 0.05\implies
+\alpha_{Test_1} = \alpha_{Test_2} = \cdots = \alpha_{Test_6} = 0.05\to
 \]</span></p>
 <div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
 
@@ -347,7 +347,7 @@ H_1: &amp; \exists ~~ i, j ~~s.t~~ \mu_i \ne \mu_j, ~~ i, j = 1, 2, ..., k, \qua
 واضح هست که در صورت افزایش مقایسه‌های چند‌گانه خطای نوع اول چند‌گانه به یک هم خواهد رسید. <br>
 سؤالی که این‌جا شکل می‌گیرد این هست که چگونه باید جلوی رشد نرخ خطای نوع اول برای مقایسه‌های چند‌گانه گرفته شود؟
 <br> 
-اولین جوابی که به این سؤال میشه داد، کاهش خطای نوع اول هست. یا در واقع کاهش <bdi>Threshold</bdi>&nbsp; یا آن آستانه‌ای که در صورتی که <bdi>p<sub>value</sub></bdi>&nbsp; از آن کمتر شود فرض اولیه رد می‌شود. یکی از روش‌هایی که برای پاسخ به این پرسش مد نظر قرار می‌گیرد، روش بونفرونی هست که در ادامه به بعضی از روش‌های نسبتا پر‌استفاده  تصحیح خطای نوع اول و یا مقدار <bdi>p<sub>value</sub></bdi>&nbsp; بیان خواهد شد. 
+اولین جوابی که به این سؤال میشه داد، کاهش خطای نوع اول هست. یا در واقع کاهش <bdi>Threshold</bdi>&nbsp; یا آن آستانه‌ای که در صورتی که <bdi>p<sub>value</sub></bdi>&nbsp; از آن کمتر شود فرض اولیه رد می‌شود. یکی از روش‌هایی که برای پاسخ به این پرسش مد نظر قرار می‌گیرد، روش بونفرونی هست که در ادامه به بعضی از روش‌های نسبتا پر‌استفاده  تصحیح خطای نوع اول و یا مقدار <bdi>p<sub>value</sub></bdi>&nbsp; اشاره خواهد شد. 
 <br>
 
 قبل از آن‌که به ادامه بحث بپردازیم، برای این‌که یک تصویر بهتر از توضیحاتی که قرار هست ارائه شود شکل گیرد، من روش‌هایی که می‌خواهم در این صفحه به آن‌ها بپردازم را در پایین فهرست می‌کنم: 
@@ -823,7 +823,12 @@ p_{(i)}^{(FDR)} = \frac{m}{i} \times p_{(i)} \implies \text{if}~~~ p_{(i)}^{(FDR
 </div>
 <p><br></p>
 <div dir="rtl" ,="" style="color: black; font-size: 18px; font-family: Yas;">
-تابع <bdi><b><span style="font-family: courier new;">statsmodels.stats.multitest.fdrcorrection</span></b></bdi>&nbsp;  در حقیقت یک ابزار دیگر پایتون برای پیاده‌سازی همان  دو روش قبلی <br> <code>(BH, BY)</code>&nbsp; هست؛ این تابع 
+متد 
+</div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>statsmodels.stats.multitest.fdrcorrection</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div dir="rtl" ,="" style="font-size: 18px;">
+
+ در حقیقت یک ابزار دیگر پایتون برای پیاده‌سازی همان  دو روش قبلی <br> <code>(BH, BY)</code>&nbsp; هست؛ این تابع 
 برای آرگومان <bdi>method</bdi> پنج‌تا مقدار می تواند بگیرد که نتایج به دست آمده بر‌اساس هر کدام از مقادیر ذکر شده در راهنمای این تابع، یا نتایج روش <code>BH</code>&nbsp; را دارد یا نتایج روش <code>BY</code>&nbsp;.<br>
 همان‌طور که می‌بینیم خروجی روش <code>fdr</code>&nbsp; در <code>R</code>  نتیجه پیاده‌سازی روش <code>BH</code>&nbsp; را دارد، در حقیقت وجود <code>fdr</code>&nbsp; به عنوان یک آرگومان ضرورتی ندارد. البته برای روش‌های مستقر شده بر‌روی مفهوم <code>FDR</code>&nbsp; تیب‌شیرانی نیز روش‌هایی مبتنی بر <code>BH, BY</code>&nbsp; ارائه داده هست که از طریق بسته <code>statsmodels</code>&nbsp; قابل دسترس هستند. برای جزئیات آرگومان‌های تابع ذکر شده در <code>statsmodels</code>&nbsp; می‌توانید به این <a href="https://www.statsmodels.org/dev/generated/statsmodels.stats.multitest.multipletests.html">لینک</a> مراجعه کنید. 
 
@@ -841,23 +846,23 @@ p_{(i)}^{(FDR)} = \frac{m}{i} \times p_{(i)} \implies \text{if}~~~ p_{(i)}^{(FDR
 برای دسترسی به داده‌‌های <code>iris</code>&nbsp; در پایتون من از بسته <code>reticulate</code>&nbsp; استفاده می‌کنم، البته داده‌های <code>iris</code>&nbsp; در پایتون موجود هست هم در بسته <code>scikit-learn</code>&nbsp;  و هم در کتابخانه <code>statsmodels</code>&nbsp; ولی من برای این گزارش این روش را انتخاب کرده‌ام. 
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="do">## for use iris data in python </span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>pathh <span class="ot">&lt;-</span> <span class="fu">Sys.which</span>(<span class="st">"python"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>            <span class="fu">gsub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">"</span>, <span class="st">"//"</span>, <span class="at">x =</span> _,  <span class="at">fixed =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="fu">use_python</span>(pathh)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="do">## for use iris data in python </span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>pathh <span class="ot">&lt;-</span> <span class="fu">Sys.which</span>(<span class="st">"python"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>            <span class="fu">gsub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">"</span>, <span class="st">"//"</span>, <span class="at">x =</span> _,  <span class="at">fixed =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="fu">use_python</span>(pathh)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">## use python </span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> sfa</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scikit_posthocs <span class="im">as</span> sp</span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>dat <span class="op">=</span> r.iris.copy()</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>dat.columns <span class="op">=</span> dat.columns.<span class="bu">str</span>.replace(<span class="st">"."</span>, <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co">## use python </span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> sfa</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scikit_posthocs <span class="im">as</span> sp</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>dat <span class="op">=</span> r.iris.copy()</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>dat.columns <span class="op">=</span> dat.columns.<span class="bu">str</span>.replace(<span class="st">"."</span>, <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;string&gt;:1: FutureWarning: The default value of regex will change from True to False in a future version. In addition, single character regular expressions will *not* be treated as literal strings when regex=True.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dat.head(<span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dat.head(<span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   SepalLength  SepalWidth  PetalLength  PetalWidth Species
 0          5.1         3.5          1.4         0.2  setosa
@@ -873,43 +878,43 @@ p_{(i)}^{(FDR)} = \frac{m}{i} \times p_{(i)} \implies \text{if}~~~ p_{(i)}^{(FDR
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">## pairwise comparison use ttest </span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>sp.posthoc_ttest(dat, val_col <span class="op">=</span> <span class="st">'SepalWidth'</span>, group_col <span class="op">=</span> <span class="st">'Species'</span>, </span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>p_adjust <span class="op">=</span> <span class="st">"bonferroni"</span>).<span class="bu">round</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">## pairwise comparison use ttest </span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>sp.posthoc_ttest(dat, val_col <span class="op">=</span> <span class="st">'SepalWidth'</span>, group_col <span class="op">=</span> <span class="st">'Species'</span>, </span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>p_adjust <span class="op">=</span> <span class="st">"bonferroni"</span>).<span class="bu">round</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            setosa  versicolor  virginica
 setosa         1.0      0.0000     0.0000
 versicolor     0.0      1.0000     0.0055
 virginica      0.0      0.0055     1.0000</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co">"""p_adjust: </span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co">    bonferroni : one-step correction</span></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="co">    sidak : one-step correction</span></span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="co">    holm-sidak : step down method using Sidak adjustments</span></span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="co">    holm : step-down method using Bonferroni adjustments</span></span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="co">    simes-hochberg : step-up method (independent)</span></span>
-<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a><span class="co">    hommel : closed method based on Simes tests (non-negative)</span></span>
-<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a><span class="co">    fdr_bh : Benjamini/Hochberg (non-negative)</span></span>
-<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a><span class="co">    fdr_by : Benjamini/Yekutieli (negative)</span></span>
-<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a><span class="co">    fdr_tsbh : two stage fdr correction (non-negative)</span></span>
-<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a><span class="co">    fdr_tsbky : two stage fdr correction (non-negative)</span></span>
-<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">"""p_adjust: </span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co">    bonferroni : one-step correction</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co">    sidak : one-step correction</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="co">    holm-sidak : step down method using Sidak adjustments</span></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="co">    holm : step-down method using Bonferroni adjustments</span></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a><span class="co">    simes-hochberg : step-up method (independent)</span></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a><span class="co">    hommel : closed method based on Simes tests (non-negative)</span></span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a><span class="co">    fdr_bh : Benjamini/Hochberg (non-negative)</span></span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a><span class="co">    fdr_by : Benjamini/Yekutieli (negative)</span></span>
+<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a><span class="co">    fdr_tsbh : two stage fdr correction (non-negative)</span></span>
+<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a><span class="co">    fdr_tsbky : two stage fdr correction (non-negative)</span></span>
+<span id="cb38-21"><a href="#cb38-21" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'p_adjust: \n    bonferroni : one-step correction\n\n    sidak : one-step correction\n\n    holm-sidak : step down method using Sidak adjustments\n\n    holm : step-down method using Bonferroni adjustments\n\n    simes-hochberg : step-up method (independent)\n\n    hommel : closed method based on Simes tests (non-negative)\n\n    fdr_bh : Benjamini/Hochberg (non-negative)\n\n    fdr_by : Benjamini/Yekutieli (negative)\n\n    fdr_tsbh : two stage fdr correction (non-negative)\n\n    fdr_tsbky : two stage fdr correction (non-negative)\n'</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">## NonParametric pairwise test----</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>sp.posthoc_mannwhitney(a <span class="op">=</span> dat, val_col <span class="op">=</span> <span class="st">'SepalWidth'</span>, group_col <span class="op">=</span> <span class="st">"Species"</span>, </span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>p_adjust <span class="op">=</span> <span class="st">"fdr_by"</span>).<span class="bu">round</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">## NonParametric pairwise test----</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>sp.posthoc_mannwhitney(a <span class="op">=</span> dat, val_col <span class="op">=</span> <span class="st">'SepalWidth'</span>, group_col <span class="op">=</span> <span class="st">"Species"</span>, </span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>p_adjust <span class="op">=</span> <span class="st">"fdr_by"</span>).<span class="bu">round</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            setosa  versicolor  virginica
 setosa         1.0      0.0000     0.0000
@@ -919,21 +924,21 @@ virginica      0.0      0.0084     1.0000</code></pre>
 </div>
 <hr>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="do">## R: pairwise Ttest</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pairwise.t.test</span>(<span class="at">x =</span> iris<span class="sc">$</span>Sepal.Width, <span class="at">g =</span> iris<span class="sc">$</span>Species, </span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="at">p.adjust.method =</span> <span class="st">"bonferroni"</span>, <span class="at">pool.sd =</span> F) <span class="sc">|&gt;</span> </span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>_<span class="sc">$</span>p.value <span class="sc">|&gt;</span> </span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="do">## R: pairwise Ttest</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pairwise.t.test</span>(<span class="at">x =</span> iris<span class="sc">$</span>Sepal.Width, <span class="at">g =</span> iris<span class="sc">$</span>Species, </span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="at">p.adjust.method =</span> <span class="st">"bonferroni"</span>, <span class="at">pool.sd =</span> F) <span class="sc">|&gt;</span> </span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>_<span class="sc">$</span>p.value <span class="sc">|&gt;</span> </span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           setosa versicolor
 versicolor      0         NA
 virginica       0     0.0055</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="do">## R: pairwise wilcoxon test</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pairwise.wilcox.test</span>(<span class="at">x =</span> iris<span class="sc">$</span>Sepal.Width, <span class="at">g =</span> iris<span class="sc">$</span>Species, </span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="at">p.adjust.method =</span> <span class="st">"BY"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>_<span class="sc">$</span>p.value <span class="sc">|&gt;</span></span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="do">## R: pairwise wilcoxon test</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pairwise.wilcox.test</span>(<span class="at">x =</span> iris<span class="sc">$</span>Sepal.Width, <span class="at">g =</span> iris<span class="sc">$</span>Species, </span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="at">p.adjust.method =</span> <span class="st">"BY"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>_<span class="sc">$</span>p.value <span class="sc">|&gt;</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           setosa versicolor
 versicolor      0         NA
